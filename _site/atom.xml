@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Lanyon</title>
- <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
- <link href="http://lanyon.getpoole.com/"/>
- <updated>2014-12-05T19:16:06+03:00</updated>
- <id>http://lanyon.getpoole.com</id>
+ <title>Pavel Karateev</title>
+ <link href="http://pavelkarateev.com/atom.xml" rel="self"/>
+ <link href="http://pavelkarateev.com/"/>
+ <updated>2014-12-05T21:23:12+03:00</updated>
+ <id>http://pavelkarateev.com</id>
  <author>
-   <name>Mark Otto</name>
-   <email>markdotto@gmail.com</email>
+   <name>Pavel Karateev</name>
+   <email>karateev.pavel@ya.ru</email>
  </author>
 
  
  <entry>
    <title>Мозаичные диаграммы в ggplot2</title>
-   <link href="http://lanyon.getpoole.com/2014/11/03/mosaic_plot/"/>
+   <link href="http://pavelkarateev.com/2014/11/03/mosaic-plot/"/>
    <updated>2014-11-03T00:00:00+03:00</updated>
-   <id>http://lanyon.getpoole.com/2014/11/03/mosaic_plot</id>
+   <id>http://pavelkarateev.com/2014/11/03/mosaic-plot</id>
    <content type="html">&lt;p&gt;Сегодня на повестке дня мозаичные диаграммы в &lt;strong&gt;R&lt;/strong&gt; при помощи &lt;code&gt;ggplot2&lt;/code&gt;. И,
 да, в &lt;code&gt;ggplot2&lt;/code&gt; нет их реализации &amp;quot;из коробки&amp;quot;, но с должным умением и
 достаточно большой кувалдой дело можно поправить.&lt;/p&gt;
@@ -96,7 +96,7 @@
 &lt;span class=&quot;c1&quot;&gt;# Строим мозаичную диаграмму, переменные: качество огранки vs. чистота&lt;/span&gt;
 ggMMplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;diamonds&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; diamonds&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;clarity&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2014-11-03-mosaic_plot/1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://pavelkarateev.com/assets/2014-11-03-mosaic-plot/1.png&quot; alt=&quot;Mosaic plot&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Что почитать еще? Из всех источников, что мне попались в процессе поиска, я
 могу посоветовать взглянуть на пост из &lt;a href=&quot;http://is-r.tumblr.com/post/33290921643/simple-marimekko-mosaic-plots&quot;&gt;блога&lt;/a&gt;, который ведут
@@ -108,9 +108,9 @@ Christopher DeSante и David Sparks (Университет Дьюка). Есл�
  
  <entry>
    <title>Диаграмма рассеяния с коробчатыми диаграммами по периметру</title>
-   <link href="http://lanyon.getpoole.com/2014/10/19/marginal_plots/"/>
+   <link href="http://pavelkarateev.com/2014/10/19/marginal-plots/"/>
    <updated>2014-10-19T00:00:00+04:00</updated>
-   <id>http://lanyon.getpoole.com/2014/10/19/marginal_plots</id>
+   <id>http://pavelkarateev.com/2014/10/19/marginal-plots</id>
    <content type="html">&lt;p&gt;В последнее время при работе с R и RStudio мне с изрядной периодичностью
 приходится пользоваться коробчатыми диаграммами совместно с диаграммами
 рассеяния, к сожалению, в &lt;code&gt;ggplot2&lt;/code&gt; не существует (или я её еще не нашел)
@@ -261,7 +261,7 @@ gt &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;spa
 grid.newpage&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 grid.draw&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gt&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2014-10-19-marginal_plots/1.png&quot; alt=&quot;plot of chunk final plot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://pavelkarateev.com/assets/2014-10-19-marginal-plots/1.png&quot; alt=&quot;Plot&quot;&gt;&lt;/p&gt;
 </content>
  </entry>
  

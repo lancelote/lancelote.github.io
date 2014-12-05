@@ -94,7 +94,7 @@ ggMMplot <- function(var1, var2){
 ggMMplot(diamonds$cut, diamonds$clarity)
 ```
 
-![plot of chunk unnamed-chunk-1](../images/2014-11-03-mosaic_plot/1.png)
+![Mosaic plot]({{ site.url }}/assets/2014-11-03-mosaic-plot/1.png)
 
 Что почитать еще? Из всех источников, что мне попались в процессе поиска, я
 могу посоветовать взглянуть на пост из [блога][3], который ведут

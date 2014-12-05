@@ -179,7 +179,7 @@ grid.newpage()
 grid.draw(gt)
 ```
 
-![plot of chunk final plot](../images/2014-10-19-marginal_plots/1.png)
+![Plot]({{ site.url }}/assets/2014-10-19-marginal-plots/1.png)
 
   [1]: http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html "Sandy Muspratt's blog post"
   [2]: http://docs.ggplot2.org/0.9.3.1/geom_boxplot.html "ggplot2 boxplot docs"
