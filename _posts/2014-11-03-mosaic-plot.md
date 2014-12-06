@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Мозаичные диаграммы в ggplot2
+permalink: mosaic-plot
 ---
 
 Сегодня на повестке дня мозаичные диаграммы в **R** при помощи `ggplot2`. И,

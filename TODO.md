@@ -6,11 +6,11 @@
 - [ ] comment count
 - [ ] social media
 - [ ] fix images
-- [ ] Google Analytics
-- [ ] short url
 
 ## Archive
 
+- [x] short url
+- [x] Google Analytics
 - [x] DISQUS comments
 - [x] theme color
 - [x] link in new tab
