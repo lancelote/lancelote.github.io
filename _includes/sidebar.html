@@ -25,9 +25,12 @@
       {% endif %}
     {% endfor %}
 
-    <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-    <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+    <a class="sidebar-nav-item" href="{{ site.github.repo }}">Blog source code</a>
+    <p class="sidebar-nav-item"></p>
+
+    {% for page in site.profiles_list %}
+      <a class="sidebar-nav-item" href="{{ page[1]  }}">{{ page[0] }}</a>
+    {% endfor %}
   </nav>
 
   <div class="sidebar-item">

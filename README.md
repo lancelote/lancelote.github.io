@@ -6,17 +6,3 @@ My personal blog, hosted by [GitHub Pages](http://pages.github.com/). Check it a
 
 Site generator: [Jekyll](http://jekyllrb.com/)
 Theme: [Lanyon](http://lanyon.getpoole.com/)
-
-## ToDO
-
-- [ ] about page
-- [ ] comment count
-- [ ] social media
-- [ ] theme color
-- [ ] fix images
-- [ ] Google Analytics
-- [ ] custom URL
-- [ ] link in new tab
-- [ ] short url
-
-- [x] DISQUS comments

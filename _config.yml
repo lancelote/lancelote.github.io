@@ -28,8 +28,8 @@ version:             1.0.0
 github:
   repo:              https://github.com/lancelote/lancelote.github.io
 
-# profiles_list:
-#   GitHub:  'http://github.com/lancelote'
-#   Google+: 'https://plus.google.com/+PavelKarateev'
-#   Twitter: 'https://twitter.com/Lancel0te'
-#   VK:      'https://vk.com/lancelote'
+profiles_list:
+  GitHub:  'http://github.com/lancelote'
+  Google+: 'https://plus.google.com/+PavelKarateev'
+  Twitter: 'https://twitter.com/Lancel0te'
+  VK:      'https://vk.com/lancelote'
