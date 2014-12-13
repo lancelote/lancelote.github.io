@@ -1,3 +1,7 @@
 # Generated site #
 ##################
 _site/
+
+# Project user data #
+#####################
+.Rproj.user/
