@@ -16,40 +16,19 @@ permalink: mosaic-plot
 упомянуть о (`library(reshape2)` и `library(plyr)`).
 
 Нам потребуется только `ggplot2`:
-
-{% highlight r %}
+```{r packages}
 library(ggplot2)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: methods
-{% endhighlight %}
+```
 
 Для примера будем использовать массив данных о бриллиантах, он идет в комплекте
 с `ggplot2`:
-
-{% highlight r %}
+```{r data}
 head(diamonds)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##   carat       cut color clarity depth table price    x    y    z
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
-{% endhighlight %}
+```
 
 Мозаичную диаграмму мы будем строить через вспомогательную функцию `ggMMplot`, 
 которая будет принимать две дискретные переменные:
-
-{% highlight r %}
+```{r warning=FALSE}
 ggMMplot <- function(var1, var2){
   # ggplot2 должен быть загружен
   require(ggplot2)
@@ -101,9 +80,7 @@ ggMMplot <- function(var1, var2){
 
 # Строим мозаичную диаграмму, переменные: качество огранки vs. чистота
 ggMMplot(diamonds$cut, diamonds$clarity)
-{% endhighlight %}
-
-![center](../assets/2014-11-03-mosaic-plot/unnamed-chunk-1-1.png) 
+```
 
 Что почитать еще? Из всех источников, что мне попались в процессе поиска, я
 могу посоветовать взглянуть на пост из [блога][3], который ведут

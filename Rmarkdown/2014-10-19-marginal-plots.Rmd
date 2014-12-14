@@ -26,32 +26,19 @@ permalink: marginal-plots
 Помимо `ggplot2` для корректного расположения диаграмм в строгом порядке
 пригодятся пакеты `grid` и `gtable`.
 
-
-{% highlight r %}
+```{r packages}
 library(ggplot2)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: methods
-{% endhighlight %}
-
-
-
-{% highlight r %}
 library(grid)
 library(gtable)
-{% endhighlight %}
+```
 
 ## Данные ##
 
 В качестве примера возьмем предустановленный массив данных `mtcars`.
 
-
-{% highlight r %}
+```{r data}
 data(mtcars)
-{% endhighlight %}
+```
 
 ## Диаграмма рассеяния ##
 
@@ -61,8 +48,7 @@ data(mtcars)
 так не будут совпадать с осями, однако нам нужно настроить границы точно для
 позиционирования коробочных диаграмм.
 
-
-{% highlight r %}
+```{r scattreplot}
 p1 <- ggplot(mtcars, aes(mpg, hp)) +
   geom_point() +
 
@@ -78,7 +64,7 @@ p1 <- ggplot(mtcars, aes(mpg, hp)) +
 
   # Настраиваем внешние границы
   theme(plot.margin = unit(c(0, 0, 0.5, 0.5), "lines"))
-{% endhighlight %}
+```
 
 ## Коробчатые диаграммы ##
 
@@ -86,8 +72,7 @@ p1 <- ggplot(mtcars, aes(mpg, hp)) +
 границы отображаемого диапазона для соответствия диаграмме рассеяния.
 Дополнительно удаляем оси коробчатых диаграмм - они нам не нужны.
 
-
-{% highlight r %}
+```{r boxplot}
 # Создаем тему без названий осей и меток
 theme_remove_all <- theme(axis.text = element_blank(),
   axis.title = element_blank(),
@@ -139,18 +124,17 @@ p3 <- ggplot(mtcars, aes(x = factor(1), y = hp)) +
 
   # Изменяем внешние поля
   theme(plot.margin= unit(c(0, 0.5, 0.5, 0), "lines"))
-{% endhighlight %}
+```
 
 ## gtables ##
 
 Создаем объекты `gtable` с диаграммами для последующей верстки.
 
-
-{% highlight r %}
+```{r gtables}
 gt1 <- ggplot_gtable(ggplot_build(p1)) # Диаграмма рассеяния
 gt2 <- ggplot_gtable(ggplot_build(p2)) # Коробчатая горизонтальная диаграмма
 gt3 <- ggplot_gtable(ggplot_build(p3)) # Коробчатая вертикальная диаграмма
-{% endhighlight %}
+```
 
 ## Настройка высоты и ширины
 
@@ -160,8 +144,7 @@ gt3 <- ggplot_gtable(ggplot_build(p3)) # Коробчатая вертикаль
 "налезала" на воображаемую ось Y диаграммы рассеяния, а коробчатая диаграмма
 справа не пересекала ось X.
 
-
-{% highlight r %}
+```{r width height}
 # Максимальная высота и ширина
 maxWidth <- unit.pmax(gt1$widths[2:3], gt2$widths[2:3])
 maxHeight <- unit.pmax(gt1$heights[4:5], gt3$heights[4:5])
@@ -172,12 +155,11 @@ gt2$widths[2:3] <- as.list(maxWidth)
 
 gt1$heights[4:5] <- as.list(maxHeight)
 gt3$heights[4:5] <- as.list(maxHeight)
-{% endhighlight %}
+```
 
 ## Верстка ##
 
-
-{% highlight r %}
+```{r}
 # Создаем новую пустую gtable
 gt <- gtable(widths = unit(c(7, 1), "null"), height = unit(c(1, 7), "null"))
 
@@ -189,9 +171,7 @@ gt <- gtable_add_grob(gt, gt3, 2, 2)
 # Строим рисунок
 grid.newpage()
 grid.draw(gt)
-{% endhighlight %}
-
-![center](../assets/2014-10-19-marginal-plots/unnamed-chunk-1-1.png) 
+```
 
   [1]: http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html "Sandy Muspratt's blog post"
   [2]: http://docs.ggplot2.org/0.9.3.1/geom_boxplot.html "ggplot2 boxplot docs"
