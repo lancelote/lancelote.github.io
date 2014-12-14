@@ -2,14 +2,14 @@
 
 ## Active
 
-- [ ] internal links (tidyr post)
-- [ ] about page
+- [ ] add TOC to tidyr post
 - [ ] comment count
 - [ ] social media
 - [ ] fix images
 
 ## Archive
 
+- [x] about page
 - [x] short url
 - [x] Google Analytics
 - [x] DISQUS comments

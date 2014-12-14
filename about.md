@@ -3,28 +3,26 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+Каратеев Павел, Россия, Тула
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+<center>
+![Каратеев Павел](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
+</center>
 
-There are currently two themes built on Poole:
+## Образование:
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+- Аспирантура, 2011-н.в., [Тульский государственный университет](http://tsu.tula.ru/), Электрические станции и подстанции
+- Магистратура, 2009-2011, [Тульский государственный университет](http://tsu.tula.ru/), Электроэнергетика
+- Бакалавриат, 2004-2009, [Тульский государственный университет](http://tsu.tula.ru/), Электроэнергетика
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+## Работа:
 
-## Setup
+- Инженер, 2013-н.в., [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
+- Старший лаборант, 2011-2012, [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
+- Ассистент, 2011-н.в., [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
 
-Some fun facts about the setup of this project include:
+## Интересы
 
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
+Я большой фанат языка программирования R, интересуюсь всем что с ним связано, а также: визуализацией и обработкой данных, машинным обучением, статистикой.
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+В свободное время играю в [Го](http://ru.wikipedia.org/wiki/%D0%93%D0%BE), на данный момент мой рейтинг - 3k.
