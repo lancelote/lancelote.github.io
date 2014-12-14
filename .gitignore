@@ -2,6 +2,7 @@
 ##################
 _site/
 
-# Project user data #
-#####################
-.Rproj.user/
+# Rmarkdown output #
+####################
+Rmarkdown/*.html
+.Rproj.user

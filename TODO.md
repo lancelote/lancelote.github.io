@@ -2,6 +2,7 @@
 
 ## Active
 
+- [ ] internal links (tidyr post)
 - [ ] about page
 - [ ] comment count
 - [ ] social media
