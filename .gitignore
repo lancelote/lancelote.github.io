@@ -5,4 +5,8 @@ _site/
 # Rmarkdown output #
 ####################
 Rmarkdown/*.html
+
+# R #
+#####
 .Rproj.user
+.Rhistory
