@@ -2,13 +2,13 @@
 
 ## Active
 
-- [ ] add TOC to tidyr post
 - [ ] comment count
 - [ ] social media
-- [ ] fix images
 
 ## Archive
 
+- [x] add TOC to tidyr post
+- [x] fix images
 - [x] about page
 - [x] short url
 - [x] Google Analytics

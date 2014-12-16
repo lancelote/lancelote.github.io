@@ -6,6 +6,18 @@ permalink: tidyr-how-to
 
 Шпаргалка возможностей пакета `tidyr`. 
 
+# Содержание
+
+1. [expand](#expand)
+2. [extract](#extract)
+3. [extract_numeric](#extract_numeric)
+4. [gather](#gather)
+5. [separate](#separate)
+6. [seq_range](#seq_range)
+7. [spread](#spread)
+8. [unite](#unite)
+9. [unnest](#unnest)
+
 # Общее
 
 Пакет `tidyr` за авторством Hadley Wickham'а предназначен для первичной обработки сырых данных, в частности изменения их структуры. Для начала нам потребуются сам `tidyr`, а также `dplyr`:
@@ -14,7 +26,8 @@ library(tidyr)
 library(dplyr)
 ```
 
-# expand()
+# expand() <a name="expand"></a>
+
 ## Назначение
 
 Создает `data.frame` включающий все комбинации заданных переменных без перестановок
@@ -71,7 +84,8 @@ expand(df, a, c)
 expand(df, b, c)
 ```
 
-# extract()
+# extract() <a name="extract"></a>
+
 ## Назначение
 
 Применяет регулярное выражение к переменной и создает одну или несколько новых на основе результата
@@ -111,7 +125,8 @@ df %>% extract(x, "A")
 df %>% extract(x, c("A", "B"), "([[:alnum:]]+)\\.([[:alnum:]]+)")
 ```
 
-# extract_numeric()
+# extract_numeric() <a name="extract_numeric"></a>
+
 ## Назначение
 
 Используя регулярное выражения удаляет все нецифровые знаки из строки и трансформирует результат в число
@@ -119,7 +134,7 @@ df %>% extract(x, c("A", "B"), "([[:alnum:]]+)\\.([[:alnum:]]+)")
 ## Использование
 
 ```
-extract_numeric(x)
+extract_numeric
 ```
 
 ## Аргументы
@@ -142,7 +157,8 @@ extract_numeric("-2-2")
 extract_numeric("12abc34")
 ```
 
-# gather()
+# gather() <a name="gather"></a>
+
 ## Назначение
 
 Объединяет переменные, имена переменных для объединения становятся уровнями переменной `key`, значения объединенных переменных заполняют соответственно переменную `value`
@@ -179,7 +195,8 @@ stocks
 stocks %>% gather(stock, price, -time)
 ```
 
-# separate()
+# separate() <a name="separate"></a>
+
 ## Назначение
 
 Разбивает переменную на несколько
@@ -236,7 +253,8 @@ df
 df %>% separate(x, c("key", "value"), ": ", extra = "merge")
 ```
 
-# seq_range()
+# seq_range() <a name="seq_range"></a>
+
 ## Назначение
 
 Возвращает вектор из `n` значений от минимального до максимального `x` с равными промежутками
@@ -259,7 +277,8 @@ seq_range(x, n)
 seq_range(1:100, 5)
 ```
 
-# spread()
+# spread() <a name="spread"></a>
+
 ## Назначение
 
 Переформатирует `data.frame` - используя в качестве новых переменных уровни заданной переменной `key`, заполняя таблицу соответствующими значениями переменной `value`.
@@ -304,7 +323,8 @@ stocksm %>% spread(stock, price)
 stocksm %>% spread(time, price)
 ```
 
-# unit()
+# unite() <a name="unite"></a>
+
 ## Назначение
 
 Объединяет переменные в одну
@@ -340,7 +360,8 @@ mtcars %>%
   head()
 ```
 
-# unnest()
+# unnest() <a name="unnest"></a>
+
 ## Назначение
 
 Разбивает переменную на большее число строк за счет раскрытия вложенных элементов
