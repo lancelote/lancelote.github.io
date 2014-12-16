@@ -407,7 +407,8 @@ df %>%
 
 Разобьем стандартный набор данных `iris` по виду цветка:
 ```{r}
-my_list <- lapply(split(subset(iris, select = -Species), iris$Species), "[", 1:2, )
+my_list <- lapply(split(subset(iris, select = -Species),iris$Species),
+                  "[", 1:2, )
 my_list
 ```
 

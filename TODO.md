@@ -2,6 +2,7 @@
 
 ## Active
 
+- [ ] suppress package loading message via publish_Rmd.R
 - [ ] comment count
 - [ ] social media
 
