@@ -26,7 +26,8 @@ library(tidyr)
 library(dplyr)
 ```
 
-# expand() <a name="expand"></a>
+<a name="expand"></a>
+# expand()
 
 ## Назначение
 
@@ -84,7 +85,8 @@ expand(df, a, c)
 expand(df, b, c)
 ```
 
-# extract() <a name="extract"></a>
+<a name="extract"></a>
+# extract()
 
 ## Назначение
 
@@ -125,7 +127,8 @@ df %>% extract(x, "A")
 df %>% extract(x, c("A", "B"), "([[:alnum:]]+)\\.([[:alnum:]]+)")
 ```
 
-# extract_numeric() <a name="extract_numeric"></a>
+<a name="extract_numeric"></a>
+# extract_numeric()
 
 ## Назначение
 
@@ -157,7 +160,8 @@ extract_numeric("-2-2")
 extract_numeric("12abc34")
 ```
 
-# gather() <a name="gather"></a>
+<a name="gather"></a>
+# gather()
 
 ## Назначение
 
@@ -195,7 +199,8 @@ stocks
 stocks %>% gather(stock, price, -time)
 ```
 
-# separate() <a name="separate"></a>
+<a name="separate"></a>
+# separate()
 
 ## Назначение
 
@@ -253,7 +258,8 @@ df
 df %>% separate(x, c("key", "value"), ": ", extra = "merge")
 ```
 
-# seq_range() <a name="seq_range"></a>
+<a name="seq_range"></a>
+# seq_range()
 
 ## Назначение
 
@@ -277,7 +283,8 @@ seq_range(x, n)
 seq_range(1:100, 5)
 ```
 
-# spread() <a name="spread"></a>
+<a name="spread"></a>
+# spread()
 
 ## Назначение
 
@@ -323,7 +330,8 @@ stocksm %>% spread(stock, price)
 stocksm %>% spread(time, price)
 ```
 
-# unite() <a name="unite"></a>
+<a name="unite"></a>
+# unite()
 
 ## Назначение
 
@@ -360,7 +368,8 @@ mtcars %>%
   head()
 ```
 
-# unnest() <a name="unnest"></a>
+<a name="unnest"></a>
+# unnest()
 
 ## Назначение
 

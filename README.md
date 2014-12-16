@@ -16,4 +16,4 @@ Check:
 3. [Joshua Lande "How I Created a Beautiful and Minimal Blog Using Jekyll, Github Pages, and poole"](http://joshualande.com/jekyll-github-pages-poole/)
 4. [Jekyll](http://jekyllrb.com/), [Lanyon](http://lanyon.getpoole.com/), [Poole](https://github.com/poole/poole)
 
-For .Rmd processing script google: "knitr jekyll", there is a lot of useful information or/and check my [publish_Rmd.R](publish_Rmd.R) implementation. It's pretty straightforward.
+For `.Rmd` processing script google: "knitr jekyll", there is a lot of useful information or/and check my [publish_Rmd.R](publish_Rmd.R) implementation. It's pretty straightforward.
