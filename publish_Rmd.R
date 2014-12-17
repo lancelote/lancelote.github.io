@@ -3,9 +3,9 @@
 # This file povides usefull code for automatic converting .Rmd to .md with all
 # necessary options and files/image moving to desire folders
 
-Rmd.file <- commandArgs(trailingOnly = TRUE)
+rmd.file <- commandArgs(trailingOnly = TRUE)
 
-publish_rmd <- function(Rmd.file) {
+PublishRmd <- function(rmd.file) {
 
   # Rmd's file path
   rmd.path <- file.path("Rmarkdown", "")
@@ -13,7 +13,7 @@ publish_rmd <- function(Rmd.file) {
   # Posts path
   posts.path <- file.path("_posts", "")
 
-  filename <- unlist(strsplit(Rmd.file, split='.', fixed = TRUE))[1]
+  filename <- unlist(strsplit(rmd.file, split='.', fixed = TRUE))[1]
 
   # Figures path
   figs.path <- file.path("assets", filename, "")
@@ -25,8 +25,8 @@ publish_rmd <- function(Rmd.file) {
   opts_chunk$set(fig.path=figs.path)
 
   # Proceed Rmd
-  file <- file.path(rmd.path, Rmd.file)
+  file <- file.path(rmd.path, rmd.file)
   knit(file, output = file.path(posts.path, paste0(filename, ".md")))
 }
 
-publish_rmd(Rmd.file)
+PublishRmd(rmd.file)
