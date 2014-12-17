@@ -3,26 +3,30 @@ layout: page
 title: About
 ---
 
-Каратеев Павел, Россия, Тула
+Karateev Pavel, Russia, Tula
 
 <center>
-![Каратеев Павел](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
+![Pavel Karateev](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
 </center>
 
-## Образование:
+## Education:
 
-- Аспирантура, 2011-н.в., [Тульский государственный университет](http://tsu.tula.ru/), Электрические станции и подстанции
-- Магистратура, 2009-2011, [Тульский государственный университет](http://tsu.tula.ru/), Электроэнергетика
-- Бакалавриат, 2004-2009, [Тульский государственный университет](http://tsu.tula.ru/), Электроэнергетика
+[Tula State University](http://tsu.tula.ru/), Power Engineering
 
-## Работа:
+- PhD, 2011-TBD (thesis defence: 30.01.2015)
+- МSc, 2009-2011
+- BSc, 2004-2009
 
-- Инженер, 2013-н.в., [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
-- Старший лаборант, 2011-2012, [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
-- Ассистент, 2011-н.в., [Тульский государственный университет](http://tsu.tula.ru/), кафедра Электроэнергетики
+## Employment:
+### Present
 
-## Интересы
+[Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
 
-Я большой фанат языка программирования R, интересуюсь всем что с ним связано, а также: визуализацией и обработкой данных, машинным обучением, статистикой.
+- Research Engineer, 2013-TBD
+- Assistant Lecturer, 2011-TBD
 
-В свободное время играю в [Го](http://ru.wikipedia.org/wiki/%D0%93%D0%BE), на данный момент мой рейтинг - 3k.
+### Past
+
+[Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
+
+- Senior research assistant, 2011-2012
