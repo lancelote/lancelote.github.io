@@ -10,8 +10,8 @@ relative_permalinks: true
 
 # Setup
 title:               Pavel Karateev
-tagline:             R, Data Science, Visualization
-description:         'A personal blog about R, Data Science and Visualization'
+tagline:             Delightful Programming: R and Python
+description:         'A personal blog about Programming, mostrly R and Python'
 url:                 http://pavelkarateev.com
 baseurl:             /
 paginate:            5

@@ -13,7 +13,7 @@ Karateev Pavel, Russia, Tula
 
 [Tula State University](http://tsu.tula.ru/), Power Engineering
 
-- PhD, 2011-TBD (thesis defence: 30.01.2015)
+- PhD, 2011-2015 (thesis defense: 30.01.2015)
 - МSc, 2009-2011
 - BSc, 2004-2009
 
