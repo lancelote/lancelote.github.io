@@ -10,7 +10,7 @@ relative_permalinks: true
 
 # Setup
 title:               Pavel Karateev
-tagline:             Delightful Programming - R and Python
+tagline:             Work hard - die Pythonic
 description:         'A personal blog about Programming, mostrly R and Python'
 url:                 http://pavelkarateev.com
 baseurl:             /
