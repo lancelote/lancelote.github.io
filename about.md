@@ -9,6 +9,11 @@ Karateev Pavel, Russia, Tula
 ![Pavel Karateev](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
 </center>
 
+## Resume:
+
+- [Complete](../assets/resume/complete.pdf) (grades, publications, etc)
+- [Compact](../assets/resume/compact.pdf) (1 page)
+
 ## Education:
 
 [Tula State University](http://tsu.tula.ru/), Power Engineering
