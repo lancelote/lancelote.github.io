@@ -11,8 +11,9 @@ Karateev Pavel, Russia, Tula
 
 ## Resume:
 
-- [Complete](../assets/resume/complete.pdf) (grades, publications, etc)
-- [Compact](../assets/resume/compact.pdf) (1 page)
+- [Краткое RU](../assets/resume/compact_RU.pdf) (1 страница)
+- [Compact EN](../assets/resume/compact.pdf) (1 page)
+- [Complete EN](../assets/resume/complete.pdf) (grades, publications, etc)
 
 ## Education:
 
