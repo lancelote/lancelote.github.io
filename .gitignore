@@ -10,3 +10,7 @@ Rmarkdown/*.html
 #####
 .Rproj.user
 .Rhistory
+
+# WebStorm #
+############
+.idea/
