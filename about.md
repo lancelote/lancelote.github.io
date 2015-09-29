@@ -26,13 +26,14 @@ Karateev Pavel, Russia, Tula
 ## Employment:
 ### Present
 
-[Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
+[OOO "IDC"](https://www.idctula.ru/)
 
-- Research Engineer, 2013-TBD
-- Assistant Lecturer, 2011-TBD
+- Django Developer, 07.2015-TBD
 
 ### Past
 
 [Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
 
+- Research Engineer, 2013-06.2015
+- Assistant Lecturer, 2011-06.2015 (double jobholding)
 - Senior research assistant, 2011-2012
