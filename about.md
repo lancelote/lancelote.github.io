@@ -28,12 +28,12 @@ Karateev Pavel, Russia, Tula
 
 [OOO "IDC"](https://www.idctula.ru/)
 
-- Django Developer, 07.2015-TBD
+- 07.2015-TBD - Django Developer
 
 ### Past
 
 [Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
 
-- Research Engineer, 2013-06.2015
-- Assistant Lecturer, 2011-06.2015 (double jobholding)
-- Senior research assistant, 2011-2012
+- 2013-06.2015 - Research Engineer
+- 2011-06.2015 - Assistant Lecturer (double jobholding)
+- 2011-2012    - Senior research assistant
