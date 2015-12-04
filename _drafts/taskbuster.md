@@ -46,6 +46,10 @@ anyway it is already an excellent source of knowledge for any Junior/Middle
 Django developer and I really encourage you to check it out if you interesting
 in the Wev Development, Python and of course Django.
 
+## Grammar
+
+...
+
   [1]: http://www.marinamele.com/taskbuster-django-tutorial
   [2]: http://www.marinamele.com/taskbuster-django-tutorial/taskbuster-working-environment-and-start-django-project
   [3]: http://www.marinamele.com/taskbuster-django-tutorial/settings-different-environments-version-control

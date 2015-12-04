@@ -2,6 +2,7 @@
 
 ## Active
 
+- [ ] allow users to report grammar errors
 - [ ] suppress package loading message via publish_Rmd.R
 - [ ] comment count
 - [ ] social media
