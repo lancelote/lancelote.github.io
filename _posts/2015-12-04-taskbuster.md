@@ -6,12 +6,12 @@ permalink: taskbuster-tutorial
 
 From time to time I check out my *ToRead* folder (believe me it is infinite),
 and guess what I found there a week ago - BEST DJANGO TUTORIAL I EVER READ!
-Just go ahead and look at this beauty: [Taskbuster Django Tutorial by Marina Mele][1].
+Just go ahead and look at this beauty: [Taskbuster Django Tutorial by Marina Mele](http://www.marinamele.com/taskbuster-django-tutorial).
 Table of content is available inside the *Read more...*. So why am I so excited
-about it? Because [Marina][14] used a rare way to approach tutorial
-creation. She did not start with *no one used in real world* practises like
-many authors do, but goes straight to the best Django development patterns. She
-even wrote about environment variables!
+about it? Because [Marina](https://twitter.com/Marina_Mele) used a rare way to
+approach tutorial creation. She did not start with *no one used in real world*
+practises like many authors do, but goes straight to the best Django
+development patterns. She even wrote about environment variables!
 
 ![center](../assets/2015-12-04-taskbuster/taskbuster.jpg)
 
@@ -27,8 +27,8 @@ even wrote about environment variables!
 - [Part VII.b – Install and Configure MySQL][9]
 - [Part VIII – User Authentication with a Google Account using Django Allauth][10]
 - [Part VIII.b – User Authentication with Twitter using Django Allauth][11]
-- [Part IX – Model creation, OneToOne relations, signals and the Django Admin][12]
-- [Part X – Model creation, ForeignKey relations, testing and the Django Admin][13]
+- [Part IX – Model creation, OneToOne relations, signals, Django Admin][12]
+- [Part X – Model creation, ForeignKey relations, testing, Django Admin][13]
 
 ## Especially Interesting Topics
 
@@ -64,8 +64,6 @@ will be the first English one here. Though I'm not an English native speaker
 so I bet there're a lot (A LOT) of errors/typos and so on. I beg your pardon!
 I do my best to improve my English knowledge and practise makes perfect. I
 would definitely appreciate any corrections and suggestions!
-
-...
 
   [1]: http://www.marinamele.com/taskbuster-django-tutorial
   [2]: http://www.marinamele.com/taskbuster-django-tutorial/taskbuster-working-environment-and-start-django-project
