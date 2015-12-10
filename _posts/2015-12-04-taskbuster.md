@@ -7,11 +7,13 @@ permalink: taskbuster-tutorial
 From time to time I check out my *ToRead* folder (believe me it is infinite),
 and guess what I found there a week ago - BEST DJANGO TUTORIAL I EVER READ!
 Just go ahead and look at this beauty: [Taskbuster Django Tutorial by Marina Mele][1].
-Table of content is available inside *Read more...* So why am I so excited
-about if? Because of [Marina][14] used a rare way to approach tutorial
-creation. She did not start with *no one used in reality* practises like major
-authors did, but go straight to best Django development patterns. She even
-wrote about environment variables!
+Table of content is available inside the *Read more...*. So why am I so excited
+about it? Because [Marina][14] used a rare way to approach tutorial
+creation. She did not start with *no one used in real world* practises like
+many authors do, but goes straight to the best Django development patterns. She
+even wrote about environment variables!
+
+![center](../assets/2015-12-04-taskbuster/taskbuster.jpg)
 
 ## Table of Content
 
@@ -30,23 +32,38 @@ wrote about environment variables!
 
 ## Especially Interesting Topics
 
-Just few topics I want to especially mentioned:
+Just few topics I want to especially mention:
 
 - [Environment variable][2]
 - [Multiple settings files][3]
 - [PostgreSQL][8] and [MySQL][9]
-- [Social AUTH][10]
+- Social AUTH with [Google][10] and [Twitter][11]
 - TDD
 - [Internationalization and Localization][6]
 
 ## To be continued...
 
-So the tutorial is not finished yet. And maybe it will not be finished ever,
-anyway it is already an excellent source of knowledge for any Junior/Middle
+So the tutorial is not finished yet. And maybe it will not be finished,
+but it is already an excellent source of knowledge for any Junior (Middle?)
 Django developer and I really encourage you to check it out if you interesting
-in the Wev Development, Python and of course Django.
+in the Wev Development, Python and Django of course.
 
-## Grammar
+## Should I start my Django/Python way there?
+
+No, perhaps no. [DjangoGirls tutorial][15] is more suitable for complete
+beginners. Taskbuster is a good next step, when you already know some basics.
+
+## I know a better tutorial
+
+Please go ahead and share it in the comments section below!
+
+# Grammar
+
+I want to switch the blog language from Russian to English and this article
+will be the first English one here. Though I'm not an English native speaker
+so I bet there're a lot (A LOT) of errors/typos and so on. I beg your pardon!
+I do my best to improve my English knowledge and practise makes perfect. I
+would definitely appreciate any corrections and suggestions!
 
 ...
 
@@ -64,3 +81,4 @@ in the Wev Development, Python and of course Django.
   [12]: http://www.marinamele.com/taskbuster-django-tutorial/model-creation-onetoone-relationship-signals-django-admin
   [13]: http://www.marinamele.com/taskbuster-django-tutorial/model-creation-foreignkey-relationship-testing-django-admin
   [14]: https://twitter.com/Marina_Mele
+  [15]: http://tutorial.djangogirls.org/
