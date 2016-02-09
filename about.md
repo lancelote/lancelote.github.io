@@ -15,12 +15,16 @@ I’m a Django developer who has switched his career path from Data Science to
 Software Development. Apart of Web technologies and Python itself I’m really
 fond of testing and TDD in particular
 
-I’m an active [self learner][1], passionate [reader][2] and [problem][3]
-[solver][4]. I'm also an active English-to-Russian translator (games, books,
-tutorials and so on, for example: [DjangoGirls tutorial][5]) and do a lot of
+I’m an active [self learner](https://www.linkedin.com/in/pavelkarateev),
+passionate [reader](https://www.goodreads.com/review/list/26476619?shelf=dev)
+and [problem](http://www.codewars.com/users/lancelote)
+[solver](http://www.checkio.org/user/lancelote/). I'm also an active
+English-to-Russian translator (games, books, tutorials and so on, for example:
+[DjangoGirls tutorial](http://tutorial.djangogirls.org/)) and do a lot of
 my translations just for fun or community benefit. If you have any interesting
-projects you want to translate to Russian language
-(Python related primarily) - feel free to contact me via skype *karateev.pavel*
+projects you want to translate to Russian language (Python related primarily)
+- feel free to contact me via skype *karateev.pavel* or
+[email](<a href="mailto:karateev.pavel@ya.ru">karateev.pavel@ya.ru</a>)
 
 ## Resume:
 
@@ -50,9 +54,3 @@ projects you want to translate to Russian language
 - 2013-06.2015 - Research Engineer
 - 2011-06.2015 - Assistant Lecturer (double jobholding)
 - 2011-2012    - Senior research assistant
-
-  [1]: https://www.linkedin.com/in/pavelkarateev
-  [2]: https://www.goodreads.com/review/list/26476619?shelf=dev
-  [3]: http://www.codewars.com/users/lancelote
-  [4]: http://www.checkio.org/user/lancelote/
-  [5]: http://tutorial.djangogirls.org/
