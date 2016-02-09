@@ -5,7 +5,7 @@ title: About
 
 Karateev Pavel, Russia, Tula
 
-<center>![Pavel Karateev](../assets/me.png)</center>
+![center](../assets/me.png)
 
 Hi!
 
