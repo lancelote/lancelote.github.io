@@ -9,6 +9,19 @@ Karateev Pavel, Russia, Tula
 ![Pavel Karateev](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
 </center>
 
+Hi!
+
+I’m a Django developer who has switched his career path from Data Science to
+Software Development. Apart of Web technologies and Python itself I’m really
+fond of testing and TDD in particular
+
+I’m an active [self learner][1], passionate [reader][2] and [problem][3]
+[solver][4]. I'm also an active English-to-Russian translator (games, books,
+tutorials and so on, for example: [DjangoGirls tutorial][5]) and do a lot of
+my translations just for fun or community benefit. If you have any interesting
+projects you want to translate to Russian language
+(Python related primarily) - feel free to contact me via skype *karateev.pavel*
+
 ## Resume:
 
 - [Краткое RU](../assets/resume/compact_RU.pdf) (1 страница)
@@ -37,3 +50,9 @@ Karateev Pavel, Russia, Tula
 - 2013-06.2015 - Research Engineer
 - 2011-06.2015 - Assistant Lecturer (double jobholding)
 - 2011-2012    - Senior research assistant
+
+  [1]: https://www.linkedin.com/in/pavelkarateev
+  [2]: https://www.goodreads.com/review/list/26476619?shelf=dev
+  [3]: http://www.codewars.com/users/lancelote
+  [4]: http://www.checkio.org/user/lancelote/
+  [5]: http://tutorial.djangogirls.org/
