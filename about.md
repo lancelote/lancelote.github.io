@@ -5,7 +5,9 @@ title: About
 
 Karateev Pavel, Russia, Tula
 
-![center](../assets/me.png)
+<center>
+    <img href="http://pavelkarateev.com/assets/me.png" alt="Pavel Karateev photo" />
+</center>
 
 Hi!
 
@@ -22,7 +24,7 @@ English-to-Russian translator (games, books, tutorials and so on, for example:
 my translations just for fun or community benefit. If you have any interesting
 projects you want to translate to Russian language (Python related primarily)
 - feel free to contact me via skype *karateev.pavel* or
-[email](mailto:karateev.pavel@ya.ru)
+<a href="mailto:karateev.pavel@ya.ru">email</a>
 
 ## Resume:
 
