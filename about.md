@@ -41,6 +41,7 @@ projects you want to translate to Russian language (Python related primarily)
 - BSc, 2004-2009
 
 ## Employment:
+
 ### Present
 
 [OOO "IDC"](https://www.idctula.ru/)
