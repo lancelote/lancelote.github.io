@@ -5,9 +5,7 @@ title: About
 
 Karateev Pavel, Russia, Tula
 
-<center>
-[Pavel Karateev](https://ru.gravatar.com/userimage/25348165/61abf5fbf8e56e7d205cd35f22327c38.png?size=200)
-</center>
+<center>![Pavel Karateev](../assets/me.png)</center>
 
 Hi!
 
