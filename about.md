@@ -6,7 +6,7 @@ title: About
 Karateev Pavel, Russia, Tula
 
 <center>
-    <img href="http://pavelkarateev.com/assets/me.png" alt="Pavel Karateev photo" />
+    <img src="http://pavelkarateev.com/assets/me.png" alt="Pavel Karateev photo" />
 </center>
 
 Hi!
