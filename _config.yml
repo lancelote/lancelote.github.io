@@ -1,12 +1,11 @@
 # Dependencies
-markdown:            redcarpet
-highlighter:         pygments
+markdown:            kramdown
+highlighter:         rouge
 
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
 title:               Pavel Karateev
@@ -31,7 +30,8 @@ github:
 exclude:             [Rmarkdown]
 
 profiles_list:
-  GitHub:  'http://github.com/lancelote'
-  Google+: 'https://plus.google.com/+PavelKarateev'
-  Twitter: 'https://twitter.com/Lancel0te'
-  VK:      'https://vk.com/lancelote'
+  GitHub:         'http://github.com/lancelote'
+  Twitter:        'https://twitter.com/Lancel0te'
+  LinkedIn:       'https://www.linkedin.com/in/pavelkarateev'
+  Tech Bookshelf: 'https://www.goodreads.com/review/list/26476619?shelf=dev'
+  Stackoverflow:  'http://ru.stackoverflow.com/users/178077/pavel-karateev?tab=profile'
