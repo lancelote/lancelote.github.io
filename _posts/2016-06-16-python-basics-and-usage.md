@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Заверщен курс Python: основы и применение
+title: Завершен курс "Python основы и применение"
 permalink: python-basics-and-usage
 ---
 
