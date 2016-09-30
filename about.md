@@ -11,20 +11,20 @@ Karateev Pavel, Russia, Tula
 
 Hi!
 
-I’m a Django developer who has switched his career path from Data Science to
-Software Development. Apart of Web technologies and Python itself I’m really
-fond of testing and TDD in particular
+I’m a Python developer and QA engineer who has switched his career path from
+Data Science to Software Development. Apart of Python itself I’m really
+fond of testing and TDD in particular.
 
 I’m an active [self learner](https://www.linkedin.com/in/pavelkarateev),
 passionate [reader](https://www.goodreads.com/review/list/26476619?shelf=dev)
 and [problem](http://www.codewars.com/users/lancelote)
 [solver](http://www.checkio.org/user/lancelote/). I'm also an active
 English-to-Russian translator (games, books, tutorials and so on, for example:
-[DjangoGirls tutorial](http://tutorial.djangogirls.org/)) and do a lot of
+[DjangoGirls tutorial](http://tutorial.djangogirls.org/), [Intermediate Python](https://github.com/lancelote/interpy-ru) book) and do a lot of
 my translations just for fun or community benefit. If you have any interesting
 projects you want to translate to Russian language (Python related primarily)
-- feel free to contact me via skype *karateev.pavel* or
-<a href="mailto:karateev.pavel@ya.ru">email</a>
+-- feel free to contact me via skype *karateev.pavel* or
+<a href="mailto:karateev.pavel@ya.ru">email</a>.
 
 ## Resume:
 
@@ -44,11 +44,15 @@ projects you want to translate to Russian language (Python related primarily)
 
 ### Present
 
-[OOO "IDC"](https://www.idctula.ru/)
+[JetBrains](https://www.jetbrains.com/)
 
-- 07.2015-TBD - Django Developer
+- 09.2016-TBD - QA Engineer at PyCharm
 
 ### Past
+
+[OOO "IDC"](https://www.idctula.ru/)
+
+- 07.2015-09.2016 - Django Developer
 
 [Tula State University](http://tsu.tula.ru/), [Chair of Power Engineering](http://tsu.tula.ru/ivts/depts/electro/)
 
