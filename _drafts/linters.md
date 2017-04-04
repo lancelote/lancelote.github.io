@@ -12,23 +12,40 @@ Just a few notes about linters in general and how one can benefit from using the
 
 ## pylint
 
+[pylint][2]
+
 ## pydocstyle
+
+[pydocstyle][3]
 
 ## pycodestyle
 
+[pycodestyle][4]
+
 ## mypy
+
+[mypy][5]
 
 ## PyCharm Integration
 
+ToDo: describe basic integration with PyCharm
+
 ## Live Example
+
+ToDo: advent of code project - https://github.com/lancelote/advent_of_code
 
 ## Resume
 
-So is the linters usage is must have? Maybe. I'm not 100% sure, why not? Because there's a few questions that bother me a little:
+So is the linters usage is must have? I'm not 100% sure. There're few questions that bother me a little:
 
- - Is the type annotations in Python goes against the language dynamic nature and prevent programmers to use it's strongest parts?
- - Aren't linters force you sometimes to change the source code not because you have a bad architecture but because the new one will work better just for them?
+ - Is the type annotations in Python goes against the language dynamic nature and limits developers?
+ - Are not linters force you sometimes to change the source code not because you have a bad architecture but because the new one will work better just for linters?
  - ...
-I'll live it up to you to decide.
+
+Feel free to decide for yourself. Meanwhile please leave any recommendations, suggestions and general feedback in the comments below - I would love to incorporate any tips in the post. Thank you for reading!
 
  [1]: https://en.wikipedia.org/wiki/Lint_(software)
+ [2]: https://www.pylint.org
+ [3]: http://www.pydocstyle.org
+ [4]: http://pycodestyle.pycqa.org/
+ [5]: http://mypy-lang.org
