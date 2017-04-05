@@ -32,7 +32,33 @@ ToDo: describe basic integration with PyCharm
 
 ## Live Example
 
-ToDo: advent of code project - https://github.com/lancelote/advent_of_code
+For a live example I choose my [simple project][7] with solutions for [Advent of Code][6] puzzles. It's super easy and does not use any specific configuration for linters apart of `pylintrc` and a little customisation for calls in `Makefile`.
+
+I usually implement some kind of automation for my projects. I used several different utilities for it and now my favorite is simple `Makefile`s. The logic is very simple - `Makefile` contains commands which you can run with `make <command>`. This command will execute a bunch of predefined code right in your terminal, for example:
+
+```
+lint:
+	python -m pylint main.py src tests
+	python -m pydocstyle
+	python -m pycodestyle --select E,W .
+	python -m mypy .
+
+```
+
+`lint` command will execute all linters one by one. Each line is straightforward. If there will be errors `make` will stop and output the captured log.
+
+For manual usage I rely on PyCharm integration but it's very useful to have such automation for continues integration, for example my `.travis.yml` related part:
+
+```
+install:
+  - make update
+
+script:
+  - make test
+  - make lint
+```
+
+Very concise and reusable.
 
 ## Resume
 
@@ -49,3 +75,5 @@ Feel free to decide for yourself. Meanwhile please leave any recommendations, su
  [3]: http://www.pydocstyle.org
  [4]: http://pycodestyle.pycqa.org/
  [5]: http://mypy-lang.org
+ [6]: http://adventofcode.com
+ [7]: https://github.com/lancelote/advent_of_code
