@@ -10,6 +10,12 @@ Today's topic is linters. Not sure about you but I'm a huge fun of linters in Py
 
 Just a few notes about linters in general and how one can benefit from using them in Python. First of all the main purpose of [linters][1] - to check your source code (not in the runtime) and find possible style, logic and all other kinds of errors (feel free to narrow down the definition to only style errors). As you probably know Python is a dynamic language which leads to a broad field of possible errors which will not be found by the compiler. Obviously linters may eliminate such errors before you or your users will find them. Another great linters advantage is to enforce style of your code (remember PEP8). Good uniform style will result in less errors, maintaining easiness, new contributes convenience, you named it.
 
+## Installation
+
+```bash
+pip install pylint pydocstyle pycodestyle mypy
+```
+
 ## pylint
 
 [pylint][2] is a well known Python linter and one of my favorite tools which I use extensively in almost every project I have. It's very strict and highly customizable. To run `pylint` against your code just type:
@@ -74,11 +80,43 @@ There's no much to elaborate on here, just try it, al least `pydocstyle` is goin
 
 ## pycodestyle
 
-[pycodestyle][4]
+You may think that [pycodestyle][4] is needless after you have pylint but it turns out not to be the true story. `pydocstyle` is intended to find PEP8 errors and as simple as it is often finds some dumb style errors I have that `pylint` fails to notice. I suspect `pylint` sometimes thinks such stupid typos are not the thing it is going to spend time reporting.
+
+Very complicated usage:
+
+```bash
+python -m pycodestyle --select E,W .
+```
+
+notice the `--select` flag - it's intended to enable all errors and warning which `pycodestyle` can report. Kind of "ultra strict" mode. Try to run it against your sources and be surprised how many PEP8 errors you have. And if you're not the IDE user there're going to be tones of errors - brace yourself.
 
 ## mypy
 
-[mypy][5]
+[mypy][5] is a different story. As we all know Python is a dynamic language but you still can type-annotate your code and have it type-checked before runtime with external tools, e.g. PyCharm or `mypy`. This is a huge topic and you should read some PEPs to make yourself familiar with type annotations in Python, for example [PEP 484][8].
+
+Type annotations is a double-edged sword - you're going to find some errors in your code in advance but your also are going to introduce a lot of redundant code to your project which is completely useless in the runtime. There're some ways to separate type annotations from the code itself - with stubs, but it's a different story, let's check a simple example:
+
+```python
+def foo(a: int) -> bool:
+    return str(a % 2 == 0)
+```
+
+Our function checks if `a` is even and returns `True` or `False`. I added types to function declaration with this new shiny Python 3 style, so basically `a` should be `int` and function should return `boolean`. If you're using PyCharm it will throw a warning right into your type annotated face complaining about wrong output type which is `str` in fact and no way `boolean`.
+
+If you're using some other editor there will be no warning and we obviously want to have one. So to check this code against type errors we're going to use `mypy`. Just save the function in `sample.py` and run:
+
+```bash
+python -m mypy sample.py
+```
+
+and the result is:
+
+```
+sample.py: note: In function "foo":
+sample.py:2: error: Incompatible return value type (got "str", expected "bool")
+```
+
+Not so fast my my sweet dynamic child. So I hope you kind of have a broad overview of possibilities. I'm not in any way a good expert in this topic and it's huge so you should read `mypy` and `typing` docs at least if you're interesting. I run `mypy` over source code in the CI just to check everything outside of PyCharm. You may hate this type-stuff idea in Python all together so feel free to dump it right now but it worth trying I believe.
 
 ## PyCharm Integration
 
@@ -132,3 +170,4 @@ Feel free to decide for yourself. Meanwhile please leave any recommendations, su
  [5]: http://mypy-lang.org
  [6]: http://adventofcode.com
  [7]: https://github.com/lancelote/advent_of_code
+ [8]: https://www.python.org/dev/peps/pep-0484/
