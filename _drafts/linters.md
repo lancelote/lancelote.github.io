@@ -4,7 +4,7 @@ title: Linters and PyCharm
 permalink: virtualenv
 ---
 
-Today's topic is linters. Not sure about you but I'm a huge fun of linters in Python. As a PyCharm user I already have great inspections and stuff you may expect from the good IDE but as a code style maniac it's absolutely not enough for me. So my "standard" pack of linters include: `pylint`, `pydocstyle`, `pycodestyle` and `mypy`. Not sure if one can call `mypy` a linter but let's live with it for now. I'll briefly describe each one of them, will touch PyCharm integration via external tools and will provide a live example from one of my repositories on github. Here we go.
+Today's topic is linters. Not sure about you but I'm a huge fun of linters in Python. As a PyCharm user I already have great inspections and stuff you may expect from the good IDE but as a code style maniac it's absolutely not enough for me. So my "standard" pack of linters include: `pylint`, `pydocstyle`, `pycodestyle` and `mypy`. Not sure if one can call `mypy` a linter but let's live with it for now. I'll briefly describe each one of them, will touch PyCharm integration via external tools and will provide a live example from one of my repositories on github. Let's go.
 
 ## Basics
 
@@ -32,9 +32,9 @@ E: 27, 0: Sequence index is not an int, slice, or instance with __index__ (inval
 C: 44, 8: Invalid variable name "a" (invalid-name)
 ```
 
-These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said `pylint` is a super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name `a` and wrong type in slice is just a Python 3.6 style type annotation that is not supported by `pylint` at all.
+These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said `pylint` is super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name `a` and wrong type in slice is just a Python 3.6 style type annotation that is not supported by `pylint` at all at least right now.
 
-To mute such false positives and customize the report one may use `pylintrc` file, this is in fact very simple and useful. Just create a `pylintrc` file in the project root and add a customizations, for example one of my files:
+To mute such false positives and customize the report one may use `pylintrc` file, this is in fact very simple and useful. Just create a `pylintrc` file in the project root and add some options, for example one of my files:
 
 ```
 [MESSAGES CONTROL]
@@ -55,9 +55,21 @@ min-similarity-lines=10
 ignore-docstrings=yes
 ```
 
+This will reduce the size of output (I don't really care in my code assessment rate), enforce some style options like 80 characters per line and disable few inspections globally, e.g. missing docstring - I rely on `pydocstyle` to check my docstrings. You can also disable some warning per file with comments on top of it, e.g. mute invalid name inspection for file:
+
+```python
+# pylint: disable=invalid-name
+```
+
+or mute all inspection for a specific function:
+
+```python
+def main():  # pragma: no cover
+```
+
 ## pydocstyle
 
-[pydocstyle][3] is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see I never thought there're such conventions in Python before I start using it.
+[pydocstyle][3] is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see I never thought there're such conventions in Python before I started to use it.
 
 Execution is straightforward:
 
@@ -92,9 +104,9 @@ notice the `--select` flag - it's intended to enable all errors and warning whic
 
 ## mypy
 
-[mypy][5] is a different story. As we all know Python is a dynamic language but you still can type-annotate your code and have it type-checked before runtime with external tools, e.g. PyCharm or `mypy`. This is a huge topic and you should read some PEPs to make yourself familiar with type annotations in Python, for example [PEP 484][8].
+[mypy][5] is a different story. As we all know Python is a dynamic language but you still can type-annotate your code and have it type-checked before runtime with external tools, e.g. PyCharm or `mypy`. This is a huge topic and you should read some docs to make yourself familiar with type annotations in Python, for example [PEP 484][8].
 
-Type annotations is a double-edged sword - you're going to find some errors in your code in advance but your also are going to introduce a lot of redundant code to your project which is completely useless in the runtime. There're some ways to separate type annotations from the code itself - with stubs, but it's a different story, let's check a simple example:
+Type annotations is a double-edged sword - you're going to find some errors in your code in advance but you're also going to introduce a lot of redundant code to your project which is completely useless in the runtime. There're some ways to separate type annotations from the code itself - with stubs, but it's a different story, let's check a simple example:
 
 ```python
 def foo(a: int) -> bool:
