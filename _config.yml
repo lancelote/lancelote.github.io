@@ -12,7 +12,7 @@ title:               Pavel Karateev
 tagline:             Work hard - die Pythonic
 description:         'A personal blog about Programming, mostrly R and Python'
 url:                 http://pavelkarateev.com
-baseurl:             /
+baseurl:             ''
 paginate:            5
 
 # About/contact
