@@ -35,3 +35,6 @@ profiles_list:
   LinkedIn:       'https://www.linkedin.com/in/pavelkarateev'
   Tech Bookshelf: 'https://www.goodreads.com/review/list/26476619?shelf=dev'
   Stackoverflow:  'http://ru.stackoverflow.com/users/178077/pavel-karateev?tab=profile'
+
+# Gems
+gems:                [jekyll-paginate]
