@@ -135,7 +135,22 @@ Ok, so I hope you kind of have a broad overview of possibilities. I'm not in any
 
 ## PyCharm Integration
 
-ToDo: describe basic integration with PyCharm
+We'll use [External Tools][11] feature to integrate all four linters with PyCharm to some extend. Open *Settings | Tools | External Tools* in PyCharm and click a `+` button to add first external tool in out project.
+
+![center](../assets/xxxx-xx-xx-linters/external.png) 
+
+Let's start with the most hard to setup - `pylint`, complete configuration should be similar to image below:
+
+![center](../assets/xxxx-xx-xx-linters/pylint.png) 
+
+Line by line:
+
+-First of all specify the tool name (any you like), I pick `pylint` for obvious reasons
+-Next select or create a group for this tool to belong to, for us it'll be `linters`
+-Provide a custom description
+-Enable all option in Options paragraph - we really want to see `pylint` output
+-Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight `pylint` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is `$FILE_PATH$:$LINE$:$COLUMN$:.*`, `$name$` is a special variables used by PyCharm to understand where is file path, line and column in the line
+
 
 ## Live Example
 
@@ -183,3 +198,4 @@ Please leave any recommendations, suggestions and general notes in the comments 
  [8]: https://www.python.org/dev/peps/pep-0484/
  [9]: http://www.pyinvoke.org
  [10]: https://github.com/paver/paver
+ [11]: https://www.jetbrains.com/help/pycharm/external-tools.html
