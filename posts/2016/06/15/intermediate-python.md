@@ -30,37 +30,37 @@ Python при всей его интуитивности и простоте е�
 ## Содержание
 
 - Средства разработки
-  - [Виртуальное окружение](https://lancelote.gitbooks.io/intermediate-python/content/book/virtual_environment.html)
-  - [Отладка](https://lancelote.gitbooks.io/intermediate-python/content/book/debugging.html)
-  - [Анализ объекта](https://lancelote.gitbooks.io/intermediate-python/content/book/object_introspection.html)
+    - [Виртуальное окружение](https://lancelote.gitbooks.io/intermediate-python/content/book/virtual_environment.html)
+    - [Отладка](https://lancelote.gitbooks.io/intermediate-python/content/book/debugging.html)
+    - [Анализ объекта](https://lancelote.gitbooks.io/intermediate-python/content/book/object_introspection.html)
 - Синтаксис
-  - [Исключения](https://lancelote.gitbooks.io/intermediate-python/content/book/exceptions.html)
-  - [for - else](https://lancelote.gitbooks.io/intermediate-python/content/book/for_-_else.html)
-  - [Тернарные операторы](https://lancelote.gitbooks.io/intermediate-python/content/book/ternary_operators.html)
-  - [global и return](https://lancelote.gitbooks.io/intermediate-python/content/book/global_&_return.html)
-  - [Функция open](https://lancelote.gitbooks.io/intermediate-python/content/book/open_function.html)
-  - [\*args и \*\*kwargs](https://lancelote.gitbooks.io/intermediate-python/content/book/args_and_kwargs.html)
-  - [Менеджеры контекста](https://lancelote.gitbooks.io/intermediate-python/content/book/context_managers.html)
+    - [Исключения](https://lancelote.gitbooks.io/intermediate-python/content/book/exceptions.html)
+    - [for - else](https://lancelote.gitbooks.io/intermediate-python/content/book/for_-_else.html)
+    - [Тернарные операторы](https://lancelote.gitbooks.io/intermediate-python/content/book/ternary_operators.html)
+    - [global и return](https://lancelote.gitbooks.io/intermediate-python/content/book/global_&_return.html)
+    - [Функция open](https://lancelote.gitbooks.io/intermediate-python/content/book/open_function.html)
+    - [\*args и \*\*kwargs](https://lancelote.gitbooks.io/intermediate-python/content/book/args_and_kwargs.html)
+    - [Менеджеры контекста](https://lancelote.gitbooks.io/intermediate-python/content/book/context_managers.html)
 - Функциональное программирование
-  - [enumerate](https://lancelote.gitbooks.io/intermediate-python/content/book/enumerate.html)
-  - [Анонимные функции](https://lancelote.gitbooks.io/intermediate-python/content/book/lambdas.html)
-  - [Структура данных set](https://lancelote.gitbooks.io/intermediate-python/content/book/set_-_data_structure.html)
-  - [map и filter](https://lancelote.gitbooks.io/intermediate-python/content/book/map_filter.html)
-  - [Абстракция списков](https://lancelote.gitbooks.io/intermediate-python/content/book/comprehensions.html)
+    - [enumerate](https://lancelote.gitbooks.io/intermediate-python/content/book/enumerate.html)
+    - [Анонимные функции](https://lancelote.gitbooks.io/intermediate-python/content/book/lambdas.html)
+    - [Структура данных set](https://lancelote.gitbooks.io/intermediate-python/content/book/set_-_data_structure.html)
+    - [map и filter](https://lancelote.gitbooks.io/intermediate-python/content/book/map_filter.html)
+    - [Абстракция списков](https://lancelote.gitbooks.io/intermediate-python/content/book/comprehensions.html)
 - Структуры данных
-  - [Генераторы](https://lancelote.gitbooks.io/intermediate-python/content/book/generators.html)
-  - [Корутины](https://lancelote.gitbooks.io/intermediate-python/content/book/coroutines.html)
+    - [Генераторы](https://lancelote.gitbooks.io/intermediate-python/content/book/generators.html)
+    - [Корутины](https://lancelote.gitbooks.io/intermediate-python/content/book/coroutines.html)
 - Типы данных
-  - [collections](https://lancelote.gitbooks.io/intermediate-python/content/book/collections.html)
-  - [Изменяемость](https://lancelote.gitbooks.io/intermediate-python/content/book/mutation.html)
-  - [Магия \_\_slots\_\_](https://lancelote.gitbooks.io/intermediate-python/content/book/__slots__magic.html)
+    - [collections](https://lancelote.gitbooks.io/intermediate-python/content/book/collections.html)
+    - [Изменяемость](https://lancelote.gitbooks.io/intermediate-python/content/book/mutation.html)
+    - [Магия \_\_slots\_\_](https://lancelote.gitbooks.io/intermediate-python/content/book/__slots__magic.html)
 - Декораторы
-  - [Что такое декоратор?](https://lancelote.gitbooks.io/intermediate-python/content/book/decorators.html)
-  - [Кэширование функций](https://lancelote.gitbooks.io/intermediate-python/content/book/function_caching.html)
+    - [Что такое декоратор?](https://lancelote.gitbooks.io/intermediate-python/content/book/decorators.html)
+    - [Кэширование функций](https://lancelote.gitbooks.io/intermediate-python/content/book/function_caching.html)
 - Разное
-  - [Однострочники](https://lancelote.gitbooks.io/intermediate-python/content/book/one_liners.html)
-  - [Python C расширения](https://lancelote.gitbooks.io/intermediate-python/content/book/python_c_extension.html)
-  - [Разработка под Python 2+3](https://lancelote.gitbooks.io/intermediate-python/content/book/targeting_python_2_3.html)
+    - [Однострочники](https://lancelote.gitbooks.io/intermediate-python/content/book/one_liners.html)
+    - [Python C расширения](https://lancelote.gitbooks.io/intermediate-python/content/book/python_c_extension.html)
+    - [Разработка под Python 2+3](https://lancelote.gitbooks.io/intermediate-python/content/book/targeting_python_2_3.html)
 
 *Разбивка на части условна*
 
