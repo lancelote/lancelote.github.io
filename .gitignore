@@ -1,2 +1,10 @@
-# PyCharm Settings
+# PyCharm
 .idea/
+
+# Python
+__pycache__/
+
+# Nikola
+cache/
+.doit.db.db
+output/
