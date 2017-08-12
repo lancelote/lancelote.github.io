@@ -1,7 +1,7 @@
 <!--
 .. title: Перевод руководства Djangogirls
 .. slug: djangogirls-ru
-.. date: 2014-11-03 00:00:00 UTC+03:00
+.. date: 2015-04-21 00:00:00 UTC+03:00
 .. tags: 
 .. category: 
 .. link: 
