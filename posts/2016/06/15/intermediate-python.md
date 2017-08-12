@@ -1,7 +1,7 @@
 <!--
 .. title: Перевод книги "Intermediate Python"
 .. slug: intermediate-python
-.. date: 2016-02-18 00:00:00 UTC+03:00
+.. date: 2016-06-15 00:00:00 UTC+03:00
 .. tags: 
 .. category: 
 .. link: 
