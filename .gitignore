@@ -1,16 +1,2 @@
-# Generated site #
-##################
-_site/
-
-# Rmarkdown output #
-####################
-Rmarkdown/*.html
-
-# R #
-#####
-.Rproj.user
-.Rhistory
-
-# WebStorm #
-############
+# PyCharm Settings
 .idea/
