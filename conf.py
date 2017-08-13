@@ -136,8 +136,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about", "About"),
         ("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
-        ("/rss.xml", "RSS feed"),
+        ("https://github.com/lancelote/lancelote.github.io", "Source")
     ),
 }
 
