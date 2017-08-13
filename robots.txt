@@ -1,0 +1,4 @@
+Sitemap: http://pavelkarateev.com/sitemapindex.xml
+
+User-Agent: *
+Host: pavelkarateev.com
