@@ -17,7 +17,7 @@ Hi!
 
 I’m a Python developer and QA engineer who has switched his career path from Data Science to Software Development. Apart of Python itself I’m really fond of testing and TDD in particular.
 
-I’m an active `self learner`_, passionate reader_ and problem_ solver_. I'm also an active English-to-Russian translator (games, books, tutorials and so on, for example: `DjangoGirls tutorial`_, `Intermediate Python`_ book) and do a lot of my translations just for fun or community benefit. If you have any interesting projects you want to translate to Russian language (Python related primarily) -- feel free to drop me a message at `karateev.pavel@ya.ru`_.
+I’m an active `self learner`_, passionate reader_ and problem_ solver_. I'm also an active English-to-Russian translator (games, books, tutorials and so on, for example: `DjangoGirls tutorial`_, `Intermediate Python`_ book) and do a lot of my translations just for fun or community benefit. If you have any interesting projects you want to translate to Russian language (Python related primarily) - feel free to drop me a message at `karateev.pavel@ya.ru`_.
 
 Resume:
 
