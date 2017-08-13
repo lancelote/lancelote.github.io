@@ -135,6 +135,7 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about", "About"),
+        ("https://twitter.com/Lancel0te", "Twitter"),
         ("/archive.html", "Archive"),
         ("https://github.com/lancelote/lancelote.github.io", "Source")
     ),
