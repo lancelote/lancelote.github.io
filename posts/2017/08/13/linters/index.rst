@@ -147,7 +147,7 @@ Ok, so I hope you kind of have a broad overview of possibilities. I'm not in any
 PyCharm Integration
 ===================
 
-We'll use `External Tools`_ feature to integrate all four linters with PyCharm to some extend. Open *Settings | Tools | External Tools* in PyCharm and click a ``+`` button to add first external tool in out project.
+We'll use `External Tools`_ feature to integrate all four linters with PyCharm to some extend. Open **Settings | Tools | External Tools** in PyCharm and click a ``+`` button to add first external tool in out project.
 
 .. thumbnail:: /images/2017/08/13/linters/external.png
     :align: center
