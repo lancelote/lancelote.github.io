@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pavel Karateev</title><link>http://pavelkarateev.com/</link><description>Work hard - die Pythonic</description><atom:link href="http://pavelkarateev.com/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:karateev.pavel@ya.ru"&gt;Pavel Karateev&lt;/a&gt; </copyright><lastBuildDate>Sun, 13 Aug 2017 15:24:03 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Завершен курс "Python основы и применение"</title><link>http://pavelkarateev.com/posts/2016/06/16/python-basics-and-usage/</link><dc:creator>Pavel Karateev</dc:creator><description>&lt;div&gt;&lt;p&gt;Завершил курс "&lt;a href="https://stepic.org/course/Python-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-512"&gt;Python: основы и применение&lt;/a&gt;"
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pavel Karateev</title><link>http://pavelkarateev.com/</link><description>Work hard - die Pythonic</description><atom:link href="http://pavelkarateev.com/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:karateev.pavel@ya.ru"&gt;Pavel Karateev&lt;/a&gt; </copyright><lastBuildDate>Mon, 14 Aug 2017 09:26:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Завершен курс "Python основы и применение"</title><link>http://pavelkarateev.com/posts/2016/06/16/python-basics-and-usage/</link><dc:creator>Pavel Karateev</dc:creator><description>&lt;div&gt;&lt;p&gt;Завершил курс "&lt;a href="https://stepic.org/course/Python-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-512"&gt;Python: основы и применение&lt;/a&gt;"
 от &lt;a href="https://stepic.org/"&gt;Stepic.org&lt;/a&gt;. Несмотря на название курс оказался весьма
 интересным и не таким уж и базовым - полные новички в Python могут столкнуться с
 проблемами. Мне очень понравилось, что были разобраны некоторые традиционно
@@ -1118,162 +1118,149 @@ Christopher DeSante и David Sparks (Университет Дьюка). Есл�
 хотите разместить на диаграмме больше текста - изучите подробнее пост в
 &lt;a href="http://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/"&gt;Learning R&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><guid>http://pavelkarateev.com/posts/2014/11/03/mosaic-plot/</guid><pubDate>Sun, 02 Nov 2014 21:00:00 GMT</pubDate></item><item><title>Диаграмма рассеяния с коробчатыми диаграммами по периметру</title><link>http://pavelkarateev.com/posts/2014/10/19/marginal-plots/</link><dc:creator>Pavel Karateev</dc:creator><description>&lt;div&gt;&lt;p&gt;В последнее время при работе с R и RStudio мне с изрядной периодичностью
 приходится пользоваться коробчатыми диаграммами совместно с диаграммами
-рассеяния, к сожалению, в &lt;code&gt;ggplot2&lt;/code&gt; не существует (или я её еще не нашел)
+рассеяния, к сожалению, в &lt;tt class="docutils literal"&gt;ggplot2&lt;/tt&gt; не существует (или я её еще не нашел)
 простой возможности удобного совместного расположения диаграмм таким образом,
 чтобы учитывались границы, интервалы и поля.&lt;/p&gt;
 &lt;p&gt;После изучения ряда инструкций по реализации требуемого функционала, я пришел к
-выводу что способ &lt;a href="https://www.blogger.com/profile/02889896298552826810" title="Sandy Muspratt profile"&gt;Sandy Muspratt&lt;/a&gt;, опубликованный в его &lt;a href="http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html" title="Sandy Muspratt's blog post"&gt;блоге&lt;/a&gt;,
+выводу что способ &lt;a class="reference external" href="https://www.blogger.com/profile/02889896298552826810"&gt;Sandy Muspratt&lt;/a&gt;, опубликованный в его &lt;a class="reference external" href="http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html"&gt;блоге&lt;/a&gt;,
 является лучшим решением с точки зрения простоты и изящества.&lt;/p&gt;
 &lt;p&gt;Ниже представлен пример реализации, оригинал можно найти в блоге Сэнди.&lt;/p&gt;
 &lt;p&gt;Ссылки:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html" title="Sandy Muspratt's blog post"&gt;Sandy Muspratt's blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://docs.ggplot2.org/0.9.3.1/geom_boxplot.html" title="ggplot2 boxplot docs"&gt;ggplot2 boxplot docs&lt;/a&gt;&lt;/li&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://sandymuspratt.blogspot.ru/2013/02/scatterplot-with-marginal-boxplots.html"&gt;Sandy Muspratt's blog post&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://docs.ggplot2.org/0.9.3.1/geom_boxplot.html"&gt;ggplot2 boxplot docs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Пакеты&lt;/h3&gt;
-&lt;p&gt;Помимо &lt;code&gt;ggplot2&lt;/code&gt; для корректного расположения диаграмм в строгом порядке
-пригодятся пакеты &lt;code&gt;grid&lt;/code&gt; и &lt;code&gt;gtable&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;## Loading required package: methods
-&lt;/pre&gt;
-
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;grid&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;gtable&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;Данные&lt;/h3&gt;
-&lt;p&gt;В качестве примера возьмем предустановленный массив данных &lt;code&gt;mtcars&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;data&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;Диаграмма рассеяния&lt;/h3&gt;
-&lt;p&gt;Для начала построим диаграмму рассеяния, помимо стандартного взова &lt;code&gt;ggplot&lt;/code&gt; и
-&lt;code&gt;geom_point()&lt;/code&gt; нам потребуется пересчитать отображаемые границы диапазона
-данных. &lt;code&gt;ggplot2&lt;/code&gt; делает это по умолчанию с эстетической целью - точки данных
+&lt;div class="section" id="id1"&gt;
+&lt;h2&gt;Пакеты&lt;/h2&gt;
+&lt;p&gt;Помимо &lt;tt class="docutils literal"&gt;ggplot2&lt;/tt&gt; для корректного расположения диаграмм в строгом порядке
+пригодятся пакеты &lt;tt class="docutils literal"&gt;grid&lt;/tt&gt; и &lt;tt class="docutils literal"&gt;gtable&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code r"&gt;&lt;a name="rest_code_077688382a7d45e4b64f5dce1c97565c-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;pre class="code text"&gt;&lt;a name="rest_code_02a2d3a7cd2b4216bc0369170e7d4172-1"&gt;&lt;/a&gt;## Loading required package: methods
+&lt;/pre&gt;&lt;pre class="code r"&gt;&lt;a name="rest_code_ee4513ead3044522a8dae99597f4ec9d-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;grid&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ee4513ead3044522a8dae99597f4ec9d-2"&gt;&lt;/a&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;gtable&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="id2"&gt;
+&lt;h2&gt;Данные&lt;/h2&gt;
+&lt;p&gt;В качестве примера возьмем предустановленный массив данных &lt;tt class="docutils literal"&gt;mtcars&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code r"&gt;&lt;a name="rest_code_292eaa60fa02421890b60adc825c1f0f-1"&gt;&lt;/a&gt;data&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="id3"&gt;
+&lt;h2&gt;Диаграмма рассеяния&lt;/h2&gt;
+&lt;p&gt;Для начала построим диаграмму рассеяния, помимо стандартного взова &lt;tt class="docutils literal"&gt;ggplot&lt;/tt&gt; и
+&lt;tt class="docutils literal"&gt;geom_point()&lt;/tt&gt; нам потребуется пересчитать отображаемые границы диапазона
+данных. &lt;tt class="docutils literal"&gt;ggplot2&lt;/tt&gt; делает это по умолчанию с эстетической целью - точки данных
 так не будут совпадать с осями, однако нам нужно настроить границы точно для
 позиционирования коробочных диаграмм.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;p1 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;mpg&lt;span class="p"&gt;,&lt;/span&gt; hp&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-  geom_point&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
-  scale_x_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
-  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)),&lt;/span&gt;
-    &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)),&lt;/span&gt;
-    &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Настраиваем внешние границы&lt;/span&gt;
-  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;Коробчатые диаграммы&lt;/h3&gt;
+&lt;pre class="code r"&gt;&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-1"&gt;&lt;/a&gt;p1 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;mpg&lt;span class="p"&gt;,&lt;/span&gt; hp&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-2"&gt;&lt;/a&gt;  geom_point&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-4"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-5"&gt;&lt;/a&gt;  scale_x_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-6"&gt;&lt;/a&gt;  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-8"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-9"&gt;&lt;/a&gt;  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-10"&gt;&lt;/a&gt;    &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-11"&gt;&lt;/a&gt;  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-12"&gt;&lt;/a&gt;    &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-14"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Настраиваем внешние границы&lt;/span&gt;
+&lt;a name="rest_code_a97f7b1ac6d0498fb3844f2b35aad962-15"&gt;&lt;/a&gt;  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="id4"&gt;
+&lt;h2&gt;Коробчатые диаграммы&lt;/h2&gt;
 &lt;p&gt;Строим коробчатые диаграммы, при этом настраиваем внешние границы графиков и
 границы отображаемого диапазона для соответствия диаграмме рассеяния.
 Дополнительно удаляем оси коробчатых диаграмм - они нам не нужны.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Создаем тему без названий осей и меток&lt;/span&gt;
-theme_remove_all &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; theme&lt;span class="p"&gt;(&lt;/span&gt;axis.text &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
-  axis.title &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
-  axis.ticks &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
-  axis.ticks.margin &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-  axis.ticks.length &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cm"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Горизонтальная коробчатая диаграмма&lt;/span&gt;
-p2 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; mpg&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-  &lt;span class="c1"&gt;# Строим границы (whiskers) коробчатой диаграммы&lt;/span&gt;
-  stat_boxplot&lt;span class="p"&gt;(&lt;/span&gt;geom &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'errorbar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Сама диаграмма&lt;/span&gt;
-  geom_boxplot&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
-  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
-  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)),&lt;/span&gt;
-                      &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Поворачиваем диаграмму (по умолчанию коробчатые диаграммы вертикальны)&lt;/span&gt;
-  coord_flip&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Применяем тему с удаленными осями&lt;/span&gt;
-  theme_remove_all &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Изменяем внешние поля&lt;/span&gt;
-  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin&lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Вертикальная коробчатая диаграмма&lt;/span&gt;
-p3 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; hp&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-  &lt;span class="c1"&gt;# Строим границы (whiskers) коробчатой диаграммы&lt;/span&gt;
-  stat_boxplot&lt;span class="p"&gt;(&lt;/span&gt;geom &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'errorbar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Сама диаграмма&lt;/span&gt;
-  geom_boxplot&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
-  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
-  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)),&lt;/span&gt;
-                      &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Применяем тему с удаленными осями&lt;/span&gt;
-  theme_remove_all &lt;span class="o"&gt;+&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Изменяем внешние поля&lt;/span&gt;
-  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin&lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;gtables&lt;/h3&gt;
-&lt;p&gt;Создаем объекты &lt;code&gt;gtable&lt;/code&gt; с диаграммами для последующей верстки.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;gt1 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot_gtable&lt;span class="p"&gt;(&lt;/span&gt;ggplot_build&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# Диаграмма рассеяния&lt;/span&gt;
-gt2 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot_gtable&lt;span class="p"&gt;(&lt;/span&gt;ggplot_build&lt;span class="p"&gt;(&lt;/span&gt;p2&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# Коробчатая горизонтальная диаграмма&lt;/span&gt;
-gt3 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot_gtable&lt;span class="p"&gt;(&lt;/span&gt;ggplot_build&lt;span class="p"&gt;(&lt;/span&gt;p3&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# Коробчатая вертикальная диаграмма&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;Настройка высоты и ширины&lt;/h3&gt;
-&lt;p&gt;В &lt;code&gt;gtable&lt;/code&gt; хранится вся информация, необходимая для построения графиков, в том
+&lt;pre class="code r"&gt;&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Создаем тему без названий осей и меток&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-2"&gt;&lt;/a&gt;theme_remove_all &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; theme&lt;span class="p"&gt;(&lt;/span&gt;axis.text &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-3"&gt;&lt;/a&gt;  axis.title &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-4"&gt;&lt;/a&gt;  axis.ticks &lt;span class="o"&gt;=&lt;/span&gt; element_blank&lt;span class="p"&gt;(),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-5"&gt;&lt;/a&gt;  axis.ticks.margin &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-6"&gt;&lt;/a&gt;  axis.ticks.length &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cm"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-8"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Горизонтальная коробчатая диаграмма&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-9"&gt;&lt;/a&gt;p2 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; mpg&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-10"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Строим границы (whiskers) коробчатой диаграммы&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-11"&gt;&lt;/a&gt;  stat_boxplot&lt;span class="p"&gt;(&lt;/span&gt;geom &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'errorbar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-13"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Сама диаграмма&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-14"&gt;&lt;/a&gt;  geom_boxplot&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-15"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-16"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-17"&gt;&lt;/a&gt;  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-19"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-20"&gt;&lt;/a&gt;  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-21"&gt;&lt;/a&gt;                      &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;mpg&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-22"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-23"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Поворачиваем диаграмму (по умолчанию коробчатые диаграммы вертикальны)&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-24"&gt;&lt;/a&gt;  coord_flip&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-26"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Применяем тему с удаленными осями&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-27"&gt;&lt;/a&gt;  theme_remove_all &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-28"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-29"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Изменяем внешние поля&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-30"&gt;&lt;/a&gt;  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin&lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-31"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-32"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Вертикальная коробчатая диаграмма&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-33"&gt;&lt;/a&gt;p3 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; hp&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-34"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Строим границы (whiskers) коробчатой диаграммы&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-35"&gt;&lt;/a&gt;  stat_boxplot&lt;span class="p"&gt;(&lt;/span&gt;geom &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'errorbar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-36"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-37"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Сама диаграмма&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-38"&gt;&lt;/a&gt;  geom_boxplot&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-39"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-40"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Удаляем дополнительные поля к отображаемому диапазону данных&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-41"&gt;&lt;/a&gt;  scale_y_continuous&lt;span class="p"&gt;(&lt;/span&gt;expand &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-42"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-43"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Пересчитываем дополнительные поля&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-44"&gt;&lt;/a&gt;  expand_limits&lt;span class="p"&gt;(&lt;/span&gt;y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-45"&gt;&lt;/a&gt;                      &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mtcars&lt;span class="o"&gt;$&lt;/span&gt;hp&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-46"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-47"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Применяем тему с удаленными осями&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-48"&gt;&lt;/a&gt;  theme_remove_all &lt;span class="o"&gt;+&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-49"&gt;&lt;/a&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-50"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;# Изменяем внешние поля&lt;/span&gt;
+&lt;a name="rest_code_479e238c1f944b3e833f42090e6f2c0b-51"&gt;&lt;/a&gt;  theme&lt;span class="p"&gt;(&lt;/span&gt;plot.margin&lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="gtables"&gt;
+&lt;h2&gt;gtables&lt;/h2&gt;
+&lt;p&gt;Создаем объекты &lt;tt class="docutils literal"&gt;gtable&lt;/tt&gt; с диаграммами для последующей верстки.&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_df17f08931364d82b107e530c278ba29-1"&gt;&lt;/a&gt;gt1 &amp;lt;- ggplot_gtable(ggplot_build(p1)) # Диаграмма рассеяния
+&lt;a name="rest_code_df17f08931364d82b107e530c278ba29-2"&gt;&lt;/a&gt;gt2 &amp;lt;- ggplot_gtable(ggplot_build(p2)) # Коробчатая горизонтальная диаграмма
+&lt;a name="rest_code_df17f08931364d82b107e530c278ba29-3"&gt;&lt;/a&gt;gt3 &amp;lt;- ggplot_gtable(ggplot_build(p3)) # Коробчатая вертикальная диаграмма
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="id5"&gt;
+&lt;h2&gt;Настройка высоты и ширины&lt;/h2&gt;
+&lt;p&gt;В &lt;tt class="docutils literal"&gt;gtable&lt;/tt&gt; хранится вся информация, необходимая для построения графиков, в том
 числе и поля, выделяемые для отображения меток и названий осей. Нам нужно
 перезадать ширину и высоту диаграмм, чтобы верхняя коробчатая диаграмма не
 "налезала" на воображаемую ось Y диаграммы рассеяния, а коробчатая диаграмма
 справа не пересекала ось X.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Максимальная высота и ширина&lt;/span&gt;
-maxWidth &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unit.pmax&lt;span class="p"&gt;(&lt;/span&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; gt2&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-maxHeight &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unit.pmax&lt;span class="p"&gt;(&lt;/span&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; gt3&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Задаем максимальные значения высоты и ширины в gtables для gt1, gt2 и gt3&lt;/span&gt;
-gt1&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxWidth&lt;span class="p"&gt;)&lt;/span&gt;
-gt2&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxWidth&lt;span class="p"&gt;)&lt;/span&gt;
-
-gt1&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxHeight&lt;span class="p"&gt;)&lt;/span&gt;
-gt3&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxHeight&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h3&gt;Верстка&lt;/h3&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Создаем новую пустую gtable&lt;/span&gt;
-gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable&lt;span class="p"&gt;(&lt;/span&gt;widths &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"null"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; height &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Вставляем gt1, gt2 и gt3 в gt&lt;/span&gt;
-gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt1&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt2&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt3&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Строим рисунок&lt;/span&gt;
-grid.newpage&lt;span class="p"&gt;()&lt;/span&gt;
-grid.draw&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;p&gt;&lt;img alt="center" src="http://pavelkarateev.com/images/2014/10/19/marginal-plots/unnamed-chunk-1-1.png"&gt; &lt;/p&gt;&lt;/div&gt;</description><guid>http://pavelkarateev.com/posts/2014/10/19/marginal-plots/</guid><pubDate>Sat, 18 Oct 2014 21:00:00 GMT</pubDate></item></channel></rss>
+&lt;pre class="code r"&gt;&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Максимальная высота и ширина&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-2"&gt;&lt;/a&gt;maxWidth &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unit.pmax&lt;span class="p"&gt;(&lt;/span&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; gt2&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-3"&gt;&lt;/a&gt;maxHeight &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unit.pmax&lt;span class="p"&gt;(&lt;/span&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; gt3&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-5"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Задаем максимальные значения высоты и ширины в gtables для gt1, gt2 и gt3&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-6"&gt;&lt;/a&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxWidth&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-7"&gt;&lt;/a&gt;gt2&lt;span class="o"&gt;$&lt;/span&gt;widths&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxWidth&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-9"&gt;&lt;/a&gt;gt1&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxHeight&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_567fac0ac23d43968a636181bcb4fc69-10"&gt;&lt;/a&gt;gt3&lt;span class="o"&gt;$&lt;/span&gt;heights&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;maxHeight&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="id6"&gt;
+&lt;h2&gt;Верстка&lt;/h2&gt;
+&lt;pre class="code r"&gt;&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Создаем новую пустую gtable&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-2"&gt;&lt;/a&gt;gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable&lt;span class="p"&gt;(&lt;/span&gt;widths &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"null"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; height &lt;span class="o"&gt;=&lt;/span&gt; unit&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;"null"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Вставляем gt1, gt2 и gt3 в gt&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-5"&gt;&lt;/a&gt;gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt1&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-6"&gt;&lt;/a&gt;gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt2&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-7"&gt;&lt;/a&gt;gt &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; gtable_add_grob&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;,&lt;/span&gt; gt3&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-9"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Строим рисунок&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-10"&gt;&lt;/a&gt;grid.newpage&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_fc5745a3fc4f42948f0434888e968fff-11"&gt;&lt;/a&gt;grid.draw&lt;span class="p"&gt;(&lt;/span&gt;gt&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;a class="reference external image-reference" href="http://pavelkarateev.com/images/2014/10/19/marginal-plots/unnamed-chunk-1-1.png"&gt;&lt;img alt="/images/2014/10/19/marginal-plots/unnamed-chunk-1-1.thumbnail.png" class="align-center" src="http://pavelkarateev.com/images/2014/10/19/marginal-plots/unnamed-chunk-1-1.thumbnail.png"&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>http://pavelkarateev.com/posts/2014/10/19/marginal-plots/</guid><pubDate>Sat, 18 Oct 2014 21:00:00 GMT</pubDate></item></channel></rss>
