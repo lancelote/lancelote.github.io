@@ -16,6 +16,8 @@ is shallow in some places (in a lot of places) and has big holes here and there.
 That is why I really hope Open Source Society University initiative will help
 me build vast and complete CS "base".
 
+<!-- TEASER_END -->
+
 ![center](/images/2016/01/11/oss-university/ossu-logo.png)
 
 # What is Open Source Society University?

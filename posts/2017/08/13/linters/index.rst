@@ -9,6 +9,8 @@
 
 Today's topic is linters. Not sure about you but I'm a huge fun of linters in Python. As a PyCharm user I already have great inspections and stuff you may expect from a good IDE but as a code style maniac it's absolutely not enough for me. So my "standard" pack of linters include: ``pylint``, ``pydocstyle``, ``pycodestyle`` and ``mypy``. Not sure if one can call ``mypy`` a linter but let's live with it for now. I'll briefly describe each one of them, touch PyCharm integration via external tools and provide a live example from one of my repositories on github. Let's go.
 
+.. TEASER_END
+
 Basics
 ======
 

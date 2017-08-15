@@ -17,6 +17,7 @@
 <meta property="og:url" content="http://pavelkarateev.com/posts/2014/12/13/tidyr-how-to/">
 <meta property="og:description" content="Шпаргалка возможностей пакета tidyr.
 
+
 Содержание
 
 expand()
@@ -32,7 +33,7 @@ unnest()
 
 
 Общее
-Пакет tidyr за авторством Hadley Wickham'а пре">
+Пакет tidyr за авторством Hadley Wickham'а пр">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2014-12-13T00:00:00+03:00">
 </head>
@@ -71,6 +72,7 @@ unnest()
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>Шпаргалка возможностей пакета <tt class="docutils literal">tidyr</tt>.</p>
+<!-- TEASER_END -->
 <div class="section" id="id1">
 <h2>Содержание</h2>
 <ol class="arabic simple">
@@ -88,8 +90,8 @@ unnest()
 <div class="section" id="id2">
 <h2>Общее</h2>
 <p>Пакет <tt class="docutils literal">tidyr</tt> за авторством Hadley Wickham'а предназначен для первичной обработки сырых данных, в частности - изменения их структуры. Для начала нам потребуются сам <tt class="docutils literal">tidyr</tt>, а также <tt class="docutils literal">dplyr</tt>:</p>
-<pre class="code r"><a name="rest_code_87c464fecae540e8a815e24f272a63ed-1"></a><span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
-<a name="rest_code_87c464fecae540e8a815e24f272a63ed-2"></a><span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<pre class="code r"><a name="rest_code_f7eb481a063b42049d8df4355d255f32-1"></a><span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
+<a name="rest_code_f7eb481a063b42049d8df4355d255f32-2"></a><span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="expand">
@@ -115,114 +117,114 @@ unnest()
 <div class="section" id="id6">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_d3113e28f41e4bacaf5c58bd51368571-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>a <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span> b <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="kt">c</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span>
-<a name="rest_code_d3113e28f41e4bacaf5c58bd51368571-2"></a>df
+<pre class="code r"><a name="rest_code_0b06eed401424cf3a22b4d200dbe060e-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>a <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span> b <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="kt">c</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span>
+<a name="rest_code_0b06eed401424cf3a22b4d200dbe060e-2"></a>df
 </pre>
-<pre class="code text"><a name="rest_code_aec396b1247643f8a977ce1145e68289-1"></a>##   a b c
-<a name="rest_code_aec396b1247643f8a977ce1145e68289-2"></a>## 1 1 3 1
-<a name="rest_code_aec396b1247643f8a977ce1145e68289-3"></a>## 2 2 5 2
-<a name="rest_code_aec396b1247643f8a977ce1145e68289-4"></a>## 3 5 3 3
+<pre class="code text"><a name="rest_code_0f186a43b2f449009e6a7345dc81a32b-1"></a>##   a b c
+<a name="rest_code_0f186a43b2f449009e6a7345dc81a32b-2"></a>## 1 1 3 1
+<a name="rest_code_0f186a43b2f449009e6a7345dc81a32b-3"></a>## 2 2 5 2
+<a name="rest_code_0f186a43b2f449009e6a7345dc81a32b-4"></a>## 3 5 3 3
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">vs</tt> и <tt class="docutils literal">cyl</tt>:</p>
-<pre class="code r"><a name="rest_code_a63e010df25e4843af8a1c6cc8de84c3-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> vs<span class="p">,</span> cyl<span class="p">)</span>
+<pre class="code r"><a name="rest_code_8240c79f2832498591c3048a11ac9483-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> vs<span class="p">,</span> cyl<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-1"></a>##   vs cyl
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-2"></a>## 1  0   4
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-3"></a>## 2  0   6
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-4"></a>## 3  0   8
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-5"></a>## 4  1   4
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-6"></a>## 5  1   6
-<a name="rest_code_bb2efd2f8d8641b6a8c839891fd3bee4-7"></a>## 6  1   8
+<pre class="code text"><a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-1"></a>##   vs cyl
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-2"></a>## 1  0   4
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-3"></a>## 2  0   6
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-4"></a>## 3  0   8
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-5"></a>## 4  1   4
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-6"></a>## 5  1   6
+<a name="rest_code_99f873c7c3184b84a5bd82b00ad98ef1-7"></a>## 6  1   8
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">cyl</tt> и <tt class="docutils literal">mpg</tt>, последняя при этом принимает только минимальное или максимальное значение:</p>
-<pre class="code r"><a name="rest_code_602547f84e474d34a45b9918321cfda6-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> cyl<span class="p">,</span> mpg <span class="o">=</span> seq_range<span class="p">(</span>mpg<span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+<pre class="code r"><a name="rest_code_9eac1c3aa64e41eb8c4cd5584f705c14-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> cyl<span class="p">,</span> mpg <span class="o">=</span> seq_range<span class="p">(</span>mpg<span class="p">,</span> <span class="m">2</span><span class="p">))</span>
 </pre>
-<pre class="code text"><a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-1"></a>##   cyl  mpg
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-2"></a>## 1   4 10.4
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-3"></a>## 2   4 33.9
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-4"></a>## 3   6 10.4
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-5"></a>## 4   6 33.9
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-6"></a>## 5   8 10.4
-<a name="rest_code_26d2fec2458e46c1b4d9087fa35d8882-7"></a>## 6   8 33.9
+<pre class="code text"><a name="rest_code_b577704de4c8491ea115fc534e040ef0-1"></a>##   cyl  mpg
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-2"></a>## 1   4 10.4
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-3"></a>## 2   4 33.9
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-4"></a>## 3   6 10.4
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-5"></a>## 4   6 33.9
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-6"></a>## 5   8 10.4
+<a name="rest_code_b577704de4c8491ea115fc534e040ef0-7"></a>## 6   8 33.9
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">cyl</tt> и <tt class="docutils literal">mpg</tt>, последняя при этом принимает значения из разбитого на 5 равных частей диапазона:</p>
-<pre class="code r"><a name="rest_code_d64a6688beb540e1adeb8778c63623ab-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> cyl<span class="p">,</span> mpg <span class="o">=</span> seq_range<span class="p">(</span>mpg<span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+<pre class="code r"><a name="rest_code_8301350db3a545bf80632210d14a068c-1"></a>expand<span class="p">(</span>mtcars<span class="p">,</span> cyl<span class="p">,</span> mpg <span class="o">=</span> seq_range<span class="p">(</span>mpg<span class="p">,</span> <span class="m">5</span><span class="p">))</span>
 </pre>
-<pre class="code text"><a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-1"></a>##    cyl    mpg
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-2"></a>## 1    4 10.400
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-3"></a>## 2    4 16.275
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-4"></a>## 3    4 22.150
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-5"></a>## 4    4 28.025
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-6"></a>## 5    4 33.900
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-7"></a>## 6    6 10.400
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-8"></a>## 7    6 16.275
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-9"></a>## 8    6 22.150
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-10"></a>## 9    6 28.025
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-11"></a>## 10   6 33.900
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-12"></a>## 11   8 10.400
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-13"></a>## 12   8 16.275
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-14"></a>## 13   8 22.150
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-15"></a>## 14   8 28.025
-<a name="rest_code_f5e1b7765d2f461daa45137bb98a0341-16"></a>## 15   8 33.900
+<pre class="code text"><a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-1"></a>##    cyl    mpg
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-2"></a>## 1    4 10.400
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-3"></a>## 2    4 16.275
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-4"></a>## 3    4 22.150
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-5"></a>## 4    4 28.025
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-6"></a>## 5    4 33.900
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-7"></a>## 6    6 10.400
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-8"></a>## 7    6 16.275
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-9"></a>## 8    6 22.150
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-10"></a>## 9    6 28.025
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-11"></a>## 10   6 33.900
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-12"></a>## 11   8 10.400
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-13"></a>## 12   8 16.275
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-14"></a>## 13   8 22.150
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-15"></a>## 14   8 28.025
+<a name="rest_code_7605d6bc50cf41e98ef87be1d3b5daa8-16"></a>## 15   8 33.900
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">a</tt>, <tt class="docutils literal">b</tt> и <tt class="docutils literal">c</tt>:</p>
-<pre class="code r"><a name="rest_code_4dc286c2ae204855a40e89d22d959814-1"></a>expand<span class="p">(</span>df<span class="p">)</span>
+<pre class="code r"><a name="rest_code_99353d3d93b24017a08d19e0aa7bcffa-1"></a>expand<span class="p">(</span>df<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_db0fe22092044431999ecb9fe7008026-1"></a>##    a b c
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-2"></a>## 1  1 3 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-3"></a>## 2  1 3 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-4"></a>## 3  1 3 3
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-5"></a>## 4  1 5 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-6"></a>## 5  1 5 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-7"></a>## 6  1 5 3
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-8"></a>## 7  2 3 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-9"></a>## 8  2 3 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-10"></a>## 9  2 3 3
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-11"></a>## 10 2 5 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-12"></a>## 11 2 5 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-13"></a>## 12 2 5 3
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-14"></a>## 13 5 3 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-15"></a>## 14 5 3 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-16"></a>## 15 5 3 3
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-17"></a>## 16 5 5 1
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-18"></a>## 17 5 5 2
-<a name="rest_code_db0fe22092044431999ecb9fe7008026-19"></a>## 18 5 5 3
+<pre class="code text"><a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-1"></a>##    a b c
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-2"></a>## 1  1 3 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-3"></a>## 2  1 3 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-4"></a>## 3  1 3 3
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-5"></a>## 4  1 5 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-6"></a>## 5  1 5 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-7"></a>## 6  1 5 3
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-8"></a>## 7  2 3 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-9"></a>## 8  2 3 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-10"></a>## 9  2 3 3
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-11"></a>## 10 2 5 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-12"></a>## 11 2 5 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-13"></a>## 12 2 5 3
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-14"></a>## 13 5 3 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-15"></a>## 14 5 3 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-16"></a>## 15 5 3 3
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-17"></a>## 16 5 5 1
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-18"></a>## 17 5 5 2
+<a name="rest_code_b32f475854bb48638b8042e0d1e4b95c-19"></a>## 18 5 5 3
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">a</tt> и <tt class="docutils literal">b</tt>:</p>
-<pre class="code r"><a name="rest_code_52d119fbfa6049649910da52084c43ca-1"></a>expand<span class="p">(</span>df<span class="p">,</span> a<span class="p">,</span> b<span class="p">)</span>
+<pre class="code r"><a name="rest_code_a06e043e0f0f4bfe8a5d6c38d181f385-1"></a>expand<span class="p">(</span>df<span class="p">,</span> a<span class="p">,</span> b<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_32682f3b8e134533a1b907ce666ee82b-1"></a>##   a b
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-2"></a>## 1 1 3
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-3"></a>## 2 1 5
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-4"></a>## 3 2 3
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-5"></a>## 4 2 5
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-6"></a>## 5 5 3
-<a name="rest_code_32682f3b8e134533a1b907ce666ee82b-7"></a>## 6 5 5
+<pre class="code text"><a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-1"></a>##   a b
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-2"></a>## 1 1 3
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-3"></a>## 2 1 5
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-4"></a>## 3 2 3
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-5"></a>## 4 2 5
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-6"></a>## 5 5 3
+<a name="rest_code_ffe5e1b7eb6e45af82a25223cc0a4e4a-7"></a>## 6 5 5
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">a</tt> и <tt class="docutils literal">c</tt>:</p>
-<pre class="code r"><a name="rest_code_03be244667d84f9f9554296258a6f904-1"></a>expand<span class="p">(</span>df<span class="p">,</span> a<span class="p">,</span> <span class="kt">c</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_f060608588524c4f9df233686fc0700b-1"></a>expand<span class="p">(</span>df<span class="p">,</span> a<span class="p">,</span> <span class="kt">c</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_54698a3e368c4243a4632409780bebdd-1"></a>##   a c
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-2"></a>## 1 1 1
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-3"></a>## 2 1 2
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-4"></a>## 3 1 3
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-5"></a>## 4 2 1
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-6"></a>## 5 2 2
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-7"></a>## 6 2 3
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-8"></a>## 7 5 1
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-9"></a>## 8 5 2
-<a name="rest_code_54698a3e368c4243a4632409780bebdd-10"></a>## 9 5 3
+<pre class="code text"><a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-1"></a>##   a c
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-2"></a>## 1 1 1
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-3"></a>## 2 1 2
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-4"></a>## 3 1 3
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-5"></a>## 4 2 1
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-6"></a>## 5 2 2
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-7"></a>## 6 2 3
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-8"></a>## 7 5 1
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-9"></a>## 8 5 2
+<a name="rest_code_a2746e95771c4d1180551ab7b289c7fb-10"></a>## 9 5 3
 </pre>
 <p>Все комбинации переменных <tt class="docutils literal">b</tt> и <tt class="docutils literal">c</tt>:</p>
-<pre class="code r"><a name="rest_code_77f15e639d254539b26089b4f78deffc-1"></a>expand<span class="p">(</span>df<span class="p">,</span> b<span class="p">,</span> <span class="kt">c</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_17686bb695ae457892d5bf7fdd841246-1"></a>expand<span class="p">(</span>df<span class="p">,</span> b<span class="p">,</span> <span class="kt">c</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_afaff63f28fd4e01a15becde4357fff1-1"></a>##   b c
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-2"></a>## 1 3 1
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-3"></a>## 2 3 2
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-4"></a>## 3 3 3
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-5"></a>## 4 5 1
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-6"></a>## 5 5 2
-<a name="rest_code_afaff63f28fd4e01a15becde4357fff1-7"></a>## 6 5 3
+<pre class="code text"><a name="rest_code_76b5e4e93e8946b494594887aa1014bb-1"></a>##   b c
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-2"></a>## 1 3 1
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-3"></a>## 2 3 2
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-4"></a>## 3 3 3
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-5"></a>## 4 5 1
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-6"></a>## 5 5 2
+<a name="rest_code_76b5e4e93e8946b494594887aa1014bb-7"></a>## 6 5 3
 </pre>
 </div>
 </div>
@@ -234,8 +236,8 @@ unnest()
 </div>
 <div class="section" id="id8">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_368ce5ccfe484289ae60824ac0507f2f-1"></a>extract(data, col, into, regex = "([[:alnum:]]+)", remove = TRUE,
-<a name="rest_code_368ce5ccfe484289ae60824ac0507f2f-2"></a>        convert = FALSE, ...)
+<pre class="code text"><a name="rest_code_fa4a229376f84e8fba802792bd0aa6ac-1"></a>extract(data, col, into, regex = "([[:alnum:]]+)", remove = TRUE,
+<a name="rest_code_fa4a229376f84e8fba802792bd0aa6ac-2"></a>        convert = FALSE, ...)
 </pre>
 </div>
 <div class="section" id="id9">
@@ -263,29 +265,29 @@ unnest()
 <div class="section" id="id10">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_6bbb2c1a23994b3284c87db889996f50-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a.b"</span><span class="p">,</span> <span class="s">"a.d"</span><span class="p">,</span> <span class="s">"b.c"</span><span class="p">))</span>
-<a name="rest_code_6bbb2c1a23994b3284c87db889996f50-2"></a>df
+<pre class="code r"><a name="rest_code_244edf48c1ec4373b554a4e00895bee4-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a.b"</span><span class="p">,</span> <span class="s">"a.d"</span><span class="p">,</span> <span class="s">"b.c"</span><span class="p">))</span>
+<a name="rest_code_244edf48c1ec4373b554a4e00895bee4-2"></a>df
 </pre>
-<pre class="code text"><a name="rest_code_f4c39f6a3a574cf59483949b5b53b50f-1"></a>##     x
-<a name="rest_code_f4c39f6a3a574cf59483949b5b53b50f-2"></a>## 1 a.b
-<a name="rest_code_f4c39f6a3a574cf59483949b5b53b50f-3"></a>## 2 a.d
-<a name="rest_code_f4c39f6a3a574cf59483949b5b53b50f-4"></a>## 3 b.c
+<pre class="code text"><a name="rest_code_1a859a9c08e2427084aeaed62ef8386a-1"></a>##     x
+<a name="rest_code_1a859a9c08e2427084aeaed62ef8386a-2"></a>## 1 a.b
+<a name="rest_code_1a859a9c08e2427084aeaed62ef8386a-3"></a>## 2 a.d
+<a name="rest_code_1a859a9c08e2427084aeaed62ef8386a-4"></a>## 3 b.c
 </pre>
 <p>Извлечь из переменной <tt class="docutils literal">x</tt> первую букву:</p>
-<pre class="code r"><a name="rest_code_0532b63f12bf455a88a61455a3b4524c-1"></a>df <span class="o">%&gt;%</span> extract<span class="p">(</span>x<span class="p">,</span> <span class="s">"A"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_2592889874484c55a3d15ef57d58854a-1"></a>df <span class="o">%&gt;%</span> extract<span class="p">(</span>x<span class="p">,</span> <span class="s">"A"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_cb127c82838141b985d21c7541405bee-1"></a>##   A
-<a name="rest_code_cb127c82838141b985d21c7541405bee-2"></a>## 1 a
-<a name="rest_code_cb127c82838141b985d21c7541405bee-3"></a>## 2 a
-<a name="rest_code_cb127c82838141b985d21c7541405bee-4"></a>## 3 b
+<pre class="code text"><a name="rest_code_1747df18e11948e195633770efa71902-1"></a>##   A
+<a name="rest_code_1747df18e11948e195633770efa71902-2"></a>## 1 a
+<a name="rest_code_1747df18e11948e195633770efa71902-3"></a>## 2 a
+<a name="rest_code_1747df18e11948e195633770efa71902-4"></a>## 3 b
 </pre>
 <p>Разбить переменную <tt class="docutils literal">x</tt>:</p>
-<pre class="code r"><a name="rest_code_ac755a2f4d8b48bb83369ecd87c3c7bc-1"></a>df <span class="o">%&gt;%</span> extract<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">),</span> <span class="s">"([[:alnum:]]+)\\.([[:alnum:]]+)"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_3bd3e54a0f174acc93679fc61d7d28f4-1"></a>df <span class="o">%&gt;%</span> extract<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">),</span> <span class="s">"([[:alnum:]]+)\\.([[:alnum:]]+)"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_90395a19849747e6b6a8abe306c275be-1"></a>##   A B
-<a name="rest_code_90395a19849747e6b6a8abe306c275be-2"></a>## 1 a b
-<a name="rest_code_90395a19849747e6b6a8abe306c275be-3"></a>## 2 a d
-<a name="rest_code_90395a19849747e6b6a8abe306c275be-4"></a>## 3 b c
+<pre class="code text"><a name="rest_code_a3704291dada41329e94dba1cd1491d1-1"></a>##   A B
+<a name="rest_code_a3704291dada41329e94dba1cd1491d1-2"></a>## 1 a b
+<a name="rest_code_a3704291dada41329e94dba1cd1491d1-3"></a>## 2 a d
+<a name="rest_code_a3704291dada41329e94dba1cd1491d1-4"></a>## 3 b c
 </pre>
 </div>
 </div>
@@ -297,7 +299,7 @@ unnest()
 </div>
 <div class="section" id="id12">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_adf2b66a84bd4ed79fceb5c2d44ce0b8-1"></a>extract_numeric(x)
+<pre class="code text"><a name="rest_code_7e1251a93c364ac782d640740f0c696a-1"></a>extract_numeric(x)
 </pre>
 </div>
 <div class="section" id="id13">
@@ -310,23 +312,23 @@ unnest()
 </div>
 <div class="section" id="id14">
 <h3>Примеры использования</h3>
-<pre class="code r"><a name="rest_code_c1398565d2d14c4484f4b886a03da573-1"></a>extract_numeric<span class="p">(</span><span class="s">"$1,200.34"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_d1d9a20abc4b4d408a3b9e427021e7cf-1"></a>extract_numeric<span class="p">(</span><span class="s">"$1,200.34"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_b7215b15408949d281642d806af461b2-1"></a>## [1] 1200.34
+<pre class="code text"><a name="rest_code_d78c88a8036a4f319f882f930b103ad9-1"></a>## [1] 1200.34
 </pre>
-<pre class="code r"><a name="rest_code_00864292b24a49cba96f25a9b78ed06f-1"></a>extract_numeric<span class="p">(</span><span class="s">"-2%"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_a7d30190d5dc4863a16738c437593f3d-1"></a>extract_numeric<span class="p">(</span><span class="s">"-2%"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_3e14c221fb524c2397f8ec298673d970-1"></a>## [1] -2
+<pre class="code text"><a name="rest_code_b05ad7f140424945a9cb5b7cb9233fd5-1"></a>## [1] -2
 </pre>
 <p>Может некорректно работать со строками, которые точно не являются цифровыми данными:</p>
-<pre class="code r"><a name="rest_code_e191989336e747ee87bbf0178f9dd4ac-1"></a>extract_numeric<span class="p">(</span><span class="s">"-2-2"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_3aeba021b54c4e0fb35b7d9702044998-1"></a>extract_numeric<span class="p">(</span><span class="s">"-2-2"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_422a14d8d353440eb9d51000301e8a69-1"></a>## Warning in extract_numeric("-2-2"): NAs introduced by coercion
-<a name="rest_code_422a14d8d353440eb9d51000301e8a69-2"></a>## [1] NA
+<pre class="code text"><a name="rest_code_2ca5f921e690446fb8d8361dca2b83cd-1"></a>## Warning in extract_numeric("-2-2"): NAs introduced by coercion
+<a name="rest_code_2ca5f921e690446fb8d8361dca2b83cd-2"></a>## [1] NA
 </pre>
-<pre class="code r"><a name="rest_code_0a9eb79b6bce41b48e006194998ba9c5-1"></a>extract_numeric<span class="p">(</span><span class="s">"12abc34"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_be30cd82cc0d4426981745cef14fb65e-1"></a>extract_numeric<span class="p">(</span><span class="s">"12abc34"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_7902c689496241fb873686bb10c754fc-1"></a>## [1] 1234
+<pre class="code text"><a name="rest_code_e38452b9dd6946ed97c6bab6a3339549-1"></a>## [1] 1234
 </pre>
 </div>
 </div>
@@ -338,7 +340,7 @@ unnest()
 </div>
 <div class="section" id="id16">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_5bfa1d560d7e4c4ea681fe2a3991e532-1"></a>gather(data, key, value, ..., na.rm = FALSE, convert = FALSE)
+<pre class="code text"><a name="rest_code_ee731eb90c324f1187351f96e224c49b-1"></a>gather(data, key, value, ..., na.rm = FALSE, convert = FALSE)
 </pre>
 </div>
 <div class="section" id="id17">
@@ -362,60 +364,60 @@ unnest()
 <div class="section" id="id18">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-1"></a>stocks <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-2"></a>time <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">'2009-01-01'</span><span class="p">)</span> <span class="o">+</span> <span class="m">0</span><span class="o">:</span><span class="m">9</span><span class="p">,</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-3"></a>X <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-4"></a>Y <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-5"></a>Z <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-6"></a><span class="p">)</span>
-<a name="rest_code_43c334842cde41cbaae0ece8dbbaa99e-7"></a>stocks
+<pre class="code r"><a name="rest_code_18e545dd45894f38bd6c63028a752f48-1"></a>stocks <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-2"></a>time <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">'2009-01-01'</span><span class="p">)</span> <span class="o">+</span> <span class="m">0</span><span class="o">:</span><span class="m">9</span><span class="p">,</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-3"></a>X <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-4"></a>Y <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-5"></a>Z <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-6"></a><span class="p">)</span>
+<a name="rest_code_18e545dd45894f38bd6c63028a752f48-7"></a>stocks
 </pre>
-<pre class="code text"><a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-1"></a>##          time          X          Y           Z
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-2"></a>## 1  2009-01-01  0.7722318 -0.3642657 -2.50084998
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-3"></a>## 2  2009-01-02 -1.1323590  0.7835050 -1.44378404
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-4"></a>## 3  2009-01-03 -0.8616668 -2.5209075  2.19735867
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-5"></a>## 4  2009-01-04 -0.6363773 -3.6459329 -2.27906230
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-6"></a>## 5  2009-01-05  1.3777546  0.6740792  2.47886088
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-7"></a>## 6  2009-01-06  1.1138555 -2.7431003  2.13743541
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-8"></a>## 7  2009-01-07 -0.4055423 -0.3971725  0.32445108
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-9"></a>## 8  2009-01-08 -0.6551642 -1.3071296 -4.39142177
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-10"></a>## 9  2009-01-09 -0.8421454 -0.9334135 -0.02401832
-<a name="rest_code_ec8f2ab1026e4db19b71aa10d44f8431-11"></a>## 10 2009-01-10 -0.1655489 -0.6961085 -0.82861047
+<pre class="code text"><a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-1"></a>##          time          X          Y           Z
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-2"></a>## 1  2009-01-01  0.7722318 -0.3642657 -2.50084998
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-3"></a>## 2  2009-01-02 -1.1323590  0.7835050 -1.44378404
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-4"></a>## 3  2009-01-03 -0.8616668 -2.5209075  2.19735867
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-5"></a>## 4  2009-01-04 -0.6363773 -3.6459329 -2.27906230
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-6"></a>## 5  2009-01-05  1.3777546  0.6740792  2.47886088
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-7"></a>## 6  2009-01-06  1.1138555 -2.7431003  2.13743541
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-8"></a>## 7  2009-01-07 -0.4055423 -0.3971725  0.32445108
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-9"></a>## 8  2009-01-08 -0.6551642 -1.3071296 -4.39142177
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-10"></a>## 9  2009-01-09 -0.8421454 -0.9334135 -0.02401832
+<a name="rest_code_d7d56a918ee24bc394abbedf6a02f288-11"></a>## 10 2009-01-10 -0.1655489 -0.6961085 -0.82861047
 </pre>
 <p>Объединить имена переменных <tt class="docutils literal">X</tt>, <tt class="docutils literal">Y</tt>, <tt class="docutils literal">Z</tt> в качестве уровней новой переменной <tt class="docutils literal">stock</tt>, значения объединенных переменных заполнят переменную <tt class="docutils literal">price</tt>:</p>
-<pre class="code r"><a name="rest_code_faf0f0cb94e54a0b8ef029c2d600de7c-1"></a>stocks <span class="o">%&gt;%</span> gather<span class="p">(</span>stock<span class="p">,</span> price<span class="p">,</span> <span class="o">-</span>time<span class="p">)</span>
+<pre class="code r"><a name="rest_code_5fe9e6f8a6434ef8a5f516543cbfd58b-1"></a>stocks <span class="o">%&gt;%</span> gather<span class="p">(</span>stock<span class="p">,</span> price<span class="p">,</span> <span class="o">-</span>time<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-1"></a>##          time stock       price
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-2"></a>## 1  2009-01-01     X  0.77223178
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-3"></a>## 2  2009-01-02     X -1.13235898
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-4"></a>## 3  2009-01-03     X -0.86166677
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-5"></a>## 4  2009-01-04     X -0.63637728
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-6"></a>## 5  2009-01-05     X  1.37775462
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-7"></a>## 6  2009-01-06     X  1.11385552
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-8"></a>## 7  2009-01-07     X -0.40554232
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-9"></a>## 8  2009-01-08     X -0.65516418
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-10"></a>## 9  2009-01-09     X -0.84214541
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-11"></a>## 10 2009-01-10     X -0.16554890
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-12"></a>## 11 2009-01-01     Y -0.36426573
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-13"></a>## 12 2009-01-02     Y  0.78350495
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-14"></a>## 13 2009-01-03     Y -2.52090748
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-15"></a>## 14 2009-01-04     Y -3.64593285
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-16"></a>## 15 2009-01-05     Y  0.67407924
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-17"></a>## 16 2009-01-06     Y -2.74310035
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-18"></a>## 17 2009-01-07     Y -0.39717249
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-19"></a>## 18 2009-01-08     Y -1.30712963
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-20"></a>## 19 2009-01-09     Y -0.93341350
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-21"></a>## 20 2009-01-10     Y -0.69610847
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-22"></a>## 21 2009-01-01     Z -2.50084998
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-23"></a>## 22 2009-01-02     Z -1.44378404
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-24"></a>## 23 2009-01-03     Z  2.19735867
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-25"></a>## 24 2009-01-04     Z -2.27906230
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-26"></a>## 25 2009-01-05     Z  2.47886088
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-27"></a>## 26 2009-01-06     Z  2.13743541
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-28"></a>## 27 2009-01-07     Z  0.32445108
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-29"></a>## 28 2009-01-08     Z -4.39142177
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-30"></a>## 29 2009-01-09     Z -0.02401832
-<a name="rest_code_6572f3935e8a4238bdc2b3b1c5ddee52-31"></a>## 30 2009-01-10     Z -0.82861047
+<pre class="code text"><a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-1"></a>##          time stock       price
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-2"></a>## 1  2009-01-01     X  0.77223178
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-3"></a>## 2  2009-01-02     X -1.13235898
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-4"></a>## 3  2009-01-03     X -0.86166677
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-5"></a>## 4  2009-01-04     X -0.63637728
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-6"></a>## 5  2009-01-05     X  1.37775462
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-7"></a>## 6  2009-01-06     X  1.11385552
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-8"></a>## 7  2009-01-07     X -0.40554232
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-9"></a>## 8  2009-01-08     X -0.65516418
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-10"></a>## 9  2009-01-09     X -0.84214541
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-11"></a>## 10 2009-01-10     X -0.16554890
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-12"></a>## 11 2009-01-01     Y -0.36426573
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-13"></a>## 12 2009-01-02     Y  0.78350495
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-14"></a>## 13 2009-01-03     Y -2.52090748
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-15"></a>## 14 2009-01-04     Y -3.64593285
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-16"></a>## 15 2009-01-05     Y  0.67407924
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-17"></a>## 16 2009-01-06     Y -2.74310035
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-18"></a>## 17 2009-01-07     Y -0.39717249
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-19"></a>## 18 2009-01-08     Y -1.30712963
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-20"></a>## 19 2009-01-09     Y -0.93341350
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-21"></a>## 20 2009-01-10     Y -0.69610847
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-22"></a>## 21 2009-01-01     Z -2.50084998
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-23"></a>## 22 2009-01-02     Z -1.44378404
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-24"></a>## 23 2009-01-03     Z  2.19735867
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-25"></a>## 24 2009-01-04     Z -2.27906230
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-26"></a>## 25 2009-01-05     Z  2.47886088
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-27"></a>## 26 2009-01-06     Z  2.13743541
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-28"></a>## 27 2009-01-07     Z  0.32445108
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-29"></a>## 28 2009-01-08     Z -4.39142177
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-30"></a>## 29 2009-01-09     Z -0.02401832
+<a name="rest_code_bbf7cc2af09346499fb08b434a2325a2-31"></a>## 30 2009-01-10     Z -0.82861047
 </pre>
 </div>
 </div>
@@ -427,8 +429,8 @@ unnest()
 </div>
 <div class="section" id="id20">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_dd4ce8a06ba448ef8fe1ecd139a2b4a2-1"></a>separate(data, col, into, sep = "[^[:alnum:]]+", remove = TRUE,
-<a name="rest_code_dd4ce8a06ba448ef8fe1ecd139a2b4a2-2"></a>         convert = FALSE, extra = "error", ...)
+<pre class="code text"><a name="rest_code_b7d6ae88c4d847ee87c538b9b4a6a668-1"></a>separate(data, col, into, sep = "[^[:alnum:]]+", remove = TRUE,
+<a name="rest_code_b7d6ae88c4d847ee87c538b9b4a6a668-2"></a>         convert = FALSE, extra = "error", ...)
 </pre>
 </div>
 <div class="section" id="id21">
@@ -469,52 +471,52 @@ unnest()
 <div class="section" id="id22">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_d845b86b8df7403abf0268044224ecb1-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a.b"</span><span class="p">,</span> <span class="s">"a.d"</span><span class="p">,</span> <span class="s">"b.c"</span><span class="p">))</span>
-<a name="rest_code_d845b86b8df7403abf0268044224ecb1-2"></a>df
+<pre class="code r"><a name="rest_code_4b461c4e27bb4337a323da1fdf4263f0-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a.b"</span><span class="p">,</span> <span class="s">"a.d"</span><span class="p">,</span> <span class="s">"b.c"</span><span class="p">))</span>
+<a name="rest_code_4b461c4e27bb4337a323da1fdf4263f0-2"></a>df
 </pre>
-<pre class="code text"><a name="rest_code_2434ee3fb5ca429e9bb96a72956d97c7-1"></a>##     x
-<a name="rest_code_2434ee3fb5ca429e9bb96a72956d97c7-2"></a>## 1 a.b
-<a name="rest_code_2434ee3fb5ca429e9bb96a72956d97c7-3"></a>## 2 a.d
-<a name="rest_code_2434ee3fb5ca429e9bb96a72956d97c7-4"></a>## 3 b.c
+<pre class="code text"><a name="rest_code_39c57bb15401452686370ae68066a1cd-1"></a>##     x
+<a name="rest_code_39c57bb15401452686370ae68066a1cd-2"></a>## 1 a.b
+<a name="rest_code_39c57bb15401452686370ae68066a1cd-3"></a>## 2 a.d
+<a name="rest_code_39c57bb15401452686370ae68066a1cd-4"></a>## 3 b.c
 </pre>
 <p>Разбить переменную <tt class="docutils literal">x</tt> на две, разделитель - <tt class="docutils literal">.</tt>:</p>
-<pre class="code r"><a name="rest_code_90563abc53e24b9aa1b4d97dd5f5699d-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">))</span>
+<pre class="code r"><a name="rest_code_9f279a12aebf458d9ea68a316bbfa347-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">))</span>
 </pre>
-<pre class="code text"><a name="rest_code_aaf3d4b103ac4b6eabc28d026d73c971-1"></a>##   A B
-<a name="rest_code_aaf3d4b103ac4b6eabc28d026d73c971-2"></a>## 1 a b
-<a name="rest_code_aaf3d4b103ac4b6eabc28d026d73c971-3"></a>## 2 a d
-<a name="rest_code_aaf3d4b103ac4b6eabc28d026d73c971-4"></a>## 3 b c
+<pre class="code text"><a name="rest_code_7f55bcc28bb743d2a8d99e5900fde57a-1"></a>##   A B
+<a name="rest_code_7f55bcc28bb743d2a8d99e5900fde57a-2"></a>## 1 a b
+<a name="rest_code_7f55bcc28bb743d2a8d99e5900fde57a-3"></a>## 2 a d
+<a name="rest_code_7f55bcc28bb743d2a8d99e5900fde57a-4"></a>## 3 b c
 </pre>
 <p>Если строки нельзя разделить на равное число переменных:</p>
-<pre class="code r"><a name="rest_code_135c76f07e3b4cbca4b65259201b3d7b-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"a b"</span><span class="p">,</span> <span class="s">"a b c"</span><span class="p">))</span>
-<a name="rest_code_135c76f07e3b4cbca4b65259201b3d7b-2"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">),</span> extra <span class="o">=</span> <span class="s">"merge"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_8b200938131545c8b5d4ebd353506e6b-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"a b"</span><span class="p">,</span> <span class="s">"a b c"</span><span class="p">))</span>
+<a name="rest_code_8b200938131545c8b5d4ebd353506e6b-2"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">),</span> extra <span class="o">=</span> <span class="s">"merge"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_7a817d008114412f9bde97c448861180-1"></a>##   a    b
-<a name="rest_code_7a817d008114412f9bde97c448861180-2"></a>## 1 a &lt;NA&gt;
-<a name="rest_code_7a817d008114412f9bde97c448861180-3"></a>## 2 a    b
-<a name="rest_code_7a817d008114412f9bde97c448861180-4"></a>## 3 a  b c
+<pre class="code text"><a name="rest_code_dc761bfd89a64bb19ca2c317af5ad3fe-1"></a>##   a    b
+<a name="rest_code_dc761bfd89a64bb19ca2c317af5ad3fe-2"></a>## 1 a &lt;NA&gt;
+<a name="rest_code_dc761bfd89a64bb19ca2c317af5ad3fe-3"></a>## 2 a    b
+<a name="rest_code_dc761bfd89a64bb19ca2c317af5ad3fe-4"></a>## 3 a  b c
 </pre>
-<pre class="code r"><a name="rest_code_3013303020884f96b888b98207b69f31-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">),</span> extra <span class="o">=</span> <span class="s">"drop"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_70e5d7061bf84d1e984aff716e5887f7-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">),</span> extra <span class="o">=</span> <span class="s">"drop"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_a3dd56d7dbd34f75804452228cce28fb-1"></a>##   a    b
-<a name="rest_code_a3dd56d7dbd34f75804452228cce28fb-2"></a>## 1 a &lt;NA&gt;
-<a name="rest_code_a3dd56d7dbd34f75804452228cce28fb-3"></a>## 2 a    b
-<a name="rest_code_a3dd56d7dbd34f75804452228cce28fb-4"></a>## 3 a    b
+<pre class="code text"><a name="rest_code_e222e650288f4aa3b6dfb3b1233c087a-1"></a>##   a    b
+<a name="rest_code_e222e650288f4aa3b6dfb3b1233c087a-2"></a>## 1 a &lt;NA&gt;
+<a name="rest_code_e222e650288f4aa3b6dfb3b1233c087a-3"></a>## 2 a    b
+<a name="rest_code_e222e650288f4aa3b6dfb3b1233c087a-4"></a>## 3 a    b
 </pre>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_32d46d3c5bdf4947bf3bfee05846ffcb-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"x: 123"</span><span class="p">,</span> <span class="s">"y: error: 7"</span><span class="p">))</span>
-<a name="rest_code_32d46d3c5bdf4947bf3bfee05846ffcb-2"></a>df
+<pre class="code r"><a name="rest_code_1babe19148f44ef2a0b721705a882c66-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"x: 123"</span><span class="p">,</span> <span class="s">"y: error: 7"</span><span class="p">))</span>
+<a name="rest_code_1babe19148f44ef2a0b721705a882c66-2"></a>df
 </pre>
-<pre class="code text"><a name="rest_code_6d48847d223e4c7ead324f642f2f80cd-1"></a>##             x
-<a name="rest_code_6d48847d223e4c7ead324f642f2f80cd-2"></a>## 1      x: 123
-<a name="rest_code_6d48847d223e4c7ead324f642f2f80cd-3"></a>## 2 y: error: 7
+<pre class="code text"><a name="rest_code_159e3f88813f416296c9e806630e6421-1"></a>##             x
+<a name="rest_code_159e3f88813f416296c9e806630e6421-2"></a>## 1      x: 123
+<a name="rest_code_159e3f88813f416296c9e806630e6421-3"></a>## 2 y: error: 7
 </pre>
 <p>Разбить строки строго на две переменные по первому включению <tt class="docutils literal">sep</tt>:</p>
-<pre class="code r"><a name="rest_code_94aceffc64fb45bb87d304adf104cfef-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">),</span> <span class="s">": "</span><span class="p">,</span> extra <span class="o">=</span> <span class="s">"merge"</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_5c08427fd6d3408bb93420c94c00f56c-1"></a>df <span class="o">%&gt;%</span> separate<span class="p">(</span>x<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">),</span> <span class="s">": "</span><span class="p">,</span> extra <span class="o">=</span> <span class="s">"merge"</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_7102c38156ef4ccbafa9764f1758a4e5-1"></a>##   key    value
-<a name="rest_code_7102c38156ef4ccbafa9764f1758a4e5-2"></a>## 1   x      123
-<a name="rest_code_7102c38156ef4ccbafa9764f1758a4e5-3"></a>## 2   y error: 7
+<pre class="code text"><a name="rest_code_4a3df5ca7e70418c81fbe6a4aa8948a6-1"></a>##   key    value
+<a name="rest_code_4a3df5ca7e70418c81fbe6a4aa8948a6-2"></a>## 1   x      123
+<a name="rest_code_4a3df5ca7e70418c81fbe6a4aa8948a6-3"></a>## 2   y error: 7
 </pre>
 </div>
 </div>
@@ -526,7 +528,7 @@ unnest()
 </div>
 <div class="section" id="id24">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_f37e02efbc2d4f04b813f8ce5145ea75-1"></a>seq_range(x, n)
+<pre class="code text"><a name="rest_code_6efb1e143c914776b40683f3219531a5-1"></a>seq_range(x, n)
 </pre>
 </div>
 <div class="section" id="id25">
@@ -542,9 +544,9 @@ unnest()
 <div class="section" id="id26">
 <h3>Примеры использования</h3>
 <p>Разобьем диапазон значений вектора <tt class="docutils literal">1:100</tt>:</p>
-<pre class="code r"><a name="rest_code_908c4ad6452d46b3a9a4716293e5b40b-1"></a>seq_range<span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<pre class="code r"><a name="rest_code_e3f3214896ff4b86810da48786a71f2f-1"></a>seq_range<span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_a7e28c703cdc458e8433292cb4bea3ec-1"></a>## [1]   1.00  25.75  50.50  75.25 100.00
+<pre class="code text"><a name="rest_code_c346c9b04485488089bfa3490bf4c105-1"></a>## [1]   1.00  25.75  50.50  75.25 100.00
 </pre>
 </div>
 </div>
@@ -556,7 +558,7 @@ unnest()
 </div>
 <div class="section" id="id28">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_e1bc57d2f3bd46a9adba76230046c7bb-1"></a>spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE)
+<pre class="code text"><a name="rest_code_a66a949a3b904a8786c67de742c36aba-1"></a>spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE)
 </pre>
 </div>
 <div class="section" id="id29">
@@ -581,63 +583,63 @@ unnest()
 <div class="section" id="id30">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-1"></a>stocks <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-2"></a>time <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">'2009-01-01'</span><span class="p">)</span> <span class="o">+</span> <span class="m">0</span><span class="o">:</span><span class="m">9</span><span class="p">,</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-3"></a>X <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-4"></a>Y <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-5"></a>Z <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-6"></a><span class="p">)</span>
-<a name="rest_code_a40eccc3c62049fcb5abe4741371a97d-7"></a>stocks
+<pre class="code r"><a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-1"></a>stocks <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-2"></a>time <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">'2009-01-01'</span><span class="p">)</span> <span class="o">+</span> <span class="m">0</span><span class="o">:</span><span class="m">9</span><span class="p">,</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-3"></a>X <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-4"></a>Y <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-5"></a>Z <span class="o">=</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-6"></a><span class="p">)</span>
+<a name="rest_code_a3cf8755fe9b45e9ab843e2c078e663e-7"></a>stocks
 </pre>
-<pre class="code text"><a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-1"></a>##          time          X          Y          Z
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-2"></a>## 1  2009-01-01  0.3911387  2.0635862 -6.3953715
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-3"></a>## 2  2009-01-02  0.1203100 -1.3411346 -4.5907582
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-4"></a>## 3  2009-01-03 -0.3916139 -0.3763128 -0.6275635
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-5"></a>## 4  2009-01-04 -0.2890859  1.0035137 -2.9846424
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-6"></a>## 5  2009-01-05  0.2296824  1.0974012  0.6136485
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-7"></a>## 6  2009-01-06  0.0278537  4.9167183 -5.7563632
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-8"></a>## 7  2009-01-07  0.7349981  0.4856101 -6.7558963
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-9"></a>## 8  2009-01-08 -0.5096926 -0.8247462  2.5661235
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-10"></a>## 9  2009-01-09  0.2338707 -0.5513422 -0.6923370
-<a name="rest_code_0081d8282e684ecdb2b6e6b09a0daa2f-11"></a>## 10 2009-01-10  2.3231925  0.2870178  1.7580478
+<pre class="code text"><a name="rest_code_f7f1ff479620418faa9ae107be376043-1"></a>##          time          X          Y          Z
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-2"></a>## 1  2009-01-01  0.3911387  2.0635862 -6.3953715
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-3"></a>## 2  2009-01-02  0.1203100 -1.3411346 -4.5907582
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-4"></a>## 3  2009-01-03 -0.3916139 -0.3763128 -0.6275635
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-5"></a>## 4  2009-01-04 -0.2890859  1.0035137 -2.9846424
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-6"></a>## 5  2009-01-05  0.2296824  1.0974012  0.6136485
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-7"></a>## 6  2009-01-06  0.0278537  4.9167183 -5.7563632
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-8"></a>## 7  2009-01-07  0.7349981  0.4856101 -6.7558963
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-9"></a>## 8  2009-01-08 -0.5096926 -0.8247462  2.5661235
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-10"></a>## 9  2009-01-09  0.2338707 -0.5513422 -0.6923370
+<a name="rest_code_f7f1ff479620418faa9ae107be376043-11"></a>## 10 2009-01-10  2.3231925  0.2870178  1.7580478
 </pre>
 <p>Противоположность <tt class="docutils literal">gather</tt>:</p>
-<pre class="code r"><a name="rest_code_2a3066bd9ea34f1a8ab928c7ea29e713-1"></a>stocksm <span class="o">&lt;-</span> stocks <span class="o">%&gt;%</span> gather<span class="p">(</span>stock<span class="p">,</span> price<span class="p">,</span> <span class="o">-</span>time<span class="p">)</span>
-<a name="rest_code_2a3066bd9ea34f1a8ab928c7ea29e713-2"></a><span class="kp">head</span><span class="p">(</span>stocksm<span class="p">)</span>
+<pre class="code r"><a name="rest_code_37aed2e5c3024c2296a0737ab99945f0-1"></a>stocksm <span class="o">&lt;-</span> stocks <span class="o">%&gt;%</span> gather<span class="p">(</span>stock<span class="p">,</span> price<span class="p">,</span> <span class="o">-</span>time<span class="p">)</span>
+<a name="rest_code_37aed2e5c3024c2296a0737ab99945f0-2"></a><span class="kp">head</span><span class="p">(</span>stocksm<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_80babfbc2cec491c9b40f001dea96e11-1"></a>##         time stock      price
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-2"></a>## 1 2009-01-01     X  0.3911387
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-3"></a>## 2 2009-01-02     X  0.1203100
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-4"></a>## 3 2009-01-03     X -0.3916139
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-5"></a>## 4 2009-01-04     X -0.2890859
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-6"></a>## 5 2009-01-05     X  0.2296824
-<a name="rest_code_80babfbc2cec491c9b40f001dea96e11-7"></a>## 6 2009-01-06     X  0.0278537
+<pre class="code text"><a name="rest_code_5370dcd6572f446f9f7725665e3040b8-1"></a>##         time stock      price
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-2"></a>## 1 2009-01-01     X  0.3911387
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-3"></a>## 2 2009-01-02     X  0.1203100
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-4"></a>## 3 2009-01-03     X -0.3916139
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-5"></a>## 4 2009-01-04     X -0.2890859
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-6"></a>## 5 2009-01-05     X  0.2296824
+<a name="rest_code_5370dcd6572f446f9f7725665e3040b8-7"></a>## 6 2009-01-06     X  0.0278537
 </pre>
-<pre class="code r"><a name="rest_code_43efc0c1529e4d698d7c0cf0938e3c67-1"></a>stocksm <span class="o">%&gt;%</span> spread<span class="p">(</span>stock<span class="p">,</span> price<span class="p">)</span>
+<pre class="code r"><a name="rest_code_90178e93c0204c8588a1a4ede2365316-1"></a>stocksm <span class="o">%&gt;%</span> spread<span class="p">(</span>stock<span class="p">,</span> price<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-1"></a>##          time          X          Y          Z
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-2"></a>## 1  2009-01-01  0.3911387  2.0635862 -6.3953715
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-3"></a>## 2  2009-01-02  0.1203100 -1.3411346 -4.5907582
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-4"></a>## 3  2009-01-03 -0.3916139 -0.3763128 -0.6275635
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-5"></a>## 4  2009-01-04 -0.2890859  1.0035137 -2.9846424
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-6"></a>## 5  2009-01-05  0.2296824  1.0974012  0.6136485
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-7"></a>## 6  2009-01-06  0.0278537  4.9167183 -5.7563632
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-8"></a>## 7  2009-01-07  0.7349981  0.4856101 -6.7558963
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-9"></a>## 8  2009-01-08 -0.5096926 -0.8247462  2.5661235
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-10"></a>## 9  2009-01-09  0.2338707 -0.5513422 -0.6923370
-<a name="rest_code_44a6a38c21e7475cb9fea743ae3e8a72-11"></a>## 10 2009-01-10  2.3231925  0.2870178  1.7580478
+<pre class="code text"><a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-1"></a>##          time          X          Y          Z
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-2"></a>## 1  2009-01-01  0.3911387  2.0635862 -6.3953715
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-3"></a>## 2  2009-01-02  0.1203100 -1.3411346 -4.5907582
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-4"></a>## 3  2009-01-03 -0.3916139 -0.3763128 -0.6275635
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-5"></a>## 4  2009-01-04 -0.2890859  1.0035137 -2.9846424
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-6"></a>## 5  2009-01-05  0.2296824  1.0974012  0.6136485
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-7"></a>## 6  2009-01-06  0.0278537  4.9167183 -5.7563632
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-8"></a>## 7  2009-01-07  0.7349981  0.4856101 -6.7558963
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-9"></a>## 8  2009-01-08 -0.5096926 -0.8247462  2.5661235
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-10"></a>## 9  2009-01-09  0.2338707 -0.5513422 -0.6923370
+<a name="rest_code_4c1f4f1f1617403eacb895c2d3556137-11"></a>## 10 2009-01-10  2.3231925  0.2870178  1.7580478
 </pre>
 <p>Разбить <tt class="docutils literal">price</tt> по переменной <tt class="docutils literal">time</tt>:</p>
-<pre class="code r"><a name="rest_code_98a6038b40924c1aa9d3e4398f8c9ab0-1"></a>stocksm <span class="o">%&gt;%</span> spread<span class="p">(</span>time<span class="p">,</span> price<span class="p">)</span>
+<pre class="code r"><a name="rest_code_d55e22345ff44a56bf21ce51b148240c-1"></a>stocksm <span class="o">%&gt;%</span> spread<span class="p">(</span>time<span class="p">,</span> price<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_96ca4562c01b400c81ad8ca981afd935-1"></a>##   stock 2009-01-01 2009-01-02 2009-01-03 2009-01-04 2009-01-05 2009-01-06
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-2"></a>## 1     X  0.3911387   0.120310 -0.3916139 -0.2890859  0.2296824  0.0278537
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-3"></a>## 2     Y  2.0635862  -1.341135 -0.3763128  1.0035137  1.0974012  4.9167183
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-4"></a>## 3     Z -6.3953715  -4.590758 -0.6275635 -2.9846424  0.6136485 -5.7563632
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-5"></a>##   2009-01-07 2009-01-08 2009-01-09 2009-01-10
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-6"></a>## 1  0.7349981 -0.5096926  0.2338707  2.3231925
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-7"></a>## 2  0.4856101 -0.8247462 -0.5513422  0.2870178
-<a name="rest_code_96ca4562c01b400c81ad8ca981afd935-8"></a>## 3 -6.7558963  2.5661235 -0.6923370  1.7580478
+<pre class="code text"><a name="rest_code_856ba35d941c4c08bd5f67138960c884-1"></a>##   stock 2009-01-01 2009-01-02 2009-01-03 2009-01-04 2009-01-05 2009-01-06
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-2"></a>## 1     X  0.3911387   0.120310 -0.3916139 -0.2890859  0.2296824  0.0278537
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-3"></a>## 2     Y  2.0635862  -1.341135 -0.3763128  1.0035137  1.0974012  4.9167183
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-4"></a>## 3     Z -6.3953715  -4.590758 -0.6275635 -2.9846424  0.6136485 -5.7563632
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-5"></a>##   2009-01-07 2009-01-08 2009-01-09 2009-01-10
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-6"></a>## 1  0.7349981 -0.5096926  0.2338707  2.3231925
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-7"></a>## 2  0.4856101 -0.8247462 -0.5513422  0.2870178
+<a name="rest_code_856ba35d941c4c08bd5f67138960c884-8"></a>## 3 -6.7558963  2.5661235 -0.6923370  1.7580478
 </pre>
 </div>
 </div>
@@ -649,7 +651,7 @@ unnest()
 </div>
 <div class="section" id="id32">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_e64d9ddee471447899270734d83a9066-1"></a>unite(data, col, ..., sep = "_", remove = TRUE)
+<pre class="code text"><a name="rest_code_d725b5dd90fc42d69e3752a1bb3f6715-1"></a>unite(data, col, ..., sep = "_", remove = TRUE)
 </pre>
 </div>
 <div class="section" id="id33">
@@ -671,31 +673,31 @@ unnest()
 <div class="section" id="id34">
 <h3>Примеры использования</h3>
 <p>Объединяем переменные <tt class="docutils literal">vs</tt> и <tt class="docutils literal">am</tt> в одну:</p>
-<pre class="code r"><a name="rest_code_8fae73adcd9b46d6806458fcffc41a3c-1"></a>mtcars <span class="o">%&gt;%</span>
-<a name="rest_code_8fae73adcd9b46d6806458fcffc41a3c-2"></a>  unite_<span class="p">(</span><span class="s">"vs_am"</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"vs"</span><span class="p">,</span> <span class="s">"am"</span><span class="p">))</span> <span class="o">%&gt;%</span>
-<a name="rest_code_8fae73adcd9b46d6806458fcffc41a3c-3"></a>  <span class="kp">head</span><span class="p">()</span>
+<pre class="code r"><a name="rest_code_3856b39e4cf442e1b6cdf579c3f1abe1-1"></a>mtcars <span class="o">%&gt;%</span>
+<a name="rest_code_3856b39e4cf442e1b6cdf579c3f1abe1-2"></a>  unite_<span class="p">(</span><span class="s">"vs_am"</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"vs"</span><span class="p">,</span> <span class="s">"am"</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a name="rest_code_3856b39e4cf442e1b6cdf579c3f1abe1-3"></a>  <span class="kp">head</span><span class="p">()</span>
 </pre>
-<pre class="code text"><a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-1"></a>##                    mpg cyl disp  hp drat    wt  qsec vs_am gear carb
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-2"></a>## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46   0_1    4    4
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-3"></a>## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02   0_1    4    4
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-4"></a>## Datsun 710        22.8   4  108  93 3.85 2.320 18.61   1_1    4    1
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-5"></a>## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44   1_0    3    1
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-6"></a>## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02   0_0    3    2
-<a name="rest_code_5befc5af304c47bf8de9c1496c1cb302-7"></a>## Valiant           18.1   6  225 105 2.76 3.460 20.22   1_0    3    1
+<pre class="code text"><a name="rest_code_69a9f74a515847a5881d692597ae9d0c-1"></a>##                    mpg cyl disp  hp drat    wt  qsec vs_am gear carb
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-2"></a>## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46   0_1    4    4
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-3"></a>## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02   0_1    4    4
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-4"></a>## Datsun 710        22.8   4  108  93 3.85 2.320 18.61   1_1    4    1
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-5"></a>## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44   1_0    3    1
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-6"></a>## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02   0_0    3    2
+<a name="rest_code_69a9f74a515847a5881d692597ae9d0c-7"></a>## Valiant           18.1   6  225 105 2.76 3.460 20.22   1_0    3    1
 </pre>
 <p>Противоположность <tt class="docutils literal">separate</tt>:</p>
-<pre class="code r"><a name="rest_code_0656b6e8e22444068c82c9569ebb0a7e-1"></a>mtcars <span class="o">%&gt;%</span>
-<a name="rest_code_0656b6e8e22444068c82c9569ebb0a7e-2"></a>  unite<span class="p">(</span>vs_am<span class="p">,</span> vs<span class="p">,</span> am<span class="p">)</span> <span class="o">%&gt;%</span>
-<a name="rest_code_0656b6e8e22444068c82c9569ebb0a7e-3"></a>  separate<span class="p">(</span>vs_am<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"vs"</span><span class="p">,</span> <span class="s">"am"</span><span class="p">))</span> <span class="o">%&gt;%</span>
-<a name="rest_code_0656b6e8e22444068c82c9569ebb0a7e-4"></a>  <span class="kp">head</span><span class="p">()</span>
+<pre class="code r"><a name="rest_code_41b2e5420c7d410993f044645a94d4ad-1"></a>mtcars <span class="o">%&gt;%</span>
+<a name="rest_code_41b2e5420c7d410993f044645a94d4ad-2"></a>  unite<span class="p">(</span>vs_am<span class="p">,</span> vs<span class="p">,</span> am<span class="p">)</span> <span class="o">%&gt;%</span>
+<a name="rest_code_41b2e5420c7d410993f044645a94d4ad-3"></a>  separate<span class="p">(</span>vs_am<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"vs"</span><span class="p">,</span> <span class="s">"am"</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a name="rest_code_41b2e5420c7d410993f044645a94d4ad-4"></a>  <span class="kp">head</span><span class="p">()</span>
 </pre>
-<pre class="code text"><a name="rest_code_ed51d89f519946718022cd53e838702b-1"></a>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-<a name="rest_code_ed51d89f519946718022cd53e838702b-2"></a>## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-<a name="rest_code_ed51d89f519946718022cd53e838702b-3"></a>## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-<a name="rest_code_ed51d89f519946718022cd53e838702b-4"></a>## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-<a name="rest_code_ed51d89f519946718022cd53e838702b-5"></a>## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-<a name="rest_code_ed51d89f519946718022cd53e838702b-6"></a>## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-<a name="rest_code_ed51d89f519946718022cd53e838702b-7"></a>## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+<pre class="code text"><a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-1"></a>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-2"></a>## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-3"></a>## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-4"></a>## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-5"></a>## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-6"></a>## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+<a name="rest_code_76b48e77862f4ba39d14b3c4022b1350-7"></a>## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 </pre>
 </div>
 </div>
@@ -707,7 +709,7 @@ unnest()
 </div>
 <div class="section" id="id36">
 <h3>Использование</h3>
-<pre class="code text"><a name="rest_code_bcf63c8e97344a42851236c79af2833f-1"></a>unnest(data, col = NULL)
+<pre class="code text"><a name="rest_code_f46d5bc2db3d40b38e1508dacbae3e04-1"></a>unnest(data, col = NULL)
 </pre>
 </div>
 <div class="section" id="id37">
@@ -723,74 +725,74 @@ unnest()
 <div class="section" id="id38">
 <h3>Примеры использования</h3>
 <p>Данные:</p>
-<pre class="code r"><a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
-<a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-2"></a>x <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span>
-<a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-3"></a>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"d,e,f"</span><span class="p">,</span> <span class="s">"g,h"</span><span class="p">),</span>
-<a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-4"></a>stringsAsFactors <span class="o">=</span> <span class="kc">FALSE</span>
-<a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-5"></a><span class="p">)</span>
-<a name="rest_code_8e8f09241d204eae8dfcba777e143b5b-6"></a>df
+<pre class="code r"><a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-1"></a>df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>
+<a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-2"></a>x <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span>
+<a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-3"></a>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"d,e,f"</span><span class="p">,</span> <span class="s">"g,h"</span><span class="p">),</span>
+<a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-4"></a>stringsAsFactors <span class="o">=</span> <span class="kc">FALSE</span>
+<a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-5"></a><span class="p">)</span>
+<a name="rest_code_697eef4b62494ade9aff3ac65c7e22b8-6"></a>df
 </pre>
-<pre class="code text"><a name="rest_code_6f81fa271a70412cb1a7d6d993e45ddf-1"></a>##   x     y
-<a name="rest_code_6f81fa271a70412cb1a7d6d993e45ddf-2"></a>## 1 1     a
-<a name="rest_code_6f81fa271a70412cb1a7d6d993e45ddf-3"></a>## 2 2 d,e,f
-<a name="rest_code_6f81fa271a70412cb1a7d6d993e45ddf-4"></a>## 3 3   g,h
+<pre class="code text"><a name="rest_code_0073d69fab4e48728c80d6638a7e9d6c-1"></a>##   x     y
+<a name="rest_code_0073d69fab4e48728c80d6638a7e9d6c-2"></a>## 1 1     a
+<a name="rest_code_0073d69fab4e48728c80d6638a7e9d6c-3"></a>## 2 2 d,e,f
+<a name="rest_code_0073d69fab4e48728c80d6638a7e9d6c-4"></a>## 3 3   g,h
 </pre>
 <p>Разбить переменную <tt class="docutils literal">y</tt> на большее число строк:</p>
-<pre class="code r"><a name="rest_code_d3659309a14941509799e1609b9f7c15-1"></a>df <span class="o">%&gt;%</span>
-<a name="rest_code_d3659309a14941509799e1609b9f7c15-2"></a>  <span class="kp">transform</span><span class="p">(</span>y <span class="o">=</span> <span class="kp">strsplit</span><span class="p">(</span>y<span class="p">,</span> <span class="s">","</span><span class="p">))</span> <span class="o">%&gt;%</span>
-<a name="rest_code_d3659309a14941509799e1609b9f7c15-3"></a>  unnest<span class="p">(</span>y<span class="p">)</span>
+<pre class="code r"><a name="rest_code_ea77e24848fb4fbeb221ef43d2b717f0-1"></a>df <span class="o">%&gt;%</span>
+<a name="rest_code_ea77e24848fb4fbeb221ef43d2b717f0-2"></a>  <span class="kp">transform</span><span class="p">(</span>y <span class="o">=</span> <span class="kp">strsplit</span><span class="p">(</span>y<span class="p">,</span> <span class="s">","</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a name="rest_code_ea77e24848fb4fbeb221ef43d2b717f0-3"></a>  unnest<span class="p">(</span>y<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-1"></a>##   x y
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-2"></a>## 1 1 a
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-3"></a>## 2 2 d
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-4"></a>## 3 2 e
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-5"></a>## 4 2 f
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-6"></a>## 5 3 g
-<a name="rest_code_fd81f09e24bb4029be95b73d60f69b48-7"></a>## 6 3 h
+<pre class="code text"><a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-1"></a>##   x y
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-2"></a>## 1 1 a
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-3"></a>## 2 2 d
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-4"></a>## 3 2 e
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-5"></a>## 4 2 f
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-6"></a>## 5 3 g
+<a name="rest_code_d176b6b1a2f14c958592f62aabf046b4-7"></a>## 6 3 h
 </pre>
 <p>Разобьем стандартный набор данных <tt class="docutils literal">iris</tt> по виду цветка:</p>
-<pre class="code r"><a name="rest_code_268619bc9f9746088aa74c57adb9bf6e-1"></a>my_list <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">split</span><span class="p">(</span><span class="kp">subset</span><span class="p">(</span>iris<span class="p">,</span> select <span class="o">=</span> <span class="o">-</span>Species<span class="p">),</span>iris<span class="o">$</span>Species<span class="p">),</span>
-<a name="rest_code_268619bc9f9746088aa74c57adb9bf6e-2"></a>                  <span class="s">"["</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="p">)</span>
-<a name="rest_code_268619bc9f9746088aa74c57adb9bf6e-3"></a>my_list
+<pre class="code r"><a name="rest_code_aafad7c8d5234197a19cf44736b90f89-1"></a>my_list <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">split</span><span class="p">(</span><span class="kp">subset</span><span class="p">(</span>iris<span class="p">,</span> select <span class="o">=</span> <span class="o">-</span>Species<span class="p">),</span>iris<span class="o">$</span>Species<span class="p">),</span>
+<a name="rest_code_aafad7c8d5234197a19cf44736b90f89-2"></a>                  <span class="s">"["</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="p">)</span>
+<a name="rest_code_aafad7c8d5234197a19cf44736b90f89-3"></a>my_list
 </pre>
-<pre class="code text"><a name="rest_code_11362e8d9a734e9ead786958462dd5ab-1"></a>## $setosa
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-2"></a>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-3"></a>## 1          5.1         3.5          1.4         0.2
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-4"></a>## 2          4.9         3.0          1.4         0.2
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-5"></a>##
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-6"></a>## $versicolor
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-7"></a>##    Sepal.Length Sepal.Width Petal.Length Petal.Width
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-8"></a>## 51          7.0         3.2          4.7         1.4
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-9"></a>## 52          6.4         3.2          4.5         1.5
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-10"></a>##
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-11"></a>## $virginica
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-12"></a>##     Sepal.Length Sepal.Width Petal.Length Petal.Width
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-13"></a>## 101          6.3         3.3          6.0         2.5
-<a name="rest_code_11362e8d9a734e9ead786958462dd5ab-14"></a>## 102          5.8         2.7          5.1         1.9
+<pre class="code text"><a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-1"></a>## $setosa
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-2"></a>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-3"></a>## 1          5.1         3.5          1.4         0.2
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-4"></a>## 2          4.9         3.0          1.4         0.2
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-5"></a>##
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-6"></a>## $versicolor
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-7"></a>##    Sepal.Length Sepal.Width Petal.Length Petal.Width
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-8"></a>## 51          7.0         3.2          4.7         1.4
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-9"></a>## 52          6.4         3.2          4.5         1.5
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-10"></a>##
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-11"></a>## $virginica
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-12"></a>##     Sepal.Length Sepal.Width Petal.Length Petal.Width
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-13"></a>## 101          6.3         3.3          6.0         2.5
+<a name="rest_code_c42130aad7d94df3aacfdc0d4a6fdfec-14"></a>## 102          5.8         2.7          5.1         1.9
 </pre>
 <p>Соберем список обратно в <tt class="docutils literal">data.frame</tt>:</p>
-<pre class="code r"><a name="rest_code_8890a4da1cf2421c81700a72132f1a4c-1"></a>unnest<span class="p">(</span>my_list<span class="p">)</span>
+<pre class="code r"><a name="rest_code_03297420c1234c65ad2751b3944e9b1e-1"></a>unnest<span class="p">(</span>my_list<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_5230224f74d749eba91f6fa8d5545440-1"></a>## Source: local data frame [6 x 4]
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-2"></a>##
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-3"></a>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-4"></a>## 1          5.1         3.5          1.4         0.2
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-5"></a>## 2          4.9         3.0          1.4         0.2
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-6"></a>## 3          7.0         3.2          4.7         1.4
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-7"></a>## 4          6.4         3.2          4.5         1.5
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-8"></a>## 5          6.3         3.3          6.0         2.5
-<a name="rest_code_5230224f74d749eba91f6fa8d5545440-9"></a>## 6          5.8         2.7          5.1         1.9
+<pre class="code text"><a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-1"></a>## Source: local data frame [6 x 4]
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-2"></a>##
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-3"></a>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-4"></a>## 1          5.1         3.5          1.4         0.2
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-5"></a>## 2          4.9         3.0          1.4         0.2
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-6"></a>## 3          7.0         3.2          4.7         1.4
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-7"></a>## 4          6.4         3.2          4.5         1.5
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-8"></a>## 5          6.3         3.3          6.0         2.5
+<a name="rest_code_83ebcaf1c41e4e00b294e0cdef97d1a3-9"></a>## 6          5.8         2.7          5.1         1.9
 </pre>
 <p>Добавим потерявшуюся переменную <tt class="docutils literal">Species</tt>:</p>
-<pre class="code r"><a name="rest_code_d4ebe95aebd841479aa237972a2f8047-1"></a>unnest<span class="p">(</span>my_list<span class="p">,</span> Species<span class="p">)</span>
+<pre class="code r"><a name="rest_code_e62d827c2be64c66bbc6df9b57852613-1"></a>unnest<span class="p">(</span>my_list<span class="p">,</span> Species<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_3579a7b97437422884cf80a457836de9-1"></a>##      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
-<a name="rest_code_3579a7b97437422884cf80a457836de9-2"></a>## 1     setosa          5.1         3.5          1.4         0.2
-<a name="rest_code_3579a7b97437422884cf80a457836de9-3"></a>## 2     setosa          4.9         3.0          1.4         0.2
-<a name="rest_code_3579a7b97437422884cf80a457836de9-4"></a>## 3 versicolor          7.0         3.2          4.7         1.4
-<a name="rest_code_3579a7b97437422884cf80a457836de9-5"></a>## 4 versicolor          6.4         3.2          4.5         1.5
-<a name="rest_code_3579a7b97437422884cf80a457836de9-6"></a>## 5  virginica          6.3         3.3          6.0         2.5
-<a name="rest_code_3579a7b97437422884cf80a457836de9-7"></a>## 6  virginica          5.8         2.7          5.1         1.9
+<pre class="code text"><a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-1"></a>##      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-2"></a>## 1     setosa          5.1         3.5          1.4         0.2
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-3"></a>## 2     setosa          4.9         3.0          1.4         0.2
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-4"></a>## 3 versicolor          7.0         3.2          4.7         1.4
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-5"></a>## 4 versicolor          6.4         3.2          4.5         1.5
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-6"></a>## 5  virginica          6.3         3.3          6.0         2.5
+<a name="rest_code_a97fb5cfcf444a09865bb00dbf1e95f4-7"></a>## 6  virginica          5.8         2.7          5.1         1.9
 </pre>
 </div>
 </div>
