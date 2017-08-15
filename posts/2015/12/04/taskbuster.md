@@ -9,14 +9,16 @@
 .. type: text
 -->
 
-From time to time I check out my *ToRead* folder (believe me it is infinite),
+From time to time I check out my **ToRead** folder (believe me it is infinite),
 and guess what I found there a week ago - BEST DJANGO TUTORIAL I EVER READ!
 Just go ahead and look at this beauty: [Taskbuster Django Tutorial by Marina Mele](http://www.marinamele.com/taskbuster-django-tutorial).
-Table of content is available inside the *Read more...*. So why am I so excited
+Table of content is available inside the **Read more...**. So why am I so excited
 about it? Because [Marina](https://twitter.com/Marina_Mele) used a rare way to
 approach tutorial creation. She did not start with *no one used in real world*
 practises like many authors do, but goes straight to the best Django
 development patterns. She even wrote about environment variables!
+
+<!-- TEASER_END -->
 
 ![center](/images/2015/12/04/taskbuster/taskbuster.jpg)
 

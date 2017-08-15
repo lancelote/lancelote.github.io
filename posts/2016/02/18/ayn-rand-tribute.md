@@ -18,6 +18,8 @@ JS-related technologies and HTML with CSS on top of the cake, gosh! Time has pas
 and I have catch myself today enjoining of frontend development. So, what is
 happened to me? Not much in reality.
 
+<!-- TEASER_END -->
+
 ![center](/images/2016/02/18/ayn-rand-tribute/smartprogress.jpg)
 
 ## Smartprogress
