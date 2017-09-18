@@ -42,7 +42,7 @@ By default it generates a super verbose output with code assessment, different m
 
 These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said ``pylint`` is super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name ``a`` and wrong type in slice is just a Python 3.6 style type annotation that is not supported by ``pylint`` at all at least right now.
 
-To mute such false positives and customize the report one may use ``pylintrc`` file, this is in fact very simple and useful. Just create a ``pylintrc`` file in the project root and add some options, my example:
+To mute such false positives and customize the report one may use ``pylintrc`` file, this is in fact a very simple and useful. Just create a ``pylintrc`` file in the project root and add some options, my example:
 
 .. code::
 
@@ -80,7 +80,7 @@ or mute all inspections for a specific function:
 pydocstyle
 ==========
 
-pydocstyle_ is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see I never thought there're such conventions in Python.
+pydocstyle_ is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.
 
 Execution is straightforward:
 
@@ -186,7 +186,7 @@ I usually implement some kind of automation for my projects. I used several diff
 
 For manual usage I rely on PyCharm integration but it's very useful to have such automation for continues integration, for example my ``.travis.yml`` related part:
 
-.. code:
+.. code::
 
     install:
       - make update
