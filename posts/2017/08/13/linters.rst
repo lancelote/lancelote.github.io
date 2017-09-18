@@ -165,7 +165,12 @@ Line by line:
 - Next select or create a group for this tool to belong to, for us it'll be ``linters``
 - Provide a custom description
 - Enable all option in Options paragraph - we really want to see ``pylint`` output
-- Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight ``pylint`` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is ``$FILE_PATH$:$LINE$:$COLUMN$:.*``, ``$name$`` is a special variables used by PyCharm to understand where is file path, line and column in the line
+- Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight ``pylint`` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is ``$FILE_PATH$:$LINE$:$COLUMN$:.*``, ``$name$`` is a special variables used by PyCharm to understand where is file path, line and column in the line (read more in official documentation: `External Tools`_)
+- Program is path to ``pylint`` executable, we're using ``$PyInterpreterDirectory$`` template to refer to directory where Python interpreter of the current project is placed
+- Parameter field here solves two problems: first it specifies what files and folder should ``pylint`` check (``main.py src tests``, edit according to your code), second it sets output format for ``pylint`` errors, it's required so PyCharm can understand it and provide useful links from errors to source code
+- Working directory is easy - just $ContentRoot$ template, which is our project root
+
+You can now access this external tool from **Tools | External Tools**. Feel free to run it against your code (make sure there're some PEP8 errors) and check the output. Meanwhile we're moving to ``pydocstyle``.
 
 Live Example
 ============
