@@ -42,7 +42,7 @@ By default it generates a super verbose output with code assessment, different m
 
 These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said ``pylint`` is super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name ``a`` and wrong type in slice is just a Python 3.6 style type annotation that is not supported by ``pylint`` at all at least right now.
 
-To mute such false positives and customize the report one may use ``pylintrc`` file, this is in fact very simple and useful. Just create a ``pylintrc`` file in the project root and add some options, my example:
+To mute such false positives and customize the report one may use ``pylintrc`` file, this is in fact a very simple and useful. Just create a ``pylintrc`` file in the project root and add some options, my example:
 
 .. code::
 
@@ -80,7 +80,7 @@ or mute all inspections for a specific function:
 pydocstyle
 ==========
 
-pydocstyle_ is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see I never thought there're such conventions in Python.
+pydocstyle_ is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.
 
 Execution is straightforward:
 
@@ -165,7 +165,12 @@ Line by line:
 - Next select or create a group for this tool to belong to, for us it'll be ``linters``
 - Provide a custom description
 - Enable all option in Options paragraph - we really want to see ``pylint`` output
-- Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight ``pylint`` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is ``$FILE_PATH$:$LINE$:$COLUMN$:.*``, ``$name$`` is a special variables used by PyCharm to understand where is file path, line and column in the line
+- Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight ``pylint`` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is ``$FILE_PATH$:$LINE$:$COLUMN$:.*``, ``$name$`` is a special variables used by PyCharm to understand where is file path, line and column in the line (read more in official documentation: `External Tools`_)
+- Program is path to ``pylint`` executable, we're using ``$PyInterpreterDirectory$`` template to refer to directory where Python interpreter of the current project is placed
+- Parameter field here solves two problems: first it specifies what files and folder should ``pylint`` check (``main.py src tests``, edit according to your code), second it sets output format for ``pylint`` errors, it's required so PyCharm can understand it and provide useful links from errors to source code
+- Working directory is easy - just $ContentRoot$ template, which is our project root
+
+You can now access this external tool from **Tools | External Tools**. Feel free to run it against your code (make sure there're some PEP8 errors) and check the output. Meanwhile we're moving to ``pydocstyle``.
 
 Live Example
 ============
@@ -186,7 +191,7 @@ I usually implement some kind of automation for my projects. I used several diff
 
 For manual usage I rely on PyCharm integration but it's very useful to have such automation for continues integration, for example my ``.travis.yml`` related part:
 
-.. code:
+.. code::
 
     install:
       - make update
