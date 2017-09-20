@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://pavelkarateev.com/</loc>
-  <lastmod>2017-08-13T15:24:00Z</lastmod>
+  <lastmod>2017-09-20T16:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/2014/</loc>
@@ -22,12 +22,20 @@
   <lastmod>2017-08-13T15:24:00Z</lastmod>
  </url>
  <url>
+  <loc>http://pavelkarateev.com/2017/</loc>
+  <lastmod>2017-09-20T16:40:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://pavelkarateev.com/archive.html</loc>
-  <lastmod>2017-08-13T15:24:00Z</lastmod>
+  <lastmod>2017-09-20T16:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/</loc>
   <lastmod>2017-08-13T15:24:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/index-1.html</loc>
+  <lastmod>2017-09-20T16:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/pages/about/</loc>
@@ -72,5 +80,9 @@
  <url>
   <loc>http://pavelkarateev.com/posts/2016/06/16/python-basics-and-usage/</loc>
   <lastmod>2017-08-17T15:24:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/posts/2017/08/13/linters/</loc>
+  <lastmod>2017-08-13T15:24:00Z</lastmod>
  </url>
 </urlset>
