@@ -168,9 +168,58 @@ Line by line:
 - Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight ``pylint`` output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is ``$FILE_PATH$:$LINE$:$COLUMN$:.*``, ``$name$`` is a special variables used by PyCharm to understand where is file path, line and column in the line (read more in official documentation: `External Tools`_)
 - Program is path to ``pylint`` executable, we're using ``$PyInterpreterDirectory$`` template to refer to directory where Python interpreter of the current project is placed
 - Parameter field here solves two problems: first it specifies what files and folder should ``pylint`` check (``main.py src tests``, edit according to your code), second it sets output format for ``pylint`` errors, it's required so PyCharm can understand it and provide useful links from errors to source code
-- Working directory is easy - just $ContentRoot$ template, which is our project root
+- Working directory is easy - just ``$ContentRoot$`` template, which is our project root
 
 You can now access this external tool from **Tools | External Tools**. Feel free to run it against your code (make sure there're some PEP8 errors) and check the output. Meanwhile we're moving to ``pydocstyle``.
+
+``pydocstyle`` is on the way:
+
+.. thumbnail:: /images/2017/08/13/linters/pydocstyle.png
+    :align: center
+
+- Name, group, description and set of basics options as always
+- Executable is ``pydocstyle``
+- And ``$ContentRoot$`` as working directory
+
+Now let's setup ``pycodestyle``:
+
+.. thumbnail:: /images/2017/08/13/linters/pycodestyle.png
+    :align: center
+
+- Same simple settings for name, group and description
+- Enable all options
+- Program executable is ``pycodestyle`` in ``$PyInterpreterDirectory$``
+- For parameters we're using ``--select`` flag to enable all errors and warnings, the dot is target for ``pycodestyle``
+- Same working directory as ``pylint`` has
+
+And the latest - ``mypy``:
+
+.. thumbnail:: /images/2017/08/13/linters/mypy.png
+    :align: center
+
+- Everything is the same
+- Except executable is ``mypy``
+- And parameters is dot - target for ``mypy``
+
+In the result you should have something like this:
+
+.. thumbnail:: /images/2017/08/13/linters/result.png
+    :align: center
+
+And you can access everything from **Tools** menu:
+
+.. thumbnail:: /images/2017/08/13/linters/menu.png
+    :align: center
+
+The final touch is to add all this external tools to some run configuration, e.g. one to run all the tests:
+
+.. thumbnail:: /images/2017/08/13/linters/run_config.png
+    :align: center
+
+Now try to execute this run configuration and see additional tabs with linters result:
+
+.. thumbnail:: /images/2017/08/13/linters/run_result.png
+    :align: center
 
 Live Example
 ============

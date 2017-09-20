@@ -60,57 +60,57 @@
 </div>
 <div class="section" id="install-all-the-linters">
 <h2>Install All the Linters</h2>
-<pre class="code text"><a name="rest_code_36f2685d654d4743a096c188c1cdbc27-1"></a>pip install pylint pydocstyle pycodestyle mypy
+<pre class="code text"><a name="rest_code_73e12e560441492eb767dbf65a80e0ca-1"></a>pip install pylint pydocstyle pycodestyle mypy
 </pre>
 </div>
 <div class="section" id="pylint">
 <h2>pylint</h2>
 <p><a class="reference external" href="https://www.pylint.org">pylint</a> is a well known Python linter and one of my favorite tools which I use extensively in almost every project I have. It's very strict and highly customizable. To run <tt class="docutils literal">pylint</tt> against your code just type:</p>
-<pre class="code text"><a name="rest_code_217a591b25b348d19abef2c8f9b9604d-1"></a>python -m pylint &lt;some_dir&gt;
+<pre class="code text"><a name="rest_code_4a62bf74946b4904b524957c66964aa1-1"></a>python -m pylint &lt;some_dir&gt;
 </pre>
 <p>By default it generates a super verbose output with code assessment, different metrics (tables) and so on. The most important here is warnings (top of the report), e.g.:</p>
-<pre class="code text"><a name="rest_code_2e8937a81c974a60af665d6645a12778-1"></a>************* Module src.year2016.day3b
-<a name="rest_code_2e8937a81c974a60af665d6645a12778-2"></a>E: 27, 0: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)
-<a name="rest_code_2e8937a81c974a60af665d6645a12778-3"></a>C: 44, 8: Invalid variable name "a" (invalid-name)
+<pre class="code text"><a name="rest_code_f0891e13b084407682dddfaca08a691c-1"></a>************* Module src.year2016.day3b
+<a name="rest_code_f0891e13b084407682dddfaca08a691c-2"></a>E: 27, 0: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)
+<a name="rest_code_f0891e13b084407682dddfaca08a691c-3"></a>C: 44, 8: Invalid variable name "a" (invalid-name)
 </pre>
 <p>These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said <tt class="docutils literal">pylint</tt> is super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name <tt class="docutils literal">a</tt> and wrong type in slice is just a Python 3.6 style type annotation that is not supported by <tt class="docutils literal">pylint</tt> at all at least right now.</p>
 <p>To mute such false positives and customize the report one may use <tt class="docutils literal">pylintrc</tt> file, this is in fact a very simple and useful. Just create a <tt class="docutils literal">pylintrc</tt> file in the project root and add some options, my example:</p>
-<pre class="code text"><a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-1"></a>[MESSAGES CONTROL]
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-2"></a>disable=locally-disabled,
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-3"></a> # False positive for type annotations with typing module
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-4"></a> invalid-sequence-index,
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-5"></a> # False positive for OK test methods names and few other places
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-6"></a> invalid-name,
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-7"></a> # False positive for test file classes and methods
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-8"></a> missing-docstring
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-9"></a>
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-10"></a>[REPORTS]
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-11"></a># Simplify pylint reports
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-12"></a>reports=no
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-13"></a>
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-14"></a>[SIMILARITIES]
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-15"></a>min-similarity-lines=10
-<a name="rest_code_dac4fd9427db426da1f5e7d1eba5d794-16"></a>ignore-docstrings=yes
+<pre class="code text"><a name="rest_code_1247f793606e42d9bc235e14b4473ab6-1"></a>[MESSAGES CONTROL]
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-2"></a>disable=locally-disabled,
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-3"></a> # False positive for type annotations with typing module
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-4"></a> invalid-sequence-index,
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-5"></a> # False positive for OK test methods names and few other places
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-6"></a> invalid-name,
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-7"></a> # False positive for test file classes and methods
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-8"></a> missing-docstring
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-9"></a>
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-10"></a>[REPORTS]
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-11"></a># Simplify pylint reports
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-12"></a>reports=no
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-13"></a>
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-14"></a>[SIMILARITIES]
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-15"></a>min-similarity-lines=10
+<a name="rest_code_1247f793606e42d9bc235e14b4473ab6-16"></a>ignore-docstrings=yes
 </pre>
 <p>This will reduce the size of output (I don't really care about my code assessment rate), enforce some style options like 80 characters per line and disable few inspections globally, e.g. missing docstring - I rely on <tt class="docutils literal">pydocstyle</tt> to check my docstrings. You can also disable a warning per file with comments on top of it, e.g. mute invalid name inspection for specific file:</p>
-<pre class="code text"><a name="rest_code_4243672eba024a7da12dab0225eb07f2-1"></a># pylint: disable=invalid-name
+<pre class="code text"><a name="rest_code_91ce0c2bced9410f87c3149be43c49b7-1"></a># pylint: disable=invalid-name
 </pre>
 <p>or mute all inspections for a specific function:</p>
-<pre class="code text"><a name="rest_code_59cf42467cb54670ab83d76a2c1d79a8-1"></a>def main():  # pragma: no cover
-<a name="rest_code_59cf42467cb54670ab83d76a2c1d79a8-2"></a>    ...
+<pre class="code text"><a name="rest_code_79abde6fabe649939af3f3abbc8f4c2c-1"></a>def main():  # pragma: no cover
+<a name="rest_code_79abde6fabe649939af3f3abbc8f4c2c-2"></a>    ...
 </pre>
 </div>
 <div class="section" id="pydocstyle">
 <h2>pydocstyle</h2>
 <p><a class="reference external" href="http://www.pydocstyle.org">pydocstyle</a> is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.</p>
 <p>Execution is straightforward:</p>
-<pre class="code text"><a name="rest_code_325dc2e1c8034bafa1e802d5cb08fd56-1"></a>python -m pydocstyle
+<pre class="code text"><a name="rest_code_746af2f7684d403fa237b3c2935f426a-1"></a>python -m pydocstyle
 </pre>
 <p>And the result:</p>
-<pre class="code text"><a name="rest_code_66c564776f99458191b505a7336427ac-1"></a>./src/year2016/day4b.py:36 in public function ``solve``:
-<a name="rest_code_66c564776f99458191b505a7336427ac-2"></a>        D202: No blank lines allowed after function docstring (found 1)
-<a name="rest_code_66c564776f99458191b505a7336427ac-3"></a>./src/year2016/day4b.py:36 in public function ``solve``:
-<a name="rest_code_66c564776f99458191b505a7336427ac-4"></a>        D400: First line should end with a period (not 'd')
+<pre class="code text"><a name="rest_code_bcea40c8c25242adb5ba5e83a41adfcc-1"></a>./src/year2016/day4b.py:36 in public function ``solve``:
+<a name="rest_code_bcea40c8c25242adb5ba5e83a41adfcc-2"></a>        D202: No blank lines allowed after function docstring (found 1)
+<a name="rest_code_bcea40c8c25242adb5ba5e83a41adfcc-3"></a>./src/year2016/day4b.py:36 in public function ``solve``:
+<a name="rest_code_bcea40c8c25242adb5ba5e83a41adfcc-4"></a>        D400: First line should end with a period (not 'd')
 </pre>
 <p>Here I have two errors: first one points to a blank line after the docstring which is not allowed by the convention and the second one tells that first line of the docstring should end with the dot like a normal sentence does.</p>
 <p>There's no much to elaborate on here, just try it, al least <tt class="docutils literal">pydocstyle</tt> is going to enforce you to place docstring in all of your functions and classes which is kinda nice thing to do (and it will skip tests by default).</p>
@@ -119,7 +119,7 @@
 <h2>pycodestyle</h2>
 <p>You may think that <a class="reference external" href="http://pycodestyle.pycqa.org/">pycodestyle</a> is needless after you have pylint but it turns out not to be the true story. <tt class="docutils literal">pydocstyle</tt> is intended to find PEP8 errors and as simple as it is often finds some dumb style errors I have that <tt class="docutils literal">pylint</tt> failed to notice. I suspect <tt class="docutils literal">pylint</tt> sometimes thinks such stupid typos are not the thing it is going to spend time reporting.</p>
 <p>Very complicated usage:</p>
-<pre class="code text"><a name="rest_code_d6bf6c5109824a57b0f66c781e627b9d-1"></a>python -m pycodestyle --select E,W .
+<pre class="code text"><a name="rest_code_d1585886703d49e9aa66e701dd500c04-1"></a>python -m pycodestyle --select E,W .
 </pre>
 <p>Notice the <tt class="docutils literal"><span class="pre">--select</span></tt> flag - it's intended to enable all errors and warning which <tt class="docutils literal">pycodestyle</tt> can report. Kind of "ultra strict" mode. Try to run it against your sources and be surprised how many PEP8 errors you have. And if you're not the IDE user there're going to be tones of errors - brace yourself.</p>
 </div>
@@ -127,16 +127,16 @@
 <h2>mypy</h2>
 <p><a class="reference external" href="http://mypy-lang.org">mypy</a> is a different story. As we all know Python is a dynamic language but you still can type-annotate your code and have it type-checked before runtime with external tools, e.g. PyCharm or <tt class="docutils literal">mypy</tt>. This is a huge topic and you should read some docs to make yourself familiar with type annotations in Python, good start is <a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>.</p>
 <p>Type annotations is a double-edged sword - you're going to find some errors in your code in advance but you're also going to introduce a lot of redundant code to your project which is completely useless in the runtime. There're some ways to separate type annotations from the code itself - with stubs, but it's a different story, let's check a simple example:</p>
-<pre class="code python"><a name="rest_code_88fb5237dcc8428e8923bdba491470f9-1"></a><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a name="rest_code_88fb5237dcc8428e8923bdba491470f9-2"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_c34a5a95c55e4698b019bf25ac894d0f-1"></a><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a name="rest_code_c34a5a95c55e4698b019bf25ac894d0f-2"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </pre>
 <p>Our function checks if <tt class="docutils literal">a</tt> is even and returns <tt class="docutils literal">True</tt> or <tt class="docutils literal">False</tt>. I added types to function declaration with this new shiny Python 3 style, so basically <tt class="docutils literal">a</tt> should be <tt class="docutils literal">int</tt> and function should return <tt class="docutils literal">boolean</tt>. If you're using PyCharm it will throw a warning right into your type annotated face complaining about wrong output type which is <tt class="docutils literal">str</tt> in fact and no way <tt class="docutils literal">boolean</tt>.</p>
 <p>If you're using some other editor there will be no warning and we obviously want to have one. So to check this code against type errors we're going to use <tt class="docutils literal">mypy</tt>. Just save the function in <tt class="docutils literal">sample.py</tt> and run:</p>
-<pre class="code text"><a name="rest_code_52db6b6a14ad446393c68cb5d181e946-1"></a>python -m mypy sample.py
+<pre class="code text"><a name="rest_code_e4392c4d74604d5b820fb6c66f6555fd-1"></a>python -m mypy sample.py
 </pre>
 <p>and the result is:</p>
-<pre class="code text"><a name="rest_code_88828608b3734128882073bc346551a3-1"></a>sample.py: note: In function "foo":
-<a name="rest_code_88828608b3734128882073bc346551a3-2"></a>sample.py:2: error: Incompatible return value type (got "str", expected "bool")
+<pre class="code text"><a name="rest_code_758008163be5463ab897fdd18d6f9b1f-1"></a>sample.py: note: In function "foo":
+<a name="rest_code_758008163be5463ab897fdd18d6f9b1f-2"></a>sample.py:2: error: Incompatible return value type (got "str", expected "bool")
 </pre>
 <p>Not so fast my my sweet dynamic child.</p>
 <p>Ok, so I hope you kind of have a broad overview of possibilities. I'm not in any way a good expert in this topic and it's huge so you should read <tt class="docutils literal">mypy</tt> and <tt class="docutils literal">typing</tt> docs at least if you're interesting. I run <tt class="docutils literal">mypy</tt> over source code in the continues integration just to check everything outside of PyCharm. You may hate this type-stuff idea in Python all together so feel free to dump it right now but it worth trying I believe.</p>
@@ -157,28 +157,64 @@
 <li>Now a tricky part - configure Output Filters - it'll allow PyCharm to highlight <tt class="docutils literal">pylint</tt> output by inserting links to files with errors so you will be able to quickly jump to an error or warning in your code. Name and Description is not really important but Regular expression to match output is, so the format for us is <tt class="docutils literal"><span class="pre">$FILE_PATH$:$LINE$:$COLUMN$:.*</span></tt>, <tt class="docutils literal">$name$</tt> is a special variables used by PyCharm to understand where is file path, line and column in the line (read more in official documentation: <a class="reference external" href="https://www.jetbrains.com/help/pycharm/external-tools.html">External Tools</a>)</li>
 <li>Program is path to <tt class="docutils literal">pylint</tt> executable, we're using <tt class="docutils literal">$PyInterpreterDirectory$</tt> template to refer to directory where Python interpreter of the current project is placed</li>
 <li>Parameter field here solves two problems: first it specifies what files and folder should <tt class="docutils literal">pylint</tt> check (<tt class="docutils literal">main.py src tests</tt>, edit according to your code), second it sets output format for <tt class="docutils literal">pylint</tt> errors, it's required so PyCharm can understand it and provide useful links from errors to source code</li>
-<li>Working directory is easy - just $ContentRoot$ template, which is our project root</li>
+<li>Working directory is easy - just <tt class="docutils literal">$ContentRoot$</tt> template, which is our project root</li>
 </ul>
 <p>You can now access this external tool from <strong>Tools | External Tools</strong>. Feel free to run it against your code (make sure there're some PEP8 errors) and check the output. Meanwhile we're moving to <tt class="docutils literal">pydocstyle</tt>.</p>
+<p><tt class="docutils literal">pydocstyle</tt> is on the way:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/pydocstyle.png"><img alt="/images/2017/08/13/linters/pydocstyle.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/pydocstyle.thumbnail.png"></a>
+<ul class="simple">
+<li>Name, group, description and set of basics options as always</li>
+<li>Executable is <tt class="docutils literal">pydocstyle</tt>
+</li>
+<li>And <tt class="docutils literal">$ContentRoot$</tt> as working directory</li>
+</ul>
+<p>Now let's setup <tt class="docutils literal">pycodestyle</tt>:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/pycodestyle.png"><img alt="/images/2017/08/13/linters/pycodestyle.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/pycodestyle.thumbnail.png"></a>
+<ul class="simple">
+<li>Same simple settings for name, group and description</li>
+<li>Enable all options</li>
+<li>Program executable is <tt class="docutils literal">pycodestyle</tt> in <tt class="docutils literal">$PyInterpreterDirectory$</tt>
+</li>
+<li>For parameters we're using <tt class="docutils literal"><span class="pre">--select</span></tt> flag to enable all errors and warnings, the dot is target for <tt class="docutils literal">pycodestyle</tt>
+</li>
+<li>Same working directory as <tt class="docutils literal">pylint</tt> has</li>
+</ul>
+<p>And the latest - <tt class="docutils literal">mypy</tt>:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/mypy.png"><img alt="/images/2017/08/13/linters/mypy.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/mypy.thumbnail.png"></a>
+<ul class="simple">
+<li>Everything is the same</li>
+<li>Except executable is <tt class="docutils literal">mypy</tt>
+</li>
+<li>And parameters is dot - target for <tt class="docutils literal">mypy</tt>
+</li>
+</ul>
+<p>In the result you should have something like this:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/result.png"><img alt="/images/2017/08/13/linters/result.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/result.thumbnail.png"></a>
+<p>And you can access everything from <strong>Tools</strong> menu:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/menu.png"><img alt="/images/2017/08/13/linters/menu.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/menu.thumbnail.png"></a>
+<p>The final touch is to add all this external tools to some run configuration, e.g. one to run all the tests:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/run_config.png"><img alt="/images/2017/08/13/linters/run_config.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/run_config.thumbnail.png"></a>
+<p>Now try to execute this run configuration and see additional tabs with linters result:</p>
+<a class="reference external image-reference" href="../../../../../images/2017/08/13/linters/run_result.png"><img alt="/images/2017/08/13/linters/run_result.thumbnail.png" class="align-center" src="../../../../../images/2017/08/13/linters/run_result.thumbnail.png"></a>
 </div>
 <div class="section" id="live-example">
 <h2>Live Example</h2>
 <p>For a live example I choose my <a class="reference external" href="https://github.com/lancelote/advent_of_code">simple project</a> with solutions for <a class="reference external" href="http://adventofcode.com">Advent of Code</a> puzzles. It's super easy and does not use any specific configuration for linters apart of <tt class="docutils literal">pylintrc</tt> and a little customisation for calls in <tt class="docutils literal">Makefile</tt>.</p>
 <p>I usually implement some kind of automation for my projects. I used several different utilities for it (<a class="reference external" href="http://www.pyinvoke.org">invoke</a>, <a class="reference external" href="https://github.com/paver/paver">paver</a>, etc) and now my favorite is simple <tt class="docutils literal">Makefile</tt>. The logic is very simple - <tt class="docutils literal">Makefile</tt> contains commands which you can run with <tt class="docutils literal">make &lt;command&gt;</tt>. This command will execute a bunch of predefined instructions right in your terminal, for example:</p>
-<pre class="code text"><a name="rest_code_2bf65d6c02ff4d309ce81a002e501c80-1"></a>lint:
-<a name="rest_code_2bf65d6c02ff4d309ce81a002e501c80-2"></a>    python -m pylint main.py src tests
-<a name="rest_code_2bf65d6c02ff4d309ce81a002e501c80-3"></a>    python -m pydocstyle
-<a name="rest_code_2bf65d6c02ff4d309ce81a002e501c80-4"></a>    python -m pycodestyle --select E,W .
-<a name="rest_code_2bf65d6c02ff4d309ce81a002e501c80-5"></a>    python -m mypy .
+<pre class="code text"><a name="rest_code_14724eee7cf14b49a6695bedf126471f-1"></a>lint:
+<a name="rest_code_14724eee7cf14b49a6695bedf126471f-2"></a>    python -m pylint main.py src tests
+<a name="rest_code_14724eee7cf14b49a6695bedf126471f-3"></a>    python -m pydocstyle
+<a name="rest_code_14724eee7cf14b49a6695bedf126471f-4"></a>    python -m pycodestyle --select E,W .
+<a name="rest_code_14724eee7cf14b49a6695bedf126471f-5"></a>    python -m mypy .
 </pre>
 <p><tt class="docutils literal">lint</tt> command will execute all linters one by one. Each line is straightforward. If there will be errors <tt class="docutils literal">make</tt> will stop and output the captured log. Be aware that you MUST use tabs instead of spaces in makefiles for indentation or everything is going to blow up.</p>
 <p>For manual usage I rely on PyCharm integration but it's very useful to have such automation for continues integration, for example my <tt class="docutils literal">.travis.yml</tt> related part:</p>
-<pre class="code text"><a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-1"></a>install:
-<a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-2"></a>  - make update
-<a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-3"></a>
-<a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-4"></a>script:
-<a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-5"></a>  - make test
-<a name="rest_code_ac644505f7884ba0ad3b258224bfecdd-6"></a>  - make lint
+<pre class="code text"><a name="rest_code_73710a266ad54cfb99bf57d028765f8f-1"></a>install:
+<a name="rest_code_73710a266ad54cfb99bf57d028765f8f-2"></a>  - make update
+<a name="rest_code_73710a266ad54cfb99bf57d028765f8f-3"></a>
+<a name="rest_code_73710a266ad54cfb99bf57d028765f8f-4"></a>script:
+<a name="rest_code_73710a266ad54cfb99bf57d028765f8f-5"></a>  - make test
+<a name="rest_code_73710a266ad54cfb99bf57d028765f8f-6"></a>  - make lint
 </pre>
 <p>Very concise and reusable.</p>
 </div>
