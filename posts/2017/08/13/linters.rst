@@ -1,7 +1,7 @@
 .. title: Linters and PyCharm
 .. slug: linters
 .. date: 2017-08-13 16:34:26 UTC+03:00
-.. tags: draft
+.. tags:
 .. category: 
 .. link: 
 .. description: 
@@ -192,21 +192,21 @@ Now let's setup ``pycodestyle``:
 - For parameters we're using ``--select`` flag to enable all errors and warnings, the dot is target for ``pycodestyle``
 - Same working directory as ``pylint`` has
 
-And the latest - ``mypy``:
+And the last one - ``mypy``:
 
 .. thumbnail:: /images/2017/08/13/linters/mypy.png
     :align: center
 
 - Everything is the same
 - Except executable is ``mypy``
-- And parameters is dot - target for ``mypy``
+- And parameter is dot - target for ``mypy``
 
 In the result you should have something like this:
 
 .. thumbnail:: /images/2017/08/13/linters/result.png
     :align: center
 
-And you can access everything from **Tools** menu:
+And you can access everything from **Tools** menu and run independently:
 
 .. thumbnail:: /images/2017/08/13/linters/menu.png
     :align: center
