@@ -32,7 +32,7 @@ pylint_ is a well known Python linter and one of my favorite tools which I use e
 
     python -m pylint <some_dir>
 
-By default it generates a super verbose output with code assessment, different metrics (tables) and so on. The most important here is warnings (top of the report), e.g.:
+By default it generates a voluminous output with code assessment, different metrics (tables) and so on. The most important here is warnings (top of the report), e.g.:
 
 .. code::
 
@@ -68,6 +68,7 @@ This will reduce the size of output (I don't really care about my code assessmen
 .. code::
 
     # pylint: disable=invalid-name
+    ...
 
 
 or mute all inspections for a specific function:
@@ -80,7 +81,7 @@ or mute all inspections for a specific function:
 pydocstyle
 ==========
 
-pydocstyle_ is a simple tool which goal is to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.
+pydocstyle_ is a simple tool with goal to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.
 
 Execution is straightforward:
 
@@ -144,12 +145,12 @@ and the result is:
 
 Not so fast my my sweet dynamic child.
 
-Ok, so I hope you kind of have a broad overview of possibilities. I'm not in any way a good expert in this topic and it's huge so you should read ``mypy`` and ``typing`` docs at least if you're interesting. I run ``mypy`` over source code in the continues integration just to check everything outside of PyCharm. You may hate this type-stuff idea in Python all together so feel free to dump it right now but it worth trying I believe.
+Ok, so I hope you have a broad overview of possibilities now. I'm not in any way an expert in this topic and it's huge so you should read ``mypy`` and ``typing`` docs at least if you're interesting. I run ``mypy`` over source code in the continues integration just to check everything outside of PyCharm. You may hate this type-stuff idea in Python all together so feel free to dump it right now but it worth trying I believe.
 
 PyCharm Integration
 ===================
 
-We'll use `External Tools`_ feature to integrate all four linters with PyCharm to some extend. Open **Settings | Tools | External Tools** in PyCharm and click a ``+`` button to add first external tool in out project.
+We'll use `External Tools`_ feature to integrate all four linters with PyCharm to some extent. Open **Settings | Tools | External Tools** in PyCharm and click a ``+`` button to add first external tool in out project.
 
 .. thumbnail:: /images/2017/08/13/linters/external.png
     :align: center
