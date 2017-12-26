@@ -1,3 +1,6 @@
+.. image:: https://requires.io/github/lancelote/lancelote.github.io/requirements.svg?branch=master
+    :target: https://requires.io/github/lancelote/lancelote.github.io/requirements/?branch=master
+
 =================
 pavelkarateev.com
 =================
@@ -22,3 +25,11 @@ Usage
     nikola build
     nikola serve
     nikola github_deploy -m "commit message"
+
+Utils
+=====
+
+.. code:: bash
+
+    make deps    # Update dependencies in requirements.txt
+    make update  # Install / Update all requirements
