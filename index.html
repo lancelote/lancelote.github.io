@@ -1,71 +1,112 @@
 <!DOCTYPE html>
-<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="Work hard - die Pythonic">
 <meta name="viewport" content="width=device-width">
 <title>Pavel Karateev</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/rst_base.css" rel="stylesheet" type="text/css">
+<link href="assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="rss.xml">
 <link rel="canonical" href="http://pavelkarateev.com/">
 <link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="prefetch" href="posts/2017/08/13/linters/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="prefetch" href="posts/2018/09/07/bytecode/" type="text/html">
 </head>
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
-         
-    <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
+             <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
 
         <span id="blog-title">Pavel Karateev</span>
     </a></h1>
 
         
-
-        
-    <nav id="menu"><ul>
+            <nav id="menu"><ul>
 <li><a href="pages/about">About</a></li>
                 <li><a href="https://twitter.com/Lancel0te">Twitter</a></li>
-                <li><a href="archive.html">Archive</a></li>
                 <li><a href="https://github.com/lancelote/lancelote.github.io">Source</a></li>
+                <li><a href="archive.html">Archive</a></li>
+                <li><a href="categories/">Tags</a></li>
+                <li><a href="rss.xml">RSS feed</a></li>
+
+    
     
     
     </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2017/08/13/linters/" class="u-url">Linters and PyCharm</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2018/09/07/bytecode/" class="u-url">Runtime bytecode manipulations</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Pavel Karateev
+            </span></p>
+            <p class="dateline"><a href="posts/2018/09/07/bytecode/" rel="bookmark"><time class="published dt-published" datetime="2018-09-07T14:30:00+03:00" title="2018-09-07 14:30">2018-09-07 14:30</time></a></p>
+                <p class="commentline">            <a href="posts/2018/09/07/bytecode/#disqus_thread" data-disqus-identifier="cache/posts/2018/09/07/bytecode.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>Let's say you have a class with a method which raises an exception on the first
+line and prints something on the second. Is it possible to reach print without
+editing the source code or using <tt class="docutils literal">pdb</tt>? It is indeed, we will do it by
+patching a method bytecode in the runtime.</p>
+<p>Do not try this at home!</p>
+<p class="more"><a href="posts/2018/09/07/bytecode/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2017/08/13/linters/" class="u-url">Linters and PyCharm</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2017/08/13/linters/" rel="bookmark"><time class="published dt-published" datetime="2017-08-13T16:34:26+03:00" title="2017-08-13 16:34">2017-08-13 16:34</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2017/08/13/linters/#disqus_thread" data-disqus-identifier="cache/posts/2017/08/13/linters.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Today's topic is linters. Not sure about you but I'm a huge fun of linters in Python. As a PyCharm user I already have great inspections and stuff you may expect from a good IDE but as a code style maniac it's absolutely not enough for me. So my "standard" pack of linters include: <tt class="docutils literal">pylint</tt>, <tt class="docutils literal">pydocstyle</tt>, <tt class="docutils literal">pycodestyle</tt> and <tt class="docutils literal">mypy</tt>. Not sure if one can call <tt class="docutils literal">mypy</tt> a linter but let's live with it for now. I'll briefly describe each one of them, touch PyCharm integration via external tools and provide a live example from one of my repositories on github. Let's go.</p>
 <p class="more"><a href="posts/2017/08/13/linters/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2016/06/16/python-basics-and-usage/" class="u-url">Завершен курс "Python основы и применение"</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2016/06/16/python-basics-and-usage/" class="u-url">Завершен курс "Python основы и применение"</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2016/06/16/python-basics-and-usage/" rel="bookmark"><time class="published dt-published" datetime="2016-06-15T00:00:00+03:00" title="2016-06-15 00:00">2016-06-15 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2016/06/16/python-basics-and-usage/#disqus_thread" data-disqus-identifier="cache/posts/2016/06/16/python-basics-and-usage.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Завершил курс "<a class="reference external" href="https://stepic.org/course/Python-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-512">Python - Основы и применение</a>" от <a class="reference external" href="https://stepic.org/">Stepic.org</a>. Несмотря на название курс оказался весьма интересным и не таким уж и базовым - полные новички в Python могут столкнуться с проблемами. Мне очень понравилось, что были разобраны некоторые традиционно пропускаемые вопросы (пресловутый Method Resolution Order), которые как раз очень любят спрашивать на собеседованиях. Чуть подробнее о плюсах и минусах, а также краткое содержание внутри.</p>
 <p class="more"><a href="posts/2016/06/16/python-basics-and-usage/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2016/06/15/intermediate-python/" class="u-url">Перевод книги "Intermediate Python"</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2016/06/15/intermediate-python/" class="u-url">Перевод книги "Intermediate Python"</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2016/06/15/intermediate-python/" rel="bookmark"><time class="published dt-published" datetime="2016-06-15T00:00:00+03:00" title="2016-06-15 00:00">2016-06-15 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2016/06/15/intermediate-python/#disqus_thread" data-disqus-identifier="cache/posts/2016/06/15/intermediate-python.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Не так давно я закончил перевод небольшой книги от разработчика из
@@ -79,26 +120,34 @@ Python при всей его интуитивности и простоте е�
 <p class="more"><a href="posts/2016/06/15/intermediate-python/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2016/02/18/oss-university-start/" class="u-url">First FreeCodeCamp project is complete</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2016/02/18/oss-university-start/" class="u-url">First FreeCodeCamp project is complete</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2016/02/18/oss-university-start/" rel="bookmark"><time class="published dt-published" datetime="2016-02-18T00:00:00+03:00" title="2016-02-18 00:00">2016-02-18 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2016/02/18/oss-university-start/#disqus_thread" data-disqus-identifier="cache/posts/2016/02/18/ayn-rand-tribute.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Not long ago I have started my <a class="reference external" href="http://www.freecodecamp.com/lancelote">FreeCodeCamp</a> path thanks to <a class="reference external" href="https://smartprogress.do/goal/162912/">smartprogress.do</a> to gain a better knowledge of frontend technology stack. I was somewhat sceptical that time about my capabilities in the area ("I am not a designer - I'm an engineer") and I did no like front end altogether. All that billions of JS-related technologies and HTML with CSS on top of the cake, gosh! Time has passed and I have catch myself today enjoining of frontend development. So, what is happened to me? Not much in reality.</p>
 <p class="more"><a href="posts/2016/02/18/oss-university-start/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2016/01/11/oss-university-start/" class="u-url">OSS University Path</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2016/01/11/oss-university-start/" class="u-url">OSS University Path</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2016/01/11/oss-university-start/" rel="bookmark"><time class="published dt-published" datetime="2016-01-11T00:00:00+03:00" title="2016-01-11 00:00">2016-01-11 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2016/01/11/oss-university-start/#disqus_thread" data-disqus-identifier="cache/posts/2016/01/11/oss-university.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Sadly I have no solid background in CS. There were few CS-related courses in
@@ -110,90 +159,90 @@ me build vast and complete CS "base".</p>
 <p class="more"><a href="posts/2016/01/11/oss-university-start/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2015/12/04/taskbuster-tutorial/" class="u-url">Taskbuster Tutorial</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2015/12/04/taskbuster-tutorial/" class="u-url">Taskbuster Tutorial</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2015/12/04/taskbuster-tutorial/" rel="bookmark"><time class="published dt-published" datetime="2015-12-04T00:00:00+03:00" title="2015-12-04 00:00">2015-12-04 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2015/12/04/taskbuster-tutorial/#disqus_thread" data-disqus-identifier="cache/posts/2015/12/04/taskbuster.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>From time to time I check out my <strong>ToRead</strong> folder (believe me it is infinite), and guess what I found there a week ago - BEST DJANGO TUTORIAL I EVER READ! Just go ahead and look at this beauty: <a class="reference external" href="http://www.marinamele.com/taskbuster-django-tutorial">Taskbuster Django Tutorial</a> by Marina Mele. Table of content is available inside the <strong>Read more...</strong>. So why am I so excited about it? Because <a class="reference external" href="https://twitter.com/Marina_Mele">Marina</a> used a rare way to approach tutorial creation. She did not start with <em>no one used in real world</em> practises like many authors do, but goes straight to the best Django development patterns. She even wrote about environment variables!</p>
 <p class="more"><a href="posts/2015/12/04/taskbuster-tutorial/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2015/05/01/web-app-arch/" class="u-url">Онлайн курс Web Application Architectures</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2015/05/01/web-app-arch/" class="u-url">Онлайн курс Web Application Architectures</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2015/05/01/web-app-arch/" rel="bookmark"><time class="published dt-published" datetime="2015-05-01T00:00:00+03:00" title="2015-05-01 00:00">2015-05-01 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2015/05/01/web-app-arch/#disqus_thread" data-disqus-identifier="cache/posts/2015/05/01/web-app-arch.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Только что завершил последнее задание курса <a class="reference external" href="https://class.coursera.org/webapplications-003">Web Application Architectures</a> от университета Нью-Мексико и Coursera. Потрачено ли время зря?</p>
 <p class="more"><a href="posts/2015/05/01/web-app-arch/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2015/04/21/djangogirls-ru/" class="u-url">Перевод руководства Djangogirls</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2015/04/21/djangogirls-ru/" class="u-url">Перевод руководства Djangogirls</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2015/04/21/djangogirls-ru/" rel="bookmark"><time class="published dt-published" datetime="2015-04-21T00:00:00+03:00" title="2015-04-21 00:00">2015-04-21 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2015/04/21/djangogirls-ru/#disqus_thread" data-disqus-identifier="cache/posts/2015/04/21/djangogirls-ru.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p><strong>Djangogirls</strong> - это некоммерческая организация, занимающаяся поддержкой программирования и конкретно Django в женской среде. Основная работа заключается в проведении семинаров по всему миру для начинающих, на которых леди могут под чутким руководством менторов собрать свой собственный блог на Django и пройти другие этапы знакомства с фреймворком, Python, git и другими релевантными технологиями.</p>
 <p class="more"><a href="posts/2015/04/21/djangogirls-ru/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2014/12/13/tidyr-how-to/" class="u-url">tidyr HOW-TO</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2014/12/13/tidyr-how-to/" class="u-url">tidyr HOW-TO</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Pavel Karateev
             </span></p>
             <p class="dateline"><a href="posts/2014/12/13/tidyr-how-to/" rel="bookmark"><time class="published dt-published" datetime="2014-12-13T00:00:00+03:00" title="2014-12-13 00:00">2014-12-13 00:00</time></a></p>
-        </div>
+                <p class="commentline">            <a href="posts/2014/12/13/tidyr-how-to/#disqus_thread" data-disqus-identifier="cache/posts/2014/12/13/tidyr.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div>
 <p>Шпаргалка возможностей пакета <tt class="docutils literal">tidyr</tt>.</p>
 <p class="more"><a href="posts/2014/12/13/tidyr-how-to/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2014/11/03/mosaic-plot/" class="u-url">Мозаичные диаграммы в ggplot2</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Pavel Karateev
-            </span></p>
-            <p class="dateline"><a href="posts/2014/11/03/mosaic-plot/" rel="bookmark"><time class="published dt-published" datetime="2014-11-03T00:00:00+03:00" title="2014-11-03 00:00">2014-11-03 00:00</time></a></p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>Сегодня на повестке дня мозаичные диаграммы в <strong>R</strong> при помощи <tt class="docutils literal">ggplot2</tt>. И,
-да, в <tt class="docutils literal">ggplot2</tt> нет их реализации "из коробки", но с должным умением и
-достаточно большой кувалдой дело можно поправить.</p>
-<p class="more"><a href="posts/2014/11/03/mosaic-plot/">Read more…</a></p>
-</div>
-    </div>
     </article>
 </div>
-
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
                 <a href="index-1.html" rel="next">Older posts</a>
             </li>
-        </ul></nav></main><footer id="footer"><p>Contents © 2017         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+        </ul></nav><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2018         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
-    
-    
-
-        <script src="assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+                <script src="assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
-    }});</script>
+    }});
+    </script>
 </body>
 </html>

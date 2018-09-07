@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Мозаичные диаграммы в ggplot2 | Pavel Karateev</title>
-<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/rst_base.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/custom.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../../../rss.xml">
 <link rel="canonical" href="http://pavelkarateev.com/posts/2014/11/03/mosaic-plot/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Pavel Karateev">
 <link rel="prev" href="../../../10/19/marginal-plots/" title="Диаграмма рассеяния с коробчатыми диаграммами по периметру" type="text/html">
@@ -26,20 +33,21 @@
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
-         
-    <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
+             <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
 
         <span id="blog-title">Pavel Karateev</span>
     </a></h1>
 
         
-
-        
-    <nav id="menu"><ul>
+            <nav id="menu"><ul>
 <li><a href="../../../../../pages/about">About</a></li>
                 <li><a href="https://twitter.com/Lancel0te">Twitter</a></li>
-                <li><a href="../../../../../archive.html">Archive</a></li>
                 <li><a href="https://github.com/lancelote/lancelote.github.io">Source</a></li>
+                <li><a href="../../../../../archive.html">Archive</a></li>
+                <li><a href="../../../../../categories/">Tags</a></li>
+                <li><a href="../../../../../rss.xml">RSS feed</a></li>
+
+    
     
     
     </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Мозаичные диаграммы в ggplot2</a></h1>
@@ -49,12 +57,14 @@
                     Pavel Karateev
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-11-03T00:00:00+03:00" itemprop="datePublished" title="2014-11-03 00:00">2014-11-03 00:00</time></a></p>
-            
-        <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2014/11/03/mosaic-plot.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
         </div>
         
-
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>Сегодня на повестке дня мозаичные диаграммы в <strong>R</strong> при помощи <tt class="docutils literal">ggplot2</tt>. И,
@@ -68,75 +78,75 @@
 рекомендации несколько устарели (<tt class="docutils literal">ddply</tt>, <tt class="docutils literal">opts</tt>, <tt class="docutils literal">theme_line</tt>) и автор забыл
 упомянуть о (<tt class="docutils literal">library(reshape2)</tt> и <tt class="docutils literal">library(plyr)</tt>).</p>
 <p>Нам потребуется только <tt class="docutils literal">ggplot2</tt>:</p>
-<pre class="code r"><a name="rest_code_6954800c7bc24a3da505e6caf91d19a6-1"></a><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<pre class="code r"><a name="rest_code_ccb2b2c3d6f3449b98a988f78d44be0d-1"></a><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_6701835642e44cbd86bb2e54f99abd9a-1"></a>## Loading required package: methods
+<pre class="code text"><a name="rest_code_be84c4c62cf046e9a1e9aaeef214b1b7-1"></a>## Loading required package: methods
 </pre>
 <p>Для примера будем использовать массив данных о бриллиантах, он идет в комплекте
 с <tt class="docutils literal">ggplot2</tt>:</p>
-<pre class="code r"><a name="rest_code_8bd06064096146eb8daeea5e9c991c31-1"></a><span class="kp">head</span><span class="p">(</span>diamonds<span class="p">)</span>
+<pre class="code r"><a name="rest_code_a2efe879b5744f5ba8866d86f005137c-1"></a><span class="kp">head</span><span class="p">(</span>diamonds<span class="p">)</span>
 </pre>
-<pre class="code r"><a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-1"></a><span class="c1">##   carat       cut color clarity depth table price    x    y    z</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-2"></a><span class="c1">## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-3"></a><span class="c1">## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-4"></a><span class="c1">## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-5"></a><span class="c1">## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-6"></a><span class="c1">## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75</span>
-<a name="rest_code_bdc4992da8ac4a7a81e601c2f3c08e03-7"></a><span class="c1">## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48</span>
+<pre class="code r"><a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-1"></a><span class="c1">##   carat       cut color clarity depth table price    x    y    z</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-2"></a><span class="c1">## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-3"></a><span class="c1">## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-4"></a><span class="c1">## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-5"></a><span class="c1">## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-6"></a><span class="c1">## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75</span>
+<a name="rest_code_3f2ca94e9f38444ebaf5c47f98d934a3-7"></a><span class="c1">## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48</span>
 </pre>
 <p>Мозаичную диаграмму мы будем строить через вспомогательную функцию <tt class="docutils literal">ggMMplot</tt>,
 которая будет принимать две дискретные переменные:</p>
-<pre class="code r"><a name="rest_code_af7634c30bc744afb9a100d082de10f1-1"></a>ggMMplot <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>var1<span class="p">,</span> var2<span class="p">){</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-2"></a>  <span class="c1"># ggplot2 должен быть загружен</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-3"></a>  <span class="kn">require</span><span class="p">(</span>ggplot2<span class="p">)</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-4"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-5"></a>  <span class="c1"># Подсчитываем диапазон значений дискретных переменных</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-6"></a>  levVar1 <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">levels</span><span class="p">(</span>var1<span class="p">))</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-7"></a>  levVar2 <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">levels</span><span class="p">(</span>var2<span class="p">))</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-8"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-9"></a>  <span class="c1"># Строим таблицу вероятностей</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-10"></a>  jointTable <span class="o">&lt;-</span> <span class="kp">prop.table</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>var1<span class="p">,</span> var2<span class="p">))</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-11"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-12"></a>  <span class="c1"># Начинаем собирать data.frame, который будет использован для построения</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-13"></a>  <span class="c1"># диаграммы, для начала добавим в него сконвертированную таблицу вероятностей</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-14"></a>  plotData <span class="o">&lt;-</span> <span class="kp">as.data.frame</span><span class="p">(</span>jointTable<span class="p">)</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-15"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-16"></a>  <span class="c1"># Добавляем в data.frame информацию о ширине каждого из столбцов</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-17"></a>  plotData<span class="o">$</span>marginVar1 <span class="o">&lt;-</span> <span class="kp">prop.table</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>var1<span class="p">))</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-18"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-19"></a>  <span class="c1"># Добавляем в data.frame информацию о высоте каждой секции столбца</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-20"></a>  plotData<span class="o">$</span>var2Height <span class="o">&lt;-</span> plotData<span class="o">$</span>Freq <span class="o">/</span> plotData<span class="o">$</span>marginVar1
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-21"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-22"></a>  <span class="c1"># Добавляем в data.frame информацию о положении центра каждого столбца</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-23"></a>  plotData<span class="o">$</span>var1Center <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="kp">cumsum</span><span class="p">(</span>plotData<span class="o">$</span>marginVar1<span class="p">)[</span><span class="m">1</span><span class="o">:</span>levVar1 <span class="o">-</span> <span class="m">1</span><span class="p">])</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-24"></a>    plotData<span class="o">$</span>marginVar1 <span class="o">/</span> <span class="m">2</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-25"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-26"></a>  <span class="c1"># Строим диаграмму</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-27"></a>  ggplot<span class="p">(</span>plotData<span class="p">,</span> aes<span class="p">(</span>var1Center<span class="p">,</span> var2Height<span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-28"></a>    geom_bar<span class="p">(</span>stat <span class="o">=</span> <span class="s">"identity"</span><span class="p">,</span> aes<span class="p">(</span>width <span class="o">=</span> marginVar1<span class="p">,</span> fill <span class="o">=</span> var2<span class="p">),</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-29"></a>             col <span class="o">=</span> <span class="s">"black"</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-30"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-31"></a>    <span class="c1"># Подписи над столбцами</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-32"></a>    geom_text<span class="p">(</span>aes<span class="p">(</span>label <span class="o">=</span> <span class="kp">as.character</span><span class="p">(</span>var1<span class="p">),</span> x <span class="o">=</span> var1Center<span class="p">,</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-33"></a>                 y <span class="o">=</span> <span class="m">1.05</span><span class="p">),</span> size <span class="o">=</span> <span class="m">3</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"black"</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-34"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-35"></a>    <span class="c1"># Изменяем название легенды и меняем цветовую схему</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-36"></a>    scale_fill_brewer<span class="p">(</span>name<span class="o">=</span><span class="s">"Clarity"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"Set2"</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-37"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-38"></a>    <span class="c1"># Черно-белая тема для окружения</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-39"></a>    theme_bw<span class="p">()</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-40"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-41"></a>    <span class="c1"># Убираем названия осей</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-42"></a>    labs<span class="p">(</span>x <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> y <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> fill <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-43"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-44"></a>    <span class="c1"># Сетка на фоне не нужна</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-45"></a>    theme<span class="p">(</span>panel.grid.major <span class="o">=</span> element_line<span class="p">(</span>colour <span class="o">=</span> <span class="kc">NA</span><span class="p">),</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-46"></a>          panel.grid.minor <span class="o">=</span> element_line<span class="p">(</span>colour <span class="o">=</span> <span class="kc">NA</span><span class="p">))</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-47"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-48"></a>  <span class="p">}</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-49"></a>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-50"></a><span class="c1"># Строим мозаичную диаграмму, переменные: качество огранки vs. чистота</span>
-<a name="rest_code_af7634c30bc744afb9a100d082de10f1-51"></a>ggMMplot<span class="p">(</span>diamonds<span class="o">$</span><span class="kp">cut</span><span class="p">,</span> diamonds<span class="o">$</span>clarity<span class="p">)</span>
+<pre class="code r"><a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-1"></a>ggMMplot <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>var1<span class="p">,</span> var2<span class="p">){</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-2"></a>  <span class="c1"># ggplot2 должен быть загружен</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-3"></a>  <span class="kn">require</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-4"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-5"></a>  <span class="c1"># Подсчитываем диапазон значений дискретных переменных</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-6"></a>  levVar1 <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">levels</span><span class="p">(</span>var1<span class="p">))</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-7"></a>  levVar2 <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">levels</span><span class="p">(</span>var2<span class="p">))</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-8"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-9"></a>  <span class="c1"># Строим таблицу вероятностей</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-10"></a>  jointTable <span class="o">&lt;-</span> <span class="kp">prop.table</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>var1<span class="p">,</span> var2<span class="p">))</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-11"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-12"></a>  <span class="c1"># Начинаем собирать data.frame, который будет использован для построения</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-13"></a>  <span class="c1"># диаграммы, для начала добавим в него сконвертированную таблицу вероятностей</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-14"></a>  plotData <span class="o">&lt;-</span> <span class="kp">as.data.frame</span><span class="p">(</span>jointTable<span class="p">)</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-15"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-16"></a>  <span class="c1"># Добавляем в data.frame информацию о ширине каждого из столбцов</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-17"></a>  plotData<span class="o">$</span>marginVar1 <span class="o">&lt;-</span> <span class="kp">prop.table</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>var1<span class="p">))</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-18"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-19"></a>  <span class="c1"># Добавляем в data.frame информацию о высоте каждой секции столбца</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-20"></a>  plotData<span class="o">$</span>var2Height <span class="o">&lt;-</span> plotData<span class="o">$</span>Freq <span class="o">/</span> plotData<span class="o">$</span>marginVar1
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-21"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-22"></a>  <span class="c1"># Добавляем в data.frame информацию о положении центра каждого столбца</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-23"></a>  plotData<span class="o">$</span>var1Center <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="kp">cumsum</span><span class="p">(</span>plotData<span class="o">$</span>marginVar1<span class="p">)[</span><span class="m">1</span><span class="o">:</span>levVar1 <span class="o">-</span> <span class="m">1</span><span class="p">])</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-24"></a>    plotData<span class="o">$</span>marginVar1 <span class="o">/</span> <span class="m">2</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-25"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-26"></a>  <span class="c1"># Строим диаграмму</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-27"></a>  ggplot<span class="p">(</span>plotData<span class="p">,</span> aes<span class="p">(</span>var1Center<span class="p">,</span> var2Height<span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-28"></a>    geom_bar<span class="p">(</span>stat <span class="o">=</span> <span class="s">"identity"</span><span class="p">,</span> aes<span class="p">(</span>width <span class="o">=</span> marginVar1<span class="p">,</span> fill <span class="o">=</span> var2<span class="p">),</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-29"></a>             col <span class="o">=</span> <span class="s">"black"</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-30"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-31"></a>    <span class="c1"># Подписи над столбцами</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-32"></a>    geom_text<span class="p">(</span>aes<span class="p">(</span>label <span class="o">=</span> <span class="kp">as.character</span><span class="p">(</span>var1<span class="p">),</span> x <span class="o">=</span> var1Center<span class="p">,</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-33"></a>                 y <span class="o">=</span> <span class="m">1.05</span><span class="p">),</span> size <span class="o">=</span> <span class="m">3</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"black"</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-34"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-35"></a>    <span class="c1"># Изменяем название легенды и меняем цветовую схему</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-36"></a>    scale_fill_brewer<span class="p">(</span>name<span class="o">=</span><span class="s">"Clarity"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"Set2"</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-37"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-38"></a>    <span class="c1"># Черно-белая тема для окружения</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-39"></a>    theme_bw<span class="p">()</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-40"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-41"></a>    <span class="c1"># Убираем названия осей</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-42"></a>    labs<span class="p">(</span>x <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> y <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> fill <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-43"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-44"></a>    <span class="c1"># Сетка на фоне не нужна</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-45"></a>    theme<span class="p">(</span>panel.grid.major <span class="o">=</span> element_line<span class="p">(</span>colour <span class="o">=</span> <span class="kc">NA</span><span class="p">),</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-46"></a>          panel.grid.minor <span class="o">=</span> element_line<span class="p">(</span>colour <span class="o">=</span> <span class="kc">NA</span><span class="p">))</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-47"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-48"></a>  <span class="p">}</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-49"></a>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-50"></a><span class="c1"># Строим мозаичную диаграмму, переменные: качество огранки vs. чистота</span>
+<a name="rest_code_e81cb47d1dbc422ea459fc7b0657624c-51"></a>ggMMplot<span class="p">(</span>diamonds<span class="o">$</span><span class="kp">cut</span><span class="p">,</span> diamonds<span class="o">$</span>clarity<span class="p">)</span>
 </pre>
 <a class="reference external image-reference" href="../../../../../images/2014/11/03/mosaic-plot/unnamed-chunk-1-1.png"><img alt="/images/2014/11/03/mosaic-plot/unnamed-chunk-1-1.thumbnail.png" class="align-center" src="../../../../../images/2014/11/03/mosaic-plot/unnamed-chunk-1-1.thumbnail.png"></a>
 <p>Что почитать еще? Из всех источников, что мне попались в процессе поиска, я
@@ -153,16 +163,36 @@ Christopher DeSante и David Sparks (Университет Дьюка). Есл�
             <li class="next">
                 <a href="../../../12/13/tidyr-how-to/" rel="next" title="tidyr HOW-TO">Next post</a>
             </li>
-        </ul></nav></aside></article></main><footer id="footer"><p>Contents © 2017         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="pavelkarateev",
+            disqus_url="http://pavelkarateev.com/posts/2014/11/03/mosaic-plot/",
+        disqus_title="\u041c\u043e\u0437\u0430\u0438\u0447\u043d\u044b\u0435 \u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u044b \u0432 ggplot2",
+        disqus_identifier="cache/posts/2014/11/03/mosaic-plot.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2018         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
-    
-    
-
-        <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+                <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
-    }});</script>
+    }});
+    </script>
 </body>
 </html>

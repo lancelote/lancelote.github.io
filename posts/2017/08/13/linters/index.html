@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Linters and PyCharm | Pavel Karateev</title>
-<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/rst_base.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/custom.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../../../rss.xml">
 <link rel="canonical" href="http://pavelkarateev.com/posts/2017/08/13/linters/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Pavel Karateev">
 <link rel="prev" href="../../../../2016/06/15/intermediate-python/" title='Перевод книги "Intermediate Python"' type="text/html">
+<link rel="next" href="../../../../2018/09/07/bytecode/" title="Runtime bytecode manipulations" type="text/html">
 <meta property="og:site_name" content="Pavel Karateev">
 <meta property="og:title" content="Linters and PyCharm">
 <meta property="og:url" content="http://pavelkarateev.com/posts/2017/08/13/linters/">
@@ -21,20 +29,21 @@
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
-         
-    <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
+             <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
 
         <span id="blog-title">Pavel Karateev</span>
     </a></h1>
 
         
-
-        
-    <nav id="menu"><ul>
+            <nav id="menu"><ul>
 <li><a href="../../../../../pages/about">About</a></li>
                 <li><a href="https://twitter.com/Lancel0te">Twitter</a></li>
-                <li><a href="../../../../../archive.html">Archive</a></li>
                 <li><a href="https://github.com/lancelote/lancelote.github.io">Source</a></li>
+                <li><a href="../../../../../archive.html">Archive</a></li>
+                <li><a href="../../../../../categories/">Tags</a></li>
+                <li><a href="../../../../../rss.xml">RSS feed</a></li>
+
+    
     
     
     </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Linters and PyCharm</a></h1>
@@ -44,12 +53,14 @@
                     Pavel Karateev
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-08-13T16:34:26+03:00" itemprop="datePublished" title="2017-08-13 16:34">2017-08-13 16:34</time></a></p>
-            
-        <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2017/08/13/linters.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
         </div>
         
-
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>Today's topic is linters. Not sure about you but I'm a huge fun of linters in Python. As a PyCharm user I already have great inspections and stuff you may expect from a good IDE but as a code style maniac it's absolutely not enough for me. So my "standard" pack of linters include: <tt class="docutils literal">pylint</tt>, <tt class="docutils literal">pydocstyle</tt>, <tt class="docutils literal">pycodestyle</tt> and <tt class="docutils literal">mypy</tt>. Not sure if one can call <tt class="docutils literal">mypy</tt> a linter but let's live with it for now. I'll briefly describe each one of them, touch PyCharm integration via external tools and provide a live example from one of my repositories on github. Let's go.</p>
@@ -60,58 +71,58 @@
 </div>
 <div class="section" id="install-all-the-linters">
 <h2>Install All the Linters</h2>
-<pre class="code text"><a name="rest_code_2b65518796f74477b60a1f4ba25596b7-1"></a>pip install pylint pydocstyle pycodestyle mypy
+<pre class="code text"><a name="rest_code_8967d16be7164dbf8be231e1424c5cea-1"></a>pip install pylint pydocstyle pycodestyle mypy
 </pre>
 </div>
 <div class="section" id="pylint">
 <h2>pylint</h2>
 <p><a class="reference external" href="https://www.pylint.org">pylint</a> is a well known Python linter and one of my favorite tools which I use extensively in almost every project I have. It's very strict and highly customizable. To run <tt class="docutils literal">pylint</tt> against your code just type:</p>
-<pre class="code text"><a name="rest_code_af72c0c616f34ae2aa6228f0930879bc-1"></a>python -m pylint &lt;some_dir&gt;
+<pre class="code text"><a name="rest_code_5aa067ee768d411ba03875816520520f-1"></a>python -m pylint &lt;some_dir&gt;
 </pre>
 <p>By default it generates a voluminous output with code assessment, different metrics (tables) and so on. The most important here is warnings (top of the report), e.g.:</p>
-<pre class="code text"><a name="rest_code_53d2c1a084194d2c8ad9f145b1d0a601-1"></a>************* Module src.year2016.day3b
-<a name="rest_code_53d2c1a084194d2c8ad9f145b1d0a601-2"></a>E: 27, 0: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)
-<a name="rest_code_53d2c1a084194d2c8ad9f145b1d0a601-3"></a>C: 44, 8: Invalid variable name "a" (invalid-name)
+<pre class="code text"><a name="rest_code_6d6f404ac8504d7c8dad43cf4b60a03a-1"></a>************* Module src.year2016.day3b
+<a name="rest_code_6d6f404ac8504d7c8dad43cf4b60a03a-2"></a>E: 27, 0: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)
+<a name="rest_code_6d6f404ac8504d7c8dad43cf4b60a03a-3"></a>C: 44, 8: Invalid variable name "a" (invalid-name)
 </pre>
 <p>These two tell us that I used a wrong type inside a slice and an invalid name of the variable (in terms of PEP8). As I said <tt class="docutils literal">pylint</tt> is super strict and some errors may be just false positives, in the case above I really known what I'm doing with the variable name <tt class="docutils literal">a</tt> and wrong type in slice is just a Python 3.6 style type annotation that is not supported by <tt class="docutils literal">pylint</tt> at all at least right now.</p>
 <p>To mute such false positives and customize the report one may use <tt class="docutils literal">pylintrc</tt> file, this is in fact a very simple and useful. Just create a <tt class="docutils literal">pylintrc</tt> file in the project root and add some options, my example:</p>
-<pre class="code text"><a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-1"></a>[MESSAGES CONTROL]
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-2"></a>disable=locally-disabled,
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-3"></a> # False positive for type annotations with typing module
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-4"></a> invalid-sequence-index,
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-5"></a> # False positive for OK test methods names and few other places
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-6"></a> invalid-name,
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-7"></a> # False positive for test file classes and methods
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-8"></a> missing-docstring
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-9"></a>
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-10"></a>[REPORTS]
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-11"></a># Simplify pylint reports
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-12"></a>reports=no
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-13"></a>
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-14"></a>[SIMILARITIES]
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-15"></a>min-similarity-lines=10
-<a name="rest_code_e7310b1b40e142a592a4be4631ca8ab2-16"></a>ignore-docstrings=yes
+<pre class="code text"><a name="rest_code_0272c077cf5d489fa759a0ce0825951f-1"></a>[MESSAGES CONTROL]
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-2"></a>disable=locally-disabled,
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-3"></a> # False positive for type annotations with typing module
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-4"></a> invalid-sequence-index,
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-5"></a> # False positive for OK test methods names and few other places
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-6"></a> invalid-name,
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-7"></a> # False positive for test file classes and methods
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-8"></a> missing-docstring
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-9"></a>
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-10"></a>[REPORTS]
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-11"></a># Simplify pylint reports
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-12"></a>reports=no
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-13"></a>
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-14"></a>[SIMILARITIES]
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-15"></a>min-similarity-lines=10
+<a name="rest_code_0272c077cf5d489fa759a0ce0825951f-16"></a>ignore-docstrings=yes
 </pre>
 <p>This will reduce the size of output (I don't really care about my code assessment rate), enforce some style options like 80 characters per line and disable few inspections globally, e.g. missing docstring - I rely on <tt class="docutils literal">pydocstyle</tt> to check my docstrings. You can also disable a warning per file with comments on top of it, e.g. mute invalid name inspection for specific file:</p>
-<pre class="code text"><a name="rest_code_5a9252057f5c490e87aff6a5f475ed8a-1"></a># pylint: disable=invalid-name
-<a name="rest_code_5a9252057f5c490e87aff6a5f475ed8a-2"></a>...
+<pre class="code text"><a name="rest_code_f73d377601f2461d99f09bf08cb8726a-1"></a># pylint: disable=invalid-name
+<a name="rest_code_f73d377601f2461d99f09bf08cb8726a-2"></a>...
 </pre>
 <p>or mute all inspections for a specific function:</p>
-<pre class="code text"><a name="rest_code_ce1c0b73174a42cbbd4ba5ff4c9ff931-1"></a>def main():  # pragma: no cover
-<a name="rest_code_ce1c0b73174a42cbbd4ba5ff4c9ff931-2"></a>    ...
+<pre class="code text"><a name="rest_code_979058751bca409db59a15402d312555-1"></a>def main():  # pragma: no cover
+<a name="rest_code_979058751bca409db59a15402d312555-2"></a>    ...
 </pre>
 </div>
 <div class="section" id="pydocstyle">
 <h2>pydocstyle</h2>
 <p><a class="reference external" href="http://www.pydocstyle.org">pydocstyle</a> is a simple tool with goal to check your docstrings for correct style. You're going to be surprised what errors you'll see - I never thought there're such conventions in Python.</p>
 <p>Execution is straightforward:</p>
-<pre class="code text"><a name="rest_code_00603bb4907a4da6b2a592898a174a5d-1"></a>python -m pydocstyle
+<pre class="code text"><a name="rest_code_dc940689362b47fbbfbcb044fe9a78fa-1"></a>python -m pydocstyle
 </pre>
 <p>And the result:</p>
-<pre class="code text"><a name="rest_code_005a99ea9a6644b7b18f82ecf040d8f1-1"></a>./src/year2016/day4b.py:36 in public function ``solve``:
-<a name="rest_code_005a99ea9a6644b7b18f82ecf040d8f1-2"></a>        D202: No blank lines allowed after function docstring (found 1)
-<a name="rest_code_005a99ea9a6644b7b18f82ecf040d8f1-3"></a>./src/year2016/day4b.py:36 in public function ``solve``:
-<a name="rest_code_005a99ea9a6644b7b18f82ecf040d8f1-4"></a>        D400: First line should end with a period (not 'd')
+<pre class="code text"><a name="rest_code_897e7cad40c642e5919affef1dccf781-1"></a>./src/year2016/day4b.py:36 in public function ``solve``:
+<a name="rest_code_897e7cad40c642e5919affef1dccf781-2"></a>        D202: No blank lines allowed after function docstring (found 1)
+<a name="rest_code_897e7cad40c642e5919affef1dccf781-3"></a>./src/year2016/day4b.py:36 in public function ``solve``:
+<a name="rest_code_897e7cad40c642e5919affef1dccf781-4"></a>        D400: First line should end with a period (not 'd')
 </pre>
 <p>Here I have two errors: first one points to a blank line after the docstring which is not allowed by the convention and the second one tells that first line of the docstring should end with the dot like a normal sentence does.</p>
 <p>There's no much to elaborate on here, just try it, al least <tt class="docutils literal">pydocstyle</tt> is going to enforce you to place docstring in all of your functions and classes which is kinda nice thing to do (and it will skip tests by default).</p>
@@ -120,7 +131,7 @@
 <h2>pycodestyle</h2>
 <p>You may think that <a class="reference external" href="http://pycodestyle.pycqa.org/">pycodestyle</a> is needless after you have pylint but it turns out not to be the true story. <tt class="docutils literal">pydocstyle</tt> is intended to find PEP8 errors and as simple as it is often finds some dumb style errors I have that <tt class="docutils literal">pylint</tt> failed to notice. I suspect <tt class="docutils literal">pylint</tt> sometimes thinks such stupid typos are not the thing it is going to spend time reporting.</p>
 <p>Very complicated usage:</p>
-<pre class="code text"><a name="rest_code_de361b7b06ee4701b35618ff1cd50d8d-1"></a>python -m pycodestyle --select E,W .
+<pre class="code text"><a name="rest_code_50f4f289fd4e4899b42bb2d88ec8c852-1"></a>python -m pycodestyle --select E,W .
 </pre>
 <p>Notice the <tt class="docutils literal"><span class="pre">--select</span></tt> flag - it's intended to enable all errors and warning which <tt class="docutils literal">pycodestyle</tt> can report. Kind of "ultra strict" mode. Try to run it against your sources and be surprised how many PEP8 errors you have. And if you're not the IDE user there're going to be tones of errors - brace yourself.</p>
 </div>
@@ -128,16 +139,16 @@
 <h2>mypy</h2>
 <p><a class="reference external" href="http://mypy-lang.org">mypy</a> is a different story. As we all know Python is a dynamic language but you still can type-annotate your code and have it type-checked before runtime with external tools, e.g. PyCharm or <tt class="docutils literal">mypy</tt>. This is a huge topic and you should read some docs to make yourself familiar with type annotations in Python, good start is <a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>.</p>
 <p>Type annotations is a double-edged sword - you're going to find some errors in your code in advance but you're also going to introduce a lot of redundant code to your project which is completely useless in the runtime. There're some ways to separate type annotations from the code itself - with stubs, but it's a different story, let's check a simple example:</p>
-<pre class="code python"><a name="rest_code_01e7debc1fa5448c80eb07708858a63f-1"></a><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a name="rest_code_01e7debc1fa5448c80eb07708858a63f-2"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_cc7c92d2f08b41fcb3ac5c052afb94fc-1"></a><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a name="rest_code_cc7c92d2f08b41fcb3ac5c052afb94fc-2"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </pre>
 <p>Our function checks if <tt class="docutils literal">a</tt> is even and returns <tt class="docutils literal">True</tt> or <tt class="docutils literal">False</tt>. I added types to function declaration with this new shiny Python 3 style, so basically <tt class="docutils literal">a</tt> should be <tt class="docutils literal">int</tt> and function should return <tt class="docutils literal">boolean</tt>. If you're using PyCharm it will throw a warning right into your type annotated face complaining about wrong output type which is <tt class="docutils literal">str</tt> in fact and no way <tt class="docutils literal">boolean</tt>.</p>
 <p>If you're using some other editor there will be no warning and we obviously want to have one. So to check this code against type errors we're going to use <tt class="docutils literal">mypy</tt>. Just save the function in <tt class="docutils literal">sample.py</tt> and run:</p>
-<pre class="code text"><a name="rest_code_b7b121f252d64672bd96dbe6caa2ac27-1"></a>python -m mypy sample.py
+<pre class="code text"><a name="rest_code_281e86995cec4402b2f2c75bc528d906-1"></a>python -m mypy sample.py
 </pre>
 <p>and the result is:</p>
-<pre class="code text"><a name="rest_code_fa8fc6629df34c0d9a6b7e8c1e1ed1c0-1"></a>sample.py: note: In function "foo":
-<a name="rest_code_fa8fc6629df34c0d9a6b7e8c1e1ed1c0-2"></a>sample.py:2: error: Incompatible return value type (got "str", expected "bool")
+<pre class="code text"><a name="rest_code_f13c867b084844e080cce29e08751e9c-1"></a>sample.py: note: In function "foo":
+<a name="rest_code_f13c867b084844e080cce29e08751e9c-2"></a>sample.py:2: error: Incompatible return value type (got "str", expected "bool")
 </pre>
 <p>Not so fast my my sweet dynamic child.</p>
 <p>Ok, so I hope you have a broad overview of possibilities now. I'm not in any way an expert in this topic and it's huge so you should read <tt class="docutils literal">mypy</tt> and <tt class="docutils literal">typing</tt> docs at least if you're interesting. I run <tt class="docutils literal">mypy</tt> over source code in the continues integration just to check everything outside of PyCharm. You may hate this type-stuff idea in Python all together so feel free to dump it right now but it worth trying I believe.</p>
@@ -202,20 +213,20 @@
 <h2>Live Example</h2>
 <p>For a live example I choose my <a class="reference external" href="https://github.com/lancelote/advent_of_code">simple project</a> with solutions for <a class="reference external" href="http://adventofcode.com">Advent of Code</a> puzzles. It's super easy and does not use any specific configuration for linters apart of <tt class="docutils literal">pylintrc</tt> and a little customisation for calls in <tt class="docutils literal">Makefile</tt>.</p>
 <p>I usually implement some kind of automation for my projects. I used several different utilities for it (<a class="reference external" href="http://www.pyinvoke.org">invoke</a>, <a class="reference external" href="https://github.com/paver/paver">paver</a>, etc) and now my favorite is simple <tt class="docutils literal">Makefile</tt>. The logic is very simple - <tt class="docutils literal">Makefile</tt> contains commands which you can run with <tt class="docutils literal">make &lt;command&gt;</tt>. This command will execute a bunch of predefined instructions right in your terminal, for example:</p>
-<pre class="code text"><a name="rest_code_51c17d3a32124251b5e0f8d8dec3b4eb-1"></a>lint:
-<a name="rest_code_51c17d3a32124251b5e0f8d8dec3b4eb-2"></a>    python -m pylint main.py src tests
-<a name="rest_code_51c17d3a32124251b5e0f8d8dec3b4eb-3"></a>    python -m pydocstyle
-<a name="rest_code_51c17d3a32124251b5e0f8d8dec3b4eb-4"></a>    python -m pycodestyle --select E,W .
-<a name="rest_code_51c17d3a32124251b5e0f8d8dec3b4eb-5"></a>    python -m mypy .
+<pre class="code text"><a name="rest_code_2c1f1585e55e45189956602ad44bee22-1"></a>lint:
+<a name="rest_code_2c1f1585e55e45189956602ad44bee22-2"></a>    python -m pylint main.py src tests
+<a name="rest_code_2c1f1585e55e45189956602ad44bee22-3"></a>    python -m pydocstyle
+<a name="rest_code_2c1f1585e55e45189956602ad44bee22-4"></a>    python -m pycodestyle --select E,W .
+<a name="rest_code_2c1f1585e55e45189956602ad44bee22-5"></a>    python -m mypy .
 </pre>
 <p><tt class="docutils literal">lint</tt> command will execute all linters one by one. Each line is straightforward. If there will be errors <tt class="docutils literal">make</tt> will stop and output the captured log. Be aware that you MUST use tabs instead of spaces in makefiles for indentation or everything is going to blow up.</p>
 <p>For manual usage I rely on PyCharm integration but it's very useful to have such automation for continues integration, for example my <tt class="docutils literal">.travis.yml</tt> related part:</p>
-<pre class="code text"><a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-1"></a>install:
-<a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-2"></a>  - make update
-<a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-3"></a>
-<a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-4"></a>script:
-<a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-5"></a>  - make test
-<a name="rest_code_e3f92ea4a3dd4a178dee30cd0417927f-6"></a>  - make lint
+<pre class="code text"><a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-1"></a>install:
+<a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-2"></a>  - make update
+<a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-3"></a>
+<a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-4"></a>script:
+<a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-5"></a>  - make test
+<a name="rest_code_a75285cda77b4cdb9f496ddeb1b3e4b0-6"></a>  - make lint
 </pre>
 <p>Very concise and reusable.</p>
 </div>
@@ -230,16 +241,39 @@
 <li class="previous">
                 <a href="../../../../2016/06/15/intermediate-python/" rel="prev" title='Перевод книги "Intermediate Python"'>Previous post</a>
             </li>
-        </ul></nav></aside></article></main><footer id="footer"><p>Contents © 2017         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            <li class="next">
+                <a href="../../../../2018/09/07/bytecode/" rel="next" title="Runtime bytecode manipulations">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="pavelkarateev",
+            disqus_url="http://pavelkarateev.com/posts/2017/08/13/linters/",
+        disqus_title="Linters and PyCharm",
+        disqus_identifier="cache/posts/2017/08/13/linters.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2018         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
-    
-    
-
-        <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+                <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
-    }});</script>
+    }});
+    </script>
 </body>
 </html>

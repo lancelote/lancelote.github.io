@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Runtime bytecode manipulations | Pavel Karateev</title>
+<link href="../../../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/rst_base.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../../../rss.xml">
+<link rel="canonical" href="http://pavelkarateev.com/posts/2018/09/07/bytecode/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Pavel Karateev">
+<link rel="prev" href="../../../../2017/08/13/linters/" title="Linters and PyCharm" type="text/html">
+<meta property="og:site_name" content="Pavel Karateev">
+<meta property="og:title" content="Runtime bytecode manipulations">
+<meta property="og:url" content="http://pavelkarateev.com/posts/2018/09/07/bytecode/">
+<meta property="og:description" content="Let's say you have a class with a method which raises an exception on the first
+line and prints something on the second. Is it possible to reach print without
+editing the source code or using pdb? It ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-09-07T14:30:00+03:00">
+<meta property="article:tag" content="bytecode">
+<meta property="article:tag" content="python">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+             <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
+
+        <span id="blog-title">Pavel Karateev</span>
+    </a></h1>
+
+        
+            <nav id="menu"><ul>
+<li><a href="../../../../../pages/about">About</a></li>
+                <li><a href="https://twitter.com/Lancel0te">Twitter</a></li>
+                <li><a href="https://github.com/lancelote/lancelote.github.io">Source</a></li>
+                <li><a href="../../../../../archive.html">Archive</a></li>
+                <li><a href="../../../../../categories/">Tags</a></li>
+                <li><a href="../../../../../rss.xml">RSS feed</a></li>
+
+    
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Runtime bytecode manipulations</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Pavel Karateev
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-09-07T14:30:00+03:00" itemprop="datePublished" title="2018-09-07 14:30">2018-09-07 14:30</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2018/09/07/bytecode.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Let's say you have a class with a method which raises an exception on the first
+line and prints something on the second. Is it possible to reach print without
+editing the source code or using <tt class="docutils literal">pdb</tt>? It is indeed, we will do it by
+patching a method bytecode in the runtime.</p>
+<p>Do not try this at home!</p>
+<!-- TEASER_END -->
+<div class="section" id="setup">
+<h2>Setup</h2>
+<p>Lets start with a source code:</p>
+<pre class="code python"><a name="rest_code_68c2d92824bd423c80bd37a6d3160966-1"></a><span class="k">class</span> <span class="nc">Challenge</span><span class="p">:</span>
+<a name="rest_code_68c2d92824bd423c80bd37a6d3160966-2"></a>    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_68c2d92824bd423c80bd37a6d3160966-3"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'fail'</span><span class="p">)</span>
+<a name="rest_code_68c2d92824bd423c80bd37a6d3160966-4"></a>        <span class="k">print</span><span class="p">(</span><span class="s1">'success'</span><span class="p">)</span>
+</pre>
+<p>Now run it:</p>
+<pre class="code python"><a name="rest_code_229ac6a6e6384ed38e17b3ee7c431645-1"></a><span class="n">Challenge</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+<a name="rest_code_229ac6a6e6384ed38e17b3ee7c431645-2"></a><span class="c1"># Exception: fail</span>
+</pre>
+<p>The goal is to get <tt class="docutils literal">success</tt> in the output instead.</p>
+</div>
+<div class="section" id="method-bytecode">
+<h2>Method Bytecode</h2>
+<p>To get the method byte code let's copy the method itself to a new variable:</p>
+<pre class="code python"><a name="rest_code_8ca2516439c442e3a77782880062d4d8-1"></a><span class="n">ch</span> <span class="o">=</span> <span class="n">Challenge</span><span class="o">.</span><span class="n">method</span>
+</pre>
+<p>we can access <tt class="docutils literal">ch</tt> the bytecode instructions string by <tt class="docutils literal">__code__.co_code</tt>
+attribute:</p>
+<pre class="code python"><a name="rest_code_75459c4eef05428697d5fa66a8fc61f0-1"></a><span class="n">ch</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_code</span>
+<a name="rest_code_75459c4eef05428697d5fa66a8fc61f0-2"></a><span class="c1"># b't\x00d\x01\x83\x01\x82\x01t\x01d\x02\x83\x01\x01\x00d\x00S\x00'</span>
+</pre>
+</div>
+<div class="section" id="meaning-behind-the-bytecode">
+<h2>Meaning behind the Bytecode</h2>
+<p>Basically each byte is an instruction. So the solution is near - we have to
+remove the <tt class="docutils literal">raise</tt> part of the byte code in place and we are done.
+Unfortunately, it's unclear which bytes are responsible for the line of
+interest.</p>
+<p>To figure it out let's disassemble the method source code:</p>
+<pre class="code python"><a name="rest_code_a885be00ef57408297d1a2866586ca89-1"></a><span class="kn">from</span> <span class="nn">dis</span> <span class="kn">import</span> <span class="n">dis</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-2"></a>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-3"></a><span class="n">dis</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-4"></a><span class="c1">#  3           0 LOAD_GLOBAL              0 (Exception)</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-5"></a><span class="c1">#              2 LOAD_CONST               1 ('fail')</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-6"></a><span class="c1">#              4 CALL_FUNCTION            1</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-7"></a><span class="c1">#              6 RAISE_VARARGS            1</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-8"></a>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-9"></a><span class="c1">#  4           8 LOAD_GLOBAL              1 (print)</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-10"></a><span class="c1">#             10 LOAD_CONST               2 ('success')</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-11"></a><span class="c1">#             12 CALL_FUNCTION            1</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-12"></a><span class="c1">#             14 POP_TOP</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-13"></a><span class="c1">#             16 LOAD_CONST               0 (None)</span>
+<a name="rest_code_a885be00ef57408297d1a2866586ca89-14"></a><span class="c1">#             18 RETURN_VALUE</span>
+</pre>
+<p>The first four lines are responsible for loading the <tt class="docutils literal">Exception</tt>,
+<tt class="docutils literal">fail</tt> string and raising the exception. To map opcodes
+(e.g. <tt class="docutils literal">RAISE_VARARGS</tt>) to bytes we can use <tt class="docutils literal">dis.opmap</tt> dictionary:</p>
+<pre class="code python"><a name="rest_code_3aec07c743624c28a02b52e8acacfa58-1"></a><span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'LOAD_GLOBAL'</span><span class="p">,</span> <span class="s1">'LOAD_CONST'</span><span class="p">,</span> <span class="s1">'CALL_FUNCTION'</span><span class="p">,</span> <span class="s1">'RAISE_VARARGS'</span><span class="p">]:</span>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-2"></a>    <span class="k">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%-16s%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">dis</span><span class="o">.</span><span class="n">opmap</span><span class="p">[</span><span class="n">op</span><span class="p">]</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s1">'little'</span><span class="p">)))</span>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-3"></a>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-4"></a><span class="c1"># LOAD_GLOBAL     b't'</span>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-5"></a><span class="c1"># LOAD_CONST      b'd'</span>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-6"></a><span class="c1"># CALL_FUNCTION   b'\x83'</span>
+<a name="rest_code_3aec07c743624c28a02b52e8acacfa58-7"></a><span class="c1"># RAISE_VARARGS   b'\x82'</span>
+</pre>
+<p>The bytecode now makes sense, it's a sequence of opcode and opcode argument
+bytes so first eight bytes are responsible for the exception raise:</p>
+<pre class="code text"><a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-1"></a>t     # LOAD_GLOBAL
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-2"></a>\x00  # argument
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-3"></a>d     # LOAD_CONST
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-4"></a>\x01  # argument
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-5"></a>\x83  # CALL_FUNCTION
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-6"></a>\x01  # argument
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-7"></a>\x82  # RAISE_VARARGS
+<a name="rest_code_6c6b20d3bbf54db0a478d9c849325f07-8"></a>\x01  # argument
+</pre>
+<p>Opcode arguments are irrelevant for our task.</p>
+</div>
+<div class="section" id="editing-method-bytecode">
+<h2>Editing Method Bytecode</h2>
+<p>Knowing the meaning of each byte we can edit the original byte string. The
+desired literal looks like</p>
+<pre class="code text"><a name="rest_code_0f005bcd459c48d28c58b872a859490d-1"></a>b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+</pre>
+<p>i.e. without <tt class="docutils literal">t\x00d\x01\x83\x01\x82\x01</tt> part responsible for raising an
+exception.</p>
+<p>At this point we have a problem, one can't simply change <tt class="docutils literal">co_code</tt> value:</p>
+<pre class="code text"><a name="rest_code_4c02c74a20c44510a1a2f25db5dd5797-1"></a>ch.__code__.co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+<a name="rest_code_4c02c74a20c44510a1a2f25db5dd5797-2"></a># Traceback (most recent call last):
+<a name="rest_code_4c02c74a20c44510a1a2f25db5dd5797-3"></a>#   File "&lt;input&gt;", line 1, in &lt;module&gt;
+<a name="rest_code_4c02c74a20c44510a1a2f25db5dd5797-4"></a># AttributeError: readonly attribute
+</pre>
+<p>To work around this limitation we will recreate the whole <tt class="docutils literal">__code__</tt>
+object. For this purpose let's create a utility function:</p>
+<pre class="code text"><a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-1"></a>from types import CodeType
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-2"></a>
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-3"></a>
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-4"></a>def patch_function(func, co_code):
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-5"></a>    fn_code = func.__code__
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-6"></a>    func.__code__ = CodeType(
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-7"></a>        fn_code.co_argcount,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-8"></a>        fn_code.co_kwonlyargcount,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-9"></a>        fn_code.co_nlocals,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-10"></a>        fn_code.co_stacksize,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-11"></a>        fn_code.co_flags,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-12"></a>        co_code,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-13"></a>        fn_code.co_consts,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-14"></a>        fn_code.co_names,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-15"></a>        fn_code.co_varnames,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-16"></a>        fn_code.co_filename,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-17"></a>        fn_code.co_name,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-18"></a>        fn_code.co_firstlineno,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-19"></a>        fn_code.co_lnotab,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-20"></a>        fn_code.co_freevars,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-21"></a>        fn_code.co_cellvars,
+<a name="rest_code_2f978c498f8a4abb8b62ba6da87c6ab2-22"></a>    )
+</pre>
+<p>What it does is basically creates a new <tt class="docutils literal">__code__</tt> for function by copying
+all old function <tt class="docutils literal">__code__</tt> attributes except <tt class="docutils literal">co_code</tt> which is replaced
+with the desired value. The list of <tt class="docutils literal">CodeType</tt> arguments can be retrieved
+from e.g. <a class="reference external" href="https://github.com/python/typeshed/blob/master/stdlib/3/types.pyi#L39">typeshed</a>.</p>
+</div>
+<div class="section" id="patching-method-in-runtime">
+<h2>Patching Method in Runtime</h2>
+<p>The last part, we have a new bytecode, let's patch the original method and run
+it:</p>
+<pre class="code text"><a name="rest_code_28a10ebd91c44fbcaa9a0f5410af9b61-1"></a>co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+<a name="rest_code_28a10ebd91c44fbcaa9a0f5410af9b61-2"></a>patch_function(ch, co_code)
+<a name="rest_code_28a10ebd91c44fbcaa9a0f5410af9b61-3"></a>ch(Challenge())  # We have to pass a Challenge instance as a self parameter
+<a name="rest_code_28a10ebd91c44fbcaa9a0f5410af9b61-4"></a># success
+</pre>
+</div>
+<div class="section" id="extra-links">
+<h2>Extra Links</h2>
+<ul class="simple">
+<li>"<a class="reference external" href="http://www.bravegnu.org/blog/python-byte-code-hacks.html">Python Byte Code Hacks</a>" by Vijay Kumar</li>
+<li>"<a class="reference external" href="https://rushter.com/blog/python-bytecode-patch/">How to patch Python bytecode</a>" by Artem Golubin</li>
+</ul>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/bytecode/" rel="tag">bytecode</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/python/" rel="tag">python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../../2017/08/13/linters/" rel="prev" title="Linters and PyCharm">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="pavelkarateev",
+            disqus_url="http://pavelkarateev.com/posts/2018/09/07/bytecode/",
+        disqus_title="Runtime bytecode manipulations",
+        disqus_identifier="cache/posts/2018/09/07/bytecode.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2018         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+                <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
