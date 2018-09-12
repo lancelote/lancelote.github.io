@@ -5,3 +5,9 @@ update:
 deps:
 	python -m pip install -U pur
 	pur -r requirements.txt
+
+run:
+	nikola build && nikola serve
+
+build:
+	nikola build
