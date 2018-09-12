@@ -86,18 +86,18 @@
 <h2>Пакеты</h2>
 <p>Помимо <tt class="docutils literal">ggplot2</tt> для корректного расположения диаграмм в строгом порядке
 пригодятся пакеты <tt class="docutils literal">grid</tt> и <tt class="docutils literal">gtable</tt>.</p>
-<pre class="code r"><a name="rest_code_8c91c532dd9d4ccb91592d020d9792ea-1"></a><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<pre class="code r"><a name="rest_code_f4cac633a31741bc942dc45dc5718ebb-1"></a><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 </pre>
-<pre class="code text"><a name="rest_code_80ff3b5f7b6e4deea43beee2a71ccd98-1"></a>## Loading required package: methods
+<pre class="code text"><a name="rest_code_f0c7f5f296374ab7bb2b6f0cced3920c-1"></a>## Loading required package: methods
 </pre>
-<pre class="code r"><a name="rest_code_8fd03b27dade4d469ab5ef67eb1401e1-1"></a><span class="kn">library</span><span class="p">(</span>grid<span class="p">)</span>
-<a name="rest_code_8fd03b27dade4d469ab5ef67eb1401e1-2"></a><span class="kn">library</span><span class="p">(</span>gtable<span class="p">)</span>
+<pre class="code r"><a name="rest_code_0e532e2f89c84ed19ec856a5bfab053e-1"></a><span class="kn">library</span><span class="p">(</span>grid<span class="p">)</span>
+<a name="rest_code_0e532e2f89c84ed19ec856a5bfab053e-2"></a><span class="kn">library</span><span class="p">(</span>gtable<span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id2">
 <h2>Данные</h2>
 <p>В качестве примера возьмем предустановленный массив данных <tt class="docutils literal">mtcars</tt>.</p>
-<pre class="code r"><a name="rest_code_db0c13c049e5457bb57ffaf86a77fb28-1"></a>data<span class="p">(</span>mtcars<span class="p">)</span>
+<pre class="code r"><a name="rest_code_f0e03ed256ee482eadc7523ba43035a2-1"></a>data<span class="p">(</span>mtcars<span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id3">
@@ -107,21 +107,21 @@
 данных. <tt class="docutils literal">ggplot2</tt> делает это по умолчанию с эстетической целью - точки данных
 так не будут совпадать с осями, однако нам нужно настроить границы точно для
 позиционирования коробочных диаграмм.</p>
-<pre class="code r"><a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-1"></a>p1 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>mpg<span class="p">,</span> hp<span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-2"></a>  geom_point<span class="p">()</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-3"></a>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-4"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-5"></a>  scale_x_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-6"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-7"></a>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-8"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-9"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)),</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-10"></a>    <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">))))</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-11"></a>  expand_limits<span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)),</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-12"></a>    <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">))))</span> <span class="o">+</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-13"></a>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-14"></a>  <span class="c1"># Настраиваем внешние границы</span>
-<a name="rest_code_0cfeb2c533dd41ea8790a857f0861e26-15"></a>  theme<span class="p">(</span>plot.margin <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
+<pre class="code r"><a name="rest_code_c5121824841a415985a3f30d10a2fbeb-1"></a>p1 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>mpg<span class="p">,</span> hp<span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-2"></a>  geom_point<span class="p">()</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-3"></a>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-4"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-5"></a>  scale_x_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-6"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-7"></a>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-8"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-9"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)),</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-10"></a>    <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">))))</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-11"></a>  expand_limits<span class="p">(</span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)),</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-12"></a>    <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">))))</span> <span class="o">+</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-13"></a>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-14"></a>  <span class="c1"># Настраиваем внешние границы</span>
+<a name="rest_code_c5121824841a415985a3f30d10a2fbeb-15"></a>  theme<span class="p">(</span>plot.margin <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
 </pre>
 </div>
 <div class="section" id="id4">
@@ -129,65 +129,65 @@
 <p>Строим коробчатые диаграммы, при этом настраиваем внешние границы графиков и
 границы отображаемого диапазона для соответствия диаграмме рассеяния.
 Дополнительно удаляем оси коробчатых диаграмм - они нам не нужны.</p>
-<pre class="code r"><a name="rest_code_14e71f563d294a96858a7916f260ea21-1"></a><span class="c1"># Создаем тему без названий осей и меток</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-2"></a>theme_remove_all <span class="o">&lt;-</span> theme<span class="p">(</span>axis.text <span class="o">=</span> element_blank<span class="p">(),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-3"></a>  axis.title <span class="o">=</span> element_blank<span class="p">(),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-4"></a>  axis.ticks <span class="o">=</span> element_blank<span class="p">(),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-5"></a>  axis.ticks.margin <span class="o">=</span> unit<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">"lines"</span><span class="p">),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-6"></a>  axis.ticks.length <span class="o">=</span> unit<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">"cm"</span><span class="p">))</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-7"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-8"></a><span class="c1"># Горизонтальная коробчатая диаграмма</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-9"></a>p2 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-10"></a>  <span class="c1"># Строим границы (whiskers) коробчатой диаграммы</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-11"></a>  stat_boxplot<span class="p">(</span>geom <span class="o">=</span><span class="s">'errorbar'</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-12"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-13"></a>  <span class="c1"># Сама диаграмма</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-14"></a>  geom_boxplot<span class="p">()</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-15"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-16"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-17"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-18"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-19"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-20"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-21"></a>                      <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">))))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-22"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-23"></a>  <span class="c1"># Поворачиваем диаграмму (по умолчанию коробчатые диаграммы вертикальны)</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-24"></a>  coord_flip<span class="p">()</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-25"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-26"></a>  <span class="c1"># Применяем тему с удаленными осями</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-27"></a>  theme_remove_all <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-28"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-29"></a>  <span class="c1"># Изменяем внешние поля</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-30"></a>  theme<span class="p">(</span>plot.margin<span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-31"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-32"></a><span class="c1"># Вертикальная коробчатая диаграмма</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-33"></a>p3 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> y <span class="o">=</span> hp<span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-34"></a>  <span class="c1"># Строим границы (whiskers) коробчатой диаграммы</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-35"></a>  stat_boxplot<span class="p">(</span>geom <span class="o">=</span><span class="s">'errorbar'</span><span class="p">)</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-36"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-37"></a>  <span class="c1"># Сама диаграмма</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-38"></a>  geom_boxplot<span class="p">()</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-39"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-40"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-41"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-42"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-43"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-44"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)),</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-45"></a>                      <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">))))</span> <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-46"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-47"></a>  <span class="c1"># Применяем тему с удаленными осями</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-48"></a>  theme_remove_all <span class="o">+</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-49"></a>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-50"></a>  <span class="c1"># Изменяем внешние поля</span>
-<a name="rest_code_14e71f563d294a96858a7916f260ea21-51"></a>  theme<span class="p">(</span>plot.margin<span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
+<pre class="code r"><a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-1"></a><span class="c1"># Создаем тему без названий осей и меток</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-2"></a>theme_remove_all <span class="o">&lt;-</span> theme<span class="p">(</span>axis.text <span class="o">=</span> element_blank<span class="p">(),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-3"></a>  axis.title <span class="o">=</span> element_blank<span class="p">(),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-4"></a>  axis.ticks <span class="o">=</span> element_blank<span class="p">(),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-5"></a>  axis.ticks.margin <span class="o">=</span> unit<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">"lines"</span><span class="p">),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-6"></a>  axis.ticks.length <span class="o">=</span> unit<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">"cm"</span><span class="p">))</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-7"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-8"></a><span class="c1"># Горизонтальная коробчатая диаграмма</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-9"></a>p2 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> y <span class="o">=</span> mpg<span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-10"></a>  <span class="c1"># Строим границы (whiskers) коробчатой диаграммы</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-11"></a>  stat_boxplot<span class="p">(</span>geom <span class="o">=</span><span class="s">'errorbar'</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-12"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-13"></a>  <span class="c1"># Сама диаграмма</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-14"></a>  geom_boxplot<span class="p">()</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-15"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-16"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-17"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-18"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-19"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-20"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-21"></a>                      <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>mpg<span class="p">))))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-22"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-23"></a>  <span class="c1"># Поворачиваем диаграмму (по умолчанию коробчатые диаграммы вертикальны)</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-24"></a>  coord_flip<span class="p">()</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-25"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-26"></a>  <span class="c1"># Применяем тему с удаленными осями</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-27"></a>  theme_remove_all <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-28"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-29"></a>  <span class="c1"># Изменяем внешние поля</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-30"></a>  theme<span class="p">(</span>plot.margin<span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-31"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-32"></a><span class="c1"># Вертикальная коробчатая диаграмма</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-33"></a>p3 <span class="o">&lt;-</span> ggplot<span class="p">(</span>mtcars<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> y <span class="o">=</span> hp<span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-34"></a>  <span class="c1"># Строим границы (whiskers) коробчатой диаграммы</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-35"></a>  stat_boxplot<span class="p">(</span>geom <span class="o">=</span><span class="s">'errorbar'</span><span class="p">)</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-36"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-37"></a>  <span class="c1"># Сама диаграмма</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-38"></a>  geom_boxplot<span class="p">()</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-39"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-40"></a>  <span class="c1"># Удаляем дополнительные поля к отображаемому диапазону данных</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-41"></a>  scale_y_continuous<span class="p">(</span>expand <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-42"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-43"></a>  <span class="c1"># Пересчитываем дополнительные поля</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-44"></a>  expand_limits<span class="p">(</span>y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">-</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)),</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-45"></a>                      <span class="kp">max</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span> <span class="o">*</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">range</span><span class="p">(</span>mtcars<span class="o">$</span>hp<span class="p">))))</span> <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-46"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-47"></a>  <span class="c1"># Применяем тему с удаленными осями</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-48"></a>  theme_remove_all <span class="o">+</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-49"></a>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-50"></a>  <span class="c1"># Изменяем внешние поля</span>
+<a name="rest_code_48cfb65976b546d3b8d451bb6cd404ad-51"></a>  theme<span class="p">(</span>plot.margin<span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s">"lines"</span><span class="p">))</span>
 </pre>
 </div>
 <div class="section" id="gtables">
 <h2>gtables</h2>
 <p>Создаем объекты <tt class="docutils literal">gtable</tt> с диаграммами для последующей верстки.</p>
-<pre class="code text"><a name="rest_code_c739ba6bcca24afbb86936ad50ef8b95-1"></a>gt1 &lt;- ggplot_gtable(ggplot_build(p1)) # Диаграмма рассеяния
-<a name="rest_code_c739ba6bcca24afbb86936ad50ef8b95-2"></a>gt2 &lt;- ggplot_gtable(ggplot_build(p2)) # Коробчатая горизонтальная диаграмма
-<a name="rest_code_c739ba6bcca24afbb86936ad50ef8b95-3"></a>gt3 &lt;- ggplot_gtable(ggplot_build(p3)) # Коробчатая вертикальная диаграмма
+<pre class="code text"><a name="rest_code_c36f9de515624ad1b78e5ff360eb5371-1"></a>gt1 &lt;- ggplot_gtable(ggplot_build(p1)) # Диаграмма рассеяния
+<a name="rest_code_c36f9de515624ad1b78e5ff360eb5371-2"></a>gt2 &lt;- ggplot_gtable(ggplot_build(p2)) # Коробчатая горизонтальная диаграмма
+<a name="rest_code_c36f9de515624ad1b78e5ff360eb5371-3"></a>gt3 &lt;- ggplot_gtable(ggplot_build(p3)) # Коробчатая вертикальная диаграмма
 </pre>
 </div>
 <div class="section" id="id5">
@@ -197,31 +197,31 @@
 перезадать ширину и высоту диаграмм, чтобы верхняя коробчатая диаграмма не
 "налезала" на воображаемую ось Y диаграммы рассеяния, а коробчатая диаграмма
 справа не пересекала ось X.</p>
-<pre class="code r"><a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-1"></a><span class="c1"># Максимальная высота и ширина</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-2"></a>maxWidth <span class="o">&lt;-</span> unit.pmax<span class="p">(</span>gt1<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">],</span> gt2<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">])</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-3"></a>maxHeight <span class="o">&lt;-</span> unit.pmax<span class="p">(</span>gt1<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">],</span> gt3<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-4"></a>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-5"></a><span class="c1"># Задаем максимальные значения высоты и ширины в gtables для gt1, gt2 и gt3</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-6"></a>gt1<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxWidth<span class="p">)</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-7"></a>gt2<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxWidth<span class="p">)</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-8"></a>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-9"></a>gt1<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxHeight<span class="p">)</span>
-<a name="rest_code_0e5bdd3ea8ce4a8b83e05440d8420819-10"></a>gt3<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxHeight<span class="p">)</span>
+<pre class="code r"><a name="rest_code_776accdaaab94685a4d2fd32baa91f65-1"></a><span class="c1"># Максимальная высота и ширина</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-2"></a>maxWidth <span class="o">&lt;-</span> unit.pmax<span class="p">(</span>gt1<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">],</span> gt2<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">])</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-3"></a>maxHeight <span class="o">&lt;-</span> unit.pmax<span class="p">(</span>gt1<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">],</span> gt3<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-4"></a>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-5"></a><span class="c1"># Задаем максимальные значения высоты и ширины в gtables для gt1, gt2 и gt3</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-6"></a>gt1<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxWidth<span class="p">)</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-7"></a>gt2<span class="o">$</span>widths<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxWidth<span class="p">)</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-8"></a>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-9"></a>gt1<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxHeight<span class="p">)</span>
+<a name="rest_code_776accdaaab94685a4d2fd32baa91f65-10"></a>gt3<span class="o">$</span>heights<span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="m">5</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="kp">as.list</span><span class="p">(</span>maxHeight<span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id6">
 <h2>Верстка</h2>
-<pre class="code r"><a name="rest_code_7fbf057e83464f33b81db4763b145c63-1"></a><span class="c1"># Создаем новую пустую gtable</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-2"></a>gt <span class="o">&lt;-</span> gtable<span class="p">(</span>widths <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="s">"null"</span><span class="p">),</span> height <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">7</span><span class="p">),</span> <span class="s">"null"</span><span class="p">))</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-3"></a>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-4"></a><span class="c1"># Вставляем gt1, gt2 и gt3 в gt</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-5"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt1<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-6"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt2<span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-7"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt3<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-8"></a>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-9"></a><span class="c1"># Строим рисунок</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-10"></a>grid.newpage<span class="p">()</span>
-<a name="rest_code_7fbf057e83464f33b81db4763b145c63-11"></a>grid.draw<span class="p">(</span>gt<span class="p">)</span>
+<pre class="code r"><a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-1"></a><span class="c1"># Создаем новую пустую gtable</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-2"></a>gt <span class="o">&lt;-</span> gtable<span class="p">(</span>widths <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="s">"null"</span><span class="p">),</span> height <span class="o">=</span> unit<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">7</span><span class="p">),</span> <span class="s">"null"</span><span class="p">))</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-3"></a>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-4"></a><span class="c1"># Вставляем gt1, gt2 и gt3 в gt</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-5"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt1<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-6"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt2<span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-7"></a>gt <span class="o">&lt;-</span> gtable_add_grob<span class="p">(</span>gt<span class="p">,</span> gt3<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-8"></a>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-9"></a><span class="c1"># Строим рисунок</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-10"></a>grid.newpage<span class="p">()</span>
+<a name="rest_code_2222d540926f4fc8bb6ae9fa4736e7a3-11"></a>grid.draw<span class="p">(</span>gt<span class="p">)</span>
 </pre>
 <a class="reference external image-reference" href="../../../../../images/2014/10/19/marginal-plots/unnamed-chunk-1-1.png"><img alt="/images/2014/10/19/marginal-plots/unnamed-chunk-1-1.thumbnail.png" class="align-center" src="../../../../../images/2014/10/19/marginal-plots/unnamed-chunk-1-1.thumbnail.png"></a>
 </div>
