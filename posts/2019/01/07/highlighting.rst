@@ -120,7 +120,7 @@ is another story.
 
 Hope it was helpful, see you next time.
 
-.. Makefile support: https://plugins.jetbrains.com/plugin/9333-makefile-support
+.. _Makefile support: https://plugins.jetbrains.com/plugin/9333-makefile-support
 .. _New File Type: https://www.jetbrains.com/help/pycharm/2018.3/new-file-type.html
 .. _nikola: https://getnikola.com/
 .. _pur: https://github.com/alanhamlett/pip-update-requirements
