@@ -5,7 +5,7 @@
 pavelkarateev.com
 =================
 
-My personal blog, hosted by `GitHub Pages`_ . Check it at `pavelkarateev.com`_.
+My personal blog, hosted by `GitHub Pages`_. Check it at `pavelkarateev.com`_.
 
 Powered by Nikola_ Python static site generator.
 
