@@ -7,9 +7,6 @@
 .. description: 
 .. type: text
 
-Karateev Pavel
-==============
-
 .. image:: /images/me.png
     :align: center
 
