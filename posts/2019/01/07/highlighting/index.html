@@ -79,7 +79,7 @@ quite useful in many cases (I use it myself) - Custom File Types.</p>
 <div class="section" id="starting-point">
 <h2>Starting Point</h2>
 <p>For a basic example I will use <tt class="docutils literal">Makefile</tt>. You can install a custom plugin
-for it called <a href="#id1"><span class="problematic" id="id2">`Makefile support`_</span></a>, it provides an interesting features like
+for it called <a class="reference external" href="https://plugins.jetbrains.com/plugin/9333-makefile-support">Makefile support</a>, it provides an interesting features like
 running targets with gutter icons, but I really need just a bare visual guide
 to be able to quickly navigate the file structure on the first glance so I
 stick with a custom type. You can apply my instruction to any syntax you want
@@ -105,17 +105,17 @@ highlighting for into four block. I will use only two for:</p>
 <p>I use <tt class="docutils literal">Makefile</tt> in many of my projects for automation purposes so there is
 a "standard" pool of targets I use everywhere, for the simple case lets stick
 with:</p>
-<pre class="code text"><a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-1"></a>build:
-<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-2"></a>deps:
-<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-3"></a>run:
-<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-4"></a>update:
+<pre class="code text"><a name="rest_code_02ac0ec673cc4fcc974b2475b77fbabc-1"></a>build:
+<a name="rest_code_02ac0ec673cc4fcc974b2475b77fbabc-2"></a>deps:
+<a name="rest_code_02ac0ec673cc4fcc974b2475b77fbabc-3"></a>run:
+<a name="rest_code_02ac0ec673cc4fcc974b2475b77fbabc-4"></a>update:
 </pre>
 <p>For important commands I want to see: <tt class="docutils literal">python</tt>, <tt class="docutils literal">nikola</tt> and <tt class="docutils literal">pur</tt>.
 <a class="reference external" href="https://getnikola.com/">nikola</a> is a Python-based static site generator powering this blog,
 and <a class="reference external" href="https://github.com/alanhamlett/pip-update-requirements">pur</a> is a dry simple utility to update project requirements.</p>
-<pre class="code text"><a name="rest_code_5313889b1bee4a07bef65111a6e14959-1"></a>python
-<a name="rest_code_5313889b1bee4a07bef65111a6e14959-2"></a>nikola
-<a name="rest_code_5313889b1bee4a07bef65111a6e14959-3"></a>pur
+<pre class="code text"><a name="rest_code_69b2b95d2fd5452eb8125904ab1dca07-1"></a>python
+<a name="rest_code_69b2b95d2fd5452eb8125904ab1dca07-2"></a>nikola
+<a name="rest_code_69b2b95d2fd5452eb8125904ab1dca07-3"></a>pur
 </pre>
 <p>As the last step we have to define a pattern for file matching so PyCharm
 will understand to which files apply this new custom file type. In our case
@@ -157,13 +157,6 @@ did define a comment sign</li>
 <p>It is not the only way to add support for a new language in PyCharm, but that
 is another story.</p>
 <p>Hope it was helpful, see you next time.</p>
-<!-- Makefile support: https://plugins.jetbrains.com/plugin/9333-makefile-support -->
-</div>
-<div class="system-messages section">
-<h2>Docutils System Messages</h2>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 14); <em><a href="#id2">backlink</a></em></p>
-Unknown target name: "makefile support".</div>
 </div>
 </div>
     </div>
