@@ -78,26 +78,26 @@ patching a method bytecode in the runtime.</p>
 <div class="section" id="setup">
 <h2>Setup</h2>
 <p>Lets start with a source code:</p>
-<pre class="code python"><a name="rest_code_8247858579dd4c418cb664a07e9bc5e2-1"></a><span class="k">class</span> <span class="nc">Challenge</span><span class="p">:</span>
-<a name="rest_code_8247858579dd4c418cb664a07e9bc5e2-2"></a>    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_8247858579dd4c418cb664a07e9bc5e2-3"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'fail'</span><span class="p">)</span>
-<a name="rest_code_8247858579dd4c418cb664a07e9bc5e2-4"></a>        <span class="k">print</span><span class="p">(</span><span class="s1">'success'</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_8f1c6a4a127d472db91d6e459274e566-1"></a><span class="k">class</span> <span class="nc">Challenge</span><span class="p">:</span>
+<a name="rest_code_8f1c6a4a127d472db91d6e459274e566-2"></a>    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_8f1c6a4a127d472db91d6e459274e566-3"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'fail'</span><span class="p">)</span>
+<a name="rest_code_8f1c6a4a127d472db91d6e459274e566-4"></a>        <span class="k">print</span><span class="p">(</span><span class="s1">'success'</span><span class="p">)</span>
 </pre>
 <p>Now run it:</p>
-<pre class="code python"><a name="rest_code_98b2333b01374118b1b1480f814fbfc3-1"></a><span class="n">Challenge</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
-<a name="rest_code_98b2333b01374118b1b1480f814fbfc3-2"></a><span class="c1"># Exception: fail</span>
+<pre class="code python"><a name="rest_code_3adc37e4b01b4d22809c2b14a3329f21-1"></a><span class="n">Challenge</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+<a name="rest_code_3adc37e4b01b4d22809c2b14a3329f21-2"></a><span class="c1"># Exception: fail</span>
 </pre>
 <p>The goal is to get <tt class="docutils literal">success</tt> in the output instead.</p>
 </div>
 <div class="section" id="method-bytecode">
 <h2>Method Bytecode</h2>
 <p>To get the method byte code let's copy the method itself to a new variable:</p>
-<pre class="code python"><a name="rest_code_393b8d1ee9e94d41a31efd29dbe001bd-1"></a><span class="n">ch</span> <span class="o">=</span> <span class="n">Challenge</span><span class="o">.</span><span class="n">method</span>
+<pre class="code python"><a name="rest_code_c00d21b6b96f4861bfcb7b64aa778eec-1"></a><span class="n">ch</span> <span class="o">=</span> <span class="n">Challenge</span><span class="o">.</span><span class="n">method</span>
 </pre>
 <p>we can access <tt class="docutils literal">ch</tt> the bytecode instructions string by <tt class="docutils literal">__code__.co_code</tt>
 attribute:</p>
-<pre class="code python"><a name="rest_code_bb9fb3b6b5a94786a49eff99274cd22c-1"></a><span class="n">ch</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_code</span>
-<a name="rest_code_bb9fb3b6b5a94786a49eff99274cd22c-2"></a><span class="c1"># b't\x00d\x01\x83\x01\x82\x01t\x01d\x02\x83\x01\x01\x00d\x00S\x00'</span>
+<pre class="code python"><a name="rest_code_752acd1015694c54b14c00d3e23012b9-1"></a><span class="n">ch</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_code</span>
+<a name="rest_code_752acd1015694c54b14c00d3e23012b9-2"></a><span class="c1"># b't\x00d\x01\x83\x01\x82\x01t\x01d\x02\x83\x01\x01\x00d\x00S\x00'</span>
 </pre>
 </div>
 <div class="section" id="meaning-behind-the-bytecode">
@@ -107,42 +107,42 @@ remove the <tt class="docutils literal">raise</tt> part of the byte code in plac
 Unfortunately, it's unclear which bytes are responsible for the line of
 interest.</p>
 <p>To figure it out let's disassemble the method source code:</p>
-<pre class="code python"><a name="rest_code_1f21568dd7734c098ed407a969c33136-1"></a><span class="kn">from</span> <span class="nn">dis</span> <span class="kn">import</span> <span class="n">dis</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-2"></a>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-3"></a><span class="n">dis</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-4"></a><span class="c1">#  3           0 LOAD_GLOBAL              0 (Exception)</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-5"></a><span class="c1">#              2 LOAD_CONST               1 ('fail')</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-6"></a><span class="c1">#              4 CALL_FUNCTION            1</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-7"></a><span class="c1">#              6 RAISE_VARARGS            1</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-8"></a>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-9"></a><span class="c1">#  4           8 LOAD_GLOBAL              1 (print)</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-10"></a><span class="c1">#             10 LOAD_CONST               2 ('success')</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-11"></a><span class="c1">#             12 CALL_FUNCTION            1</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-12"></a><span class="c1">#             14 POP_TOP</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-13"></a><span class="c1">#             16 LOAD_CONST               0 (None)</span>
-<a name="rest_code_1f21568dd7734c098ed407a969c33136-14"></a><span class="c1">#             18 RETURN_VALUE</span>
+<pre class="code python"><a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-1"></a><span class="kn">from</span> <span class="nn">dis</span> <span class="kn">import</span> <span class="n">dis</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-2"></a>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-3"></a><span class="n">dis</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-4"></a><span class="c1">#  3           0 LOAD_GLOBAL              0 (Exception)</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-5"></a><span class="c1">#              2 LOAD_CONST               1 ('fail')</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-6"></a><span class="c1">#              4 CALL_FUNCTION            1</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-7"></a><span class="c1">#              6 RAISE_VARARGS            1</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-8"></a>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-9"></a><span class="c1">#  4           8 LOAD_GLOBAL              1 (print)</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-10"></a><span class="c1">#             10 LOAD_CONST               2 ('success')</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-11"></a><span class="c1">#             12 CALL_FUNCTION            1</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-12"></a><span class="c1">#             14 POP_TOP</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-13"></a><span class="c1">#             16 LOAD_CONST               0 (None)</span>
+<a name="rest_code_f0e95aa8dffe4bc9897d84f6f2e1d69e-14"></a><span class="c1">#             18 RETURN_VALUE</span>
 </pre>
 <p>The first four lines are responsible for loading the <tt class="docutils literal">Exception</tt>,
 <tt class="docutils literal">fail</tt> string and raising the exception. To map opcodes
 (e.g. <tt class="docutils literal">RAISE_VARARGS</tt>) to bytes we can use <tt class="docutils literal">dis.opmap</tt> dictionary:</p>
-<pre class="code python"><a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-1"></a><span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'LOAD_GLOBAL'</span><span class="p">,</span> <span class="s1">'LOAD_CONST'</span><span class="p">,</span> <span class="s1">'CALL_FUNCTION'</span><span class="p">,</span> <span class="s1">'RAISE_VARARGS'</span><span class="p">]:</span>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-2"></a>    <span class="k">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%-16s%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">dis</span><span class="o">.</span><span class="n">opmap</span><span class="p">[</span><span class="n">op</span><span class="p">]</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s1">'little'</span><span class="p">)))</span>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-3"></a>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-4"></a><span class="c1"># LOAD_GLOBAL     b't'</span>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-5"></a><span class="c1"># LOAD_CONST      b'd'</span>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-6"></a><span class="c1"># CALL_FUNCTION   b'\x83'</span>
-<a name="rest_code_749850c4536b4ac483fdcd1426d8ba09-7"></a><span class="c1"># RAISE_VARARGS   b'\x82'</span>
+<pre class="code python"><a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-1"></a><span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'LOAD_GLOBAL'</span><span class="p">,</span> <span class="s1">'LOAD_CONST'</span><span class="p">,</span> <span class="s1">'CALL_FUNCTION'</span><span class="p">,</span> <span class="s1">'RAISE_VARARGS'</span><span class="p">]:</span>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-2"></a>    <span class="k">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%-16s%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">dis</span><span class="o">.</span><span class="n">opmap</span><span class="p">[</span><span class="n">op</span><span class="p">]</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s1">'little'</span><span class="p">)))</span>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-3"></a>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-4"></a><span class="c1"># LOAD_GLOBAL     b't'</span>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-5"></a><span class="c1"># LOAD_CONST      b'd'</span>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-6"></a><span class="c1"># CALL_FUNCTION   b'\x83'</span>
+<a name="rest_code_f0cbe06e84dc449e9f8477b9608a4e2c-7"></a><span class="c1"># RAISE_VARARGS   b'\x82'</span>
 </pre>
 <p>The bytecode now makes sense, it's a sequence of opcode and opcode argument
 bytes so first eight bytes are responsible for the exception raise:</p>
-<pre class="code text"><a name="rest_code_b0c5c376108949b38714a5b1cd589afa-1"></a>t     # LOAD_GLOBAL
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-2"></a>\x00  # argument
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-3"></a>d     # LOAD_CONST
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-4"></a>\x01  # argument
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-5"></a>\x83  # CALL_FUNCTION
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-6"></a>\x01  # argument
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-7"></a>\x82  # RAISE_VARARGS
-<a name="rest_code_b0c5c376108949b38714a5b1cd589afa-8"></a>\x01  # argument
+<pre class="code text"><a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-1"></a>t     # LOAD_GLOBAL
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-2"></a>\x00  # argument
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-3"></a>d     # LOAD_CONST
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-4"></a>\x01  # argument
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-5"></a>\x83  # CALL_FUNCTION
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-6"></a>\x01  # argument
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-7"></a>\x82  # RAISE_VARARGS
+<a name="rest_code_bbd23cc8f9af49f291ce97026bd0a6d8-8"></a>\x01  # argument
 </pre>
 <p>Opcode arguments are irrelevant for our task.</p>
 </div>
@@ -150,40 +150,40 @@ bytes so first eight bytes are responsible for the exception raise:</p>
 <h2>Editing Method Bytecode</h2>
 <p>Knowing the meaning of each byte we can edit the original byte string. The
 desired literal looks like</p>
-<pre class="code text"><a name="rest_code_865c04a6a19149b090a32aa8b34db0ec-1"></a>b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+<pre class="code text"><a name="rest_code_63026f45f4dc49b482accdc995373ef2-1"></a>b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
 </pre>
 <p>i.e. without <tt class="docutils literal">t\x00d\x01\x83\x01\x82\x01</tt> part responsible for raising an
 exception.</p>
 <p>At this point we have a problem, one can't simply change <tt class="docutils literal">co_code</tt> value:</p>
-<pre class="code text"><a name="rest_code_22a9d4c9dfe241e084600bf829a15ac8-1"></a>ch.__code__.co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
-<a name="rest_code_22a9d4c9dfe241e084600bf829a15ac8-2"></a># Traceback (most recent call last):
-<a name="rest_code_22a9d4c9dfe241e084600bf829a15ac8-3"></a>#   File "&lt;input&gt;", line 1, in &lt;module&gt;
-<a name="rest_code_22a9d4c9dfe241e084600bf829a15ac8-4"></a># AttributeError: readonly attribute
+<pre class="code text"><a name="rest_code_1ab96b59520642cbaf02868eab972cdd-1"></a>ch.__code__.co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+<a name="rest_code_1ab96b59520642cbaf02868eab972cdd-2"></a># Traceback (most recent call last):
+<a name="rest_code_1ab96b59520642cbaf02868eab972cdd-3"></a>#   File "&lt;input&gt;", line 1, in &lt;module&gt;
+<a name="rest_code_1ab96b59520642cbaf02868eab972cdd-4"></a># AttributeError: readonly attribute
 </pre>
 <p>To work around this limitation we will recreate the whole <tt class="docutils literal">__code__</tt>
 object. For this purpose let's create a utility function:</p>
-<pre class="code text"><a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-1"></a>from types import CodeType
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-2"></a>
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-3"></a>
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-4"></a>def patch_function(func, co_code):
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-5"></a>    fn_code = func.__code__
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-6"></a>    func.__code__ = CodeType(
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-7"></a>        fn_code.co_argcount,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-8"></a>        fn_code.co_kwonlyargcount,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-9"></a>        fn_code.co_nlocals,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-10"></a>        fn_code.co_stacksize,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-11"></a>        fn_code.co_flags,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-12"></a>        co_code,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-13"></a>        fn_code.co_consts,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-14"></a>        fn_code.co_names,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-15"></a>        fn_code.co_varnames,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-16"></a>        fn_code.co_filename,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-17"></a>        fn_code.co_name,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-18"></a>        fn_code.co_firstlineno,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-19"></a>        fn_code.co_lnotab,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-20"></a>        fn_code.co_freevars,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-21"></a>        fn_code.co_cellvars,
-<a name="rest_code_32d173e2b7774ea88c6fcaf8f815c968-22"></a>    )
+<pre class="code text"><a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-1"></a>from types import CodeType
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-2"></a>
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-3"></a>
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-4"></a>def patch_function(func, co_code):
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-5"></a>    fn_code = func.__code__
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-6"></a>    func.__code__ = CodeType(
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-7"></a>        fn_code.co_argcount,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-8"></a>        fn_code.co_kwonlyargcount,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-9"></a>        fn_code.co_nlocals,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-10"></a>        fn_code.co_stacksize,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-11"></a>        fn_code.co_flags,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-12"></a>        co_code,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-13"></a>        fn_code.co_consts,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-14"></a>        fn_code.co_names,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-15"></a>        fn_code.co_varnames,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-16"></a>        fn_code.co_filename,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-17"></a>        fn_code.co_name,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-18"></a>        fn_code.co_firstlineno,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-19"></a>        fn_code.co_lnotab,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-20"></a>        fn_code.co_freevars,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-21"></a>        fn_code.co_cellvars,
+<a name="rest_code_5dc1f7a0d302495b9c11fd515e1e76c8-22"></a>    )
 </pre>
 <p>What it does is basically creates a new <tt class="docutils literal">__code__</tt> for function by copying
 all old function <tt class="docutils literal">__code__</tt> attributes except <tt class="docutils literal">co_code</tt> which is replaced
@@ -194,10 +194,10 @@ from e.g. <a class="reference external" href="https://github.com/python/typeshed
 <h2>Patching Method in Runtime</h2>
 <p>The last part, we have a new bytecode, let's patch the original method and run
 it:</p>
-<pre class="code text"><a name="rest_code_4b062d7aa4ec4a1a85300e3c772289da-1"></a>co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
-<a name="rest_code_4b062d7aa4ec4a1a85300e3c772289da-2"></a>patch_function(ch, co_code)
-<a name="rest_code_4b062d7aa4ec4a1a85300e3c772289da-3"></a>ch(Challenge())  # We have to pass a Challenge instance as a self parameter
-<a name="rest_code_4b062d7aa4ec4a1a85300e3c772289da-4"></a># success
+<pre class="code text"><a name="rest_code_cbc35091c34e464fa164c0c8e89bca88-1"></a>co_code = b't\x01d\x02\x83\x01\x01\x00d\x00S\x00'
+<a name="rest_code_cbc35091c34e464fa164c0c8e89bca88-2"></a>patch_function(ch, co_code)
+<a name="rest_code_cbc35091c34e464fa164c0c8e89bca88-3"></a>ch(Challenge())  # We have to pass a Challenge instance as a self parameter
+<a name="rest_code_cbc35091c34e464fa164c0c8e89bca88-4"></a># success
 </pre>
 </div>
 <div class="section" id="extra-links">
@@ -237,7 +237,7 @@ it:</p>
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2018         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2019         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
