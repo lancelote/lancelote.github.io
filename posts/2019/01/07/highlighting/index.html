@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Custom Language Highlighting in PyCharm | Pavel Karateev</title>
+<link href="../../../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/rst_base.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../../../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../../../rss.xml">
+<link rel="canonical" href="http://pavelkarateev.com/posts/2019/01/07/highlighting/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Pavel Karateev">
+<link rel="prev" href="../../../../2018/09/07/bytecode/" title="Runtime bytecode manipulations" type="text/html">
+<meta property="og:site_name" content="Pavel Karateev">
+<meta property="og:title" content="Custom Language Highlighting in PyCharm">
+<meta property="og:url" content="http://pavelkarateev.com/posts/2019/01/07/highlighting/">
+<meta property="og:description" content="It is a quite common request to support new programming and config languages in
+PyCharm. While some of them like (e.g. Markdown, JavaScript) are supported
+from the box and for some (e.g. Makefile) you">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-01-07T14:30:00+03:00">
+<meta property="article:tag" content="pycharm">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+             <header id="header"><h1 id="brand"><a href="http://pavelkarateev.com/" title="Pavel Karateev" rel="home">
+
+        <span id="blog-title">Pavel Karateev</span>
+    </a></h1>
+
+        
+            <nav id="menu"><ul>
+<li><a href="../../../../../pages/about">About</a></li>
+                <li><a href="https://twitter.com/Lancel0te">Twitter</a></li>
+                <li><a href="https://github.com/lancelote/lancelote.github.io">Source</a></li>
+                <li><a href="../../../../../archive.html">Archive</a></li>
+                <li><a href="../../../../../categories/">Tags</a></li>
+                <li><a href="../../../../../rss.xml">RSS feed</a></li>
+
+    
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Custom Language Highlighting in PyCharm</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Pavel Karateev
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-01-07T14:30:00+03:00" itemprop="datePublished" title="2019-01-07 14:30">2019-01-07 14:30</time></a>
+            </p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019/01/07/highlighting.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>It is a quite common request to support new programming and config languages in
+PyCharm. While some of them like (e.g. Markdown, JavaScript) are supported
+from the box and for some (e.g. Makefile) you can install a third party
+plugin, others have no support at all at the moment. Of course, you can write a
+new plugin by yourself, but it is too time consuming in many cases, so I
+present you a different approach, a bit harsh and not so feature-rich but
+quite useful in many cases (I use it myself) - Custom File Types.</p>
+<!-- TEASER_END -->
+<div class="section" id="starting-point">
+<h2>Starting Point</h2>
+<p>For a basic example I will use <tt class="docutils literal">Makefile</tt>. You can install a custom plugin
+for it called <a href="#id1"><span class="problematic" id="id2">`Makefile support`_</span></a>, it provides an interesting features like
+running targets with gutter icons, but I really need just a bare visual guide
+to be able to quickly navigate the file structure on the first glance so I
+stick with a custom type. You can apply my instruction to any syntax you want
+(e.g. say hello to <tt class="docutils literal">Ruby</tt> in PyCharm).</p>
+<p>Before we start, here are the official docs on the topic: <a class="reference external" href="https://www.jetbrains.com/help/pycharm/2018.3/new-file-type.html">New File Type</a>.</p>
+</div>
+<div class="section" id="custom-syntax-rules">
+<h2>Custom Syntax Rules</h2>
+<p>To add a new custom file type go directly to <strong>Settings | Editor | File Types</strong>
+and press <tt class="docutils literal">+</tt> under <strong>Recognized File Types</strong> to add a new one. We will name
+it <tt class="docutils literal">Makefile</tt>.</p>
+<a class="reference external image-reference" href="../../../../../images/2019/01/07/highlighting/syntax.png"><img alt="Custom Makefile type example" class="align-center" src="../../../../../images/2019/01/07/highlighting/syntax.thumbnail.png"></a>
+<p>There are multiple options you can define here. The most interesting for us
+are keywords. There are 4 blocks for keywords, each one has a dedicated color
+you can change, so it is important to split all the things you want
+highlighting for into four block. I will use only two for:</p>
+<blockquote>
+<ul class="simple">
+<li>target names</li>
+<li>important command</li>
+</ul>
+</blockquote>
+<p>I use <tt class="docutils literal">Makefile</tt> in many of my projects for automation purposes so there is
+a "standard" pool of targets I use everywhere, for the simple case lets stick
+with:</p>
+<pre class="code text"><a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-1"></a>build:
+<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-2"></a>deps:
+<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-3"></a>run:
+<a name="rest_code_281cde5f149a4e60981be6c4e81ecb27-4"></a>update:
+</pre>
+<p>For important commands I want to see: <tt class="docutils literal">python</tt>, <tt class="docutils literal">nikola</tt> and <tt class="docutils literal">pur</tt>.
+<a class="reference external" href="https://getnikola.com/">nikola</a> is a Python-based static site generator powering this blog,
+and <a class="reference external" href="https://github.com/alanhamlett/pip-update-requirements">pur</a> is a dry simple utility to update project requirements.</p>
+<pre class="code text"><a name="rest_code_5313889b1bee4a07bef65111a6e14959-1"></a>python
+<a name="rest_code_5313889b1bee4a07bef65111a6e14959-2"></a>nikola
+<a name="rest_code_5313889b1bee4a07bef65111a6e14959-3"></a>pur
+</pre>
+<p>As the last step we have to define a pattern for file matching so PyCharm
+will understand to which files apply this new custom file type. In our case
+it is simply <tt class="docutils literal">Makefile</tt> but you can use a more sophisticated alternative
+with <tt class="docutils literal">*</tt> and <tt class="docutils literal">?</tt> wildcards.</p>
+<p>Feel free to also define a line comment symbol (e.g. <tt class="docutils literal">#</tt>) and play with other
+settings here.</p>
+</div>
+<div class="section" id="custom-colors">
+<h2>Custom Colors</h2>
+<p>Now to the colors. There is a special section
+<strong>Settings | Editor | Color Scheme | Custom</strong> for users to define a color
+scheme for their file types. Feel free to change a keyword group color here
+if you want it to be a different one. You can also add an effect for it, e.g.
+underscore.</p>
+<a class="reference external image-reference" href="../../../../../images/2019/01/07/highlighting/colors.png"><img alt="Settings | Editor | Color Scheme | Custom example" class="align-center" src="../../../../../images/2019/01/07/highlighting/colors.thumbnail.png"></a>
+</div>
+<div class="section" id="result-and-resume">
+<h2>Result and Resume</h2>
+<p>Let's see the result:</p>
+<a class="reference external image-reference" href="../../../../../images/2019/01/07/highlighting/result.png"><img alt="Example of how the Makefiles now looks" class="align-center" src="../../../../../images/2019/01/07/highlighting/result.thumbnail.png"></a>
+<p>Probably not the most beautiful syntax highlighting I ever saw but it works
+good enough - I can quickly spot where each target is and where each command
+starts. You can go further of course.</p>
+<p>So that was it. This is probably the most simple way to add a new syntax
+highlighting to PyCharm or any other JetBrains IDE, it will not provide you a
+lot of features (no error highlighting), but for a thing you can do in few
+minutes it is quite nice:</p>
+<blockquote>
+<ul class="simple">
+<li>native support without any third party plugins</li>
+<li>completion for registered keywords</li>
+<li>basic highlighting</li>
+<li>some minor goodies like commenting the code with a dedicated shortcut if you
+did define a comment sign</li>
+<li>speed</li>
+</ul>
+</blockquote>
+<p>It is not the only way to add support for a new language in PyCharm, but that
+is another story.</p>
+<p>Hope it was helpful, see you next time.</p>
+<!-- Makefile support: https://plugins.jetbrains.com/plugin/9333-makefile-support -->
+</div>
+<div class="system-messages section">
+<h2>Docutils System Messages</h2>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 14); <em><a href="#id2">backlink</a></em></p>
+Unknown target name: "makefile support".</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/pycharm/" rel="tag">pycharm</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../../2018/09/07/bytecode/" rel="prev" title="Runtime bytecode manipulations">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="pavelkarateev",
+            disqus_url="http://pavelkarateev.com/posts/2019/01/07/highlighting/",
+        disqus_title="Custom Language Highlighting in PyCharm",
+        disqus_identifier="cache/posts/2019/01/07/highlighting.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="pavelkarateev";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>Contents © 2019         <a href="mailto:karateev.pavel@ya.ru">Pavel Karateev</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+                <script src="../../../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-57414412-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-57414412-1');
+</script>
+</body>
+</html>
