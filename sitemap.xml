@@ -35,15 +35,27 @@
  </url>
  <url>
   <loc>http://pavelkarateev.com/archive.html</loc>
-  <lastmod>2019-01-07T16:59:00Z</lastmod>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/</loc>
-  <lastmod>2019-01-07T16:59:00Z</lastmod>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/bytecode/</loc>
   <lastmod>2019-01-07T15:46:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/java/</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/kotlin/</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/mooc/</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/pycharm/</loc>
@@ -55,7 +67,7 @@
  </url>
  <url>
   <loc>http://pavelkarateev.com/index-1.html</loc>
-  <lastmod>2019-01-07T16:59:00Z</lastmod>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/pages/about/</loc>
@@ -112,5 +124,9 @@
  <url>
   <loc>http://pavelkarateev.com/posts/2019/01/07/highlighting/</loc>
   <lastmod>2019-01-07T16:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/posts/2019/01/17/hyperskill/</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </url>
 </urlset>

@@ -10,6 +10,18 @@
   <lastmod>2019-01-07T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>http://pavelkarateev.com/categories/java.xml</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/kotlin.xml</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/mooc.xml</loc>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://pavelkarateev.com/categories/pycharm.xml</loc>
   <lastmod>2019-01-07T18:13:00Z</lastmod>
  </sitemap>
@@ -19,10 +31,10 @@
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/rss.xml</loc>
-  <lastmod>2019-01-07T18:13:00Z</lastmod>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/sitemap.xml</loc>
-  <lastmod>2019-01-07T18:13:00Z</lastmod>
+  <lastmod>2019-01-17T07:25:00Z</lastmod>
  </sitemap>
 </sitemapindex>
