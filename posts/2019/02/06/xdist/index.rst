@@ -1,7 +1,7 @@
-.. title: Parallel and Remote Test Execution with `pytest-xdist`
+.. title: Parallel and Remote Test Execution with pytest-xdist
 .. slug: xdist
 .. date: 2019-03-10 01:00:00 UTC+03:00
-.. tags: python,pytest,pycharm
+.. tags: python,pytest,pycharm,pytest-xdist
 .. category:
 .. link:
 .. description:

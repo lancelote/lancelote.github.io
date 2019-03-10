@@ -39,7 +39,7 @@
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/</loc>
-  <lastmod>2019-03-10T09:22:00Z</lastmod>
+  <lastmod>2019-03-10T09:24:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/bytecode/</loc>
@@ -60,6 +60,10 @@
  <url>
   <loc>http://pavelkarateev.com/categories/pycharm/</loc>
   <lastmod>2019-01-07T16:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/pytest-xdist/</loc>
+  <lastmod>2019-03-10T09:24:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/pytest/</loc>

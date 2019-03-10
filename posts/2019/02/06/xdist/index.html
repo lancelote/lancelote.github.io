@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Parallel and Remote Test Execution with `pytest-xdist` | Pavel Karateev</title>
+<title>Parallel and Remote Test Execution with pytest-xdist | Pavel Karateev</title>
 <link href="../../../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
 <link href="../../../../../assets/css/rst_base.css" rel="stylesheet" type="text/css">
 <link href="../../../../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Pavel Karateev">
 <link rel="prev" href="../../../01/17/hyperskill/" title="Hyperskill" type="text/html">
 <meta property="og:site_name" content="Pavel Karateev">
-<meta property="og:title" content="Parallel and Remote Test Execution with `pytest-xdist`">
+<meta property="og:title" content="Parallel and Remote Test Execution with pytest-xdist">
 <meta property="og:url" content="http://pavelkarateev.com/posts/2019/02/06/xdist/">
 <meta property="og:description" content="2019.1 PyCharm version will come with native pytest-xdist support so I
 spent some time playing with it to discover a bunch of neat features. Some were
@@ -28,6 +28,7 @@ a bit hard to get working right away so here are ">
 <meta property="article:published_time" content="2019-03-10T01:00:00+03:00">
 <meta property="article:tag" content="pycharm">
 <meta property="article:tag" content="pytest">
+<meta property="article:tag" content="pytest-xdist">
 <meta property="article:tag" content="python">
 </head>
 <body>
@@ -50,7 +51,7 @@ a bit hard to get working right away so here are ">
     
     
     
-    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Parallel and Remote Test Execution with `pytest-xdist`</a></h1>
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Parallel and Remote Test Execution with pytest-xdist</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
@@ -94,13 +95,13 @@ of course but a significant boost anyway.</p>
 <div class="section" id="possible-problems">
 <h3>Possible Problems</h3>
 <p>I was surprised to discover that not all tests can be paralleled, for example:</p>
-<pre class="code python"><a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-1"></a><span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s1">'platform'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'linux'</span><span class="p">,</span> <span class="s1">'darwin'</span><span class="p">,</span> <span class="s1">'win32'</span><span class="p">})</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-2"></a><span class="k">def</span> <span class="nf">test_support_os</span><span class="p">(</span><span class="n">mocker</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">mock_archive_project</span><span class="p">):</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-3"></a>    <span class="n">mocker</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'sys.platform'</span><span class="p">,</span> <span class="n">platform</span><span class="p">)</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">'archive'</span><span class="p">])</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-5"></a>    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-6"></a>    <span class="k">assert</span> <span class="s1">'Wrong os'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">log</span><span class="o">.</span><span class="n">text</span>
-<a name="rest_code_eb961835c2ea422aa4d9f8399360d1a3-7"></a>    <span class="n">mock_archive_project</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-1"></a><span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s1">'platform'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'linux'</span><span class="p">,</span> <span class="s1">'darwin'</span><span class="p">,</span> <span class="s1">'win32'</span><span class="p">})</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-2"></a><span class="k">def</span> <span class="nf">test_support_os</span><span class="p">(</span><span class="n">mocker</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">mock_archive_project</span><span class="p">):</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-3"></a>    <span class="n">mocker</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'sys.platform'</span><span class="p">,</span> <span class="n">platform</span><span class="p">)</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="p">[</span><span class="s1">'archive'</span><span class="p">])</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-5"></a>    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-6"></a>    <span class="k">assert</span> <span class="s1">'Wrong os'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">log</span><span class="o">.</span><span class="n">text</span>
+<a name="rest_code_92a0bda6e9584aa0afcda6360b769afb-7"></a>    <span class="n">mock_archive_project</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
 </pre>
 <p>The problem is a set of platforms. Set in Python is unordered collection so
 when running in different processes there's no way for <tt class="docutils literal"><span class="pre">pytest-xdist</span></tt> to
@@ -151,26 +152,26 @@ forked subprocesses</li>
 <li>First let's set up <tt class="docutils literal"><span class="pre">~/.ssh/config</span></tt> to make the actual <tt class="docutils literal">pytest</tt> calls
 shorter, here's my stripped example</li>
 </ul>
-<pre class="code text"><a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-1"></a>Host windows
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-2"></a>  HostName ...
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-3"></a>  User ...
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-4"></a>  Port 22
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-5"></a>  IdentityFile /.../.ssh/windows
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-6"></a>
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-7"></a>Host ubuntu
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-8"></a>  HostName ...
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-9"></a>  User ...
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-10"></a>  Port 22
-<a name="rest_code_42b2ccade6ef41ca9fc77ba31c607ece-11"></a>  IdentityFile /.../.ssh/ubuntu
+<pre class="code text"><a name="rest_code_de8e66fc6af14353b31e6706472cf464-1"></a>Host windows
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-2"></a>  HostName ...
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-3"></a>  User ...
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-4"></a>  Port 22
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-5"></a>  IdentityFile /.../.ssh/windows
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-6"></a>
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-7"></a>Host ubuntu
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-8"></a>  HostName ...
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-9"></a>  User ...
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-10"></a>  Port 22
+<a name="rest_code_de8e66fc6af14353b31e6706472cf464-11"></a>  IdentityFile /.../.ssh/ubuntu
 </pre>
 <ul class="simple">
 <li>Having two remote machines with Windows and Ubuntu, and local macOS I can now
 construct a one call to <tt class="docutils literal">pytest</tt> to rule them all</li>
 </ul>
-<pre class="code text"><a name="rest_code_807ce74eadc3457da6f195742fc914ac-1"></a>pytest -d \
-<a name="rest_code_807ce74eadc3457da6f195742fc914ac-2"></a>    --tx ssh=ubuntu//python=/&lt;remote&gt;/.virtualenvs/advent_of_code/bin/python --rsyncdir /&lt;local&gt;/advent_of_code \
-<a name="rest_code_807ce74eadc3457da6f195742fc914ac-3"></a>    --tx ssh=windows//python=C:\&lt;remote&gt;\.virtualenvs\qa\Scripts\python.exe --rsyncdir /&lt;local&gt;/advent_of_code \
-<a name="rest_code_807ce74eadc3457da6f195742fc914ac-4"></a>    --tx popen//python=/&lt;local&gt;/.virtualenvs/qa/bin/python
+<pre class="code text"><a name="rest_code_49e2e021088d4e6f86e6c96107d701f5-1"></a>pytest -d \
+<a name="rest_code_49e2e021088d4e6f86e6c96107d701f5-2"></a>    --tx ssh=ubuntu//python=/&lt;remote&gt;/.virtualenvs/advent_of_code/bin/python --rsyncdir /&lt;local&gt;/advent_of_code \
+<a name="rest_code_49e2e021088d4e6f86e6c96107d701f5-3"></a>    --tx ssh=windows//python=C:\&lt;remote&gt;\.virtualenvs\qa\Scripts\python.exe --rsyncdir /&lt;local&gt;/advent_of_code \
+<a name="rest_code_49e2e021088d4e6f86e6c96107d701f5-4"></a>    --tx popen//python=/&lt;local&gt;/.virtualenvs/qa/bin/python
 </pre>
 <ul class="simple">
 <li>This will execute your test suit on 3 platforms simultaneously</li>
@@ -194,6 +195,7 @@ docs were somewhat helpful: <a class="reference external" href="https://docs.mic
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/pycharm/" rel="tag">pycharm</a></li>
             <li><a class="tag p-category" href="../../../../../categories/pytest/" rel="tag">pytest</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/pytest-xdist/" rel="tag">pytest-xdist</a></li>
             <li><a class="tag p-category" href="../../../../../categories/python/" rel="tag">python</a></li>
         </ul>
 <ul class="pager hidden-print">
@@ -205,7 +207,7 @@ docs were somewhat helpful: <a class="reference external" href="https://docs.mic
         <script>
         var disqus_shortname ="pavelkarateev",
             disqus_url="http://pavelkarateev.com/posts/2019/02/06/xdist/",
-        disqus_title="Parallel and Remote Test Execution with `pytest-xdist`",
+        disqus_title="Parallel and Remote Test Execution with pytest-xdist",
         disqus_identifier="cache/posts/2019/02/06/xdist.html",
         disqus_config = function () {
             this.language = "en";
