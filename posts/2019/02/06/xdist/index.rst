@@ -6,7 +6,6 @@
 .. link:
 .. description:
 .. type: text
-.. status: draft
 
 2019.1 PyCharm version will come with native ``pytest-xdist`` support so I
 spent some time playing with it to discover a bunch of neat features. Some were
