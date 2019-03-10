@@ -2,3 +2,4 @@ Nikola==8.0.0
 pur==5.0.0
 jinja2==2.10
 ghp-import2==1.0.1
+Pygments==2.3.1
