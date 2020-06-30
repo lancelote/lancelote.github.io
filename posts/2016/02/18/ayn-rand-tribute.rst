@@ -1,5 +1,5 @@
 .. title: First FreeCodeCamp project is complete
-.. slug: oss-university-start
+.. slug: freecodecamp-start
 .. date: 2016-02-18 00:00:00 UTC+03:00
 .. tags: 
 .. category: 
