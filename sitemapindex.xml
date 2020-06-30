@@ -7,42 +7,42 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://pavelkarateev.com/categories/bytecode.xml</loc>
-  <lastmod>2019-01-07T15:46:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/java.xml</loc>
-  <lastmod>2019-01-17T07:33:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/kotlin.xml</loc>
-  <lastmod>2019-01-17T07:33:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/mooc.xml</loc>
-  <lastmod>2019-01-17T07:33:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/pycharm.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/pytest-xdist.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/pytest.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/python.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/rss.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/sitemap.xml</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-06-30T16:30:00Z</lastmod>
  </sitemap>
 </sitemapindex>
