@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://pavelkarateev.com/</loc>
-  <lastmod>2019-01-07T16:59:00Z</lastmod>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/2014/</loc>
@@ -34,20 +34,44 @@
   <lastmod>2019-01-07T16:59:00Z</lastmod>
  </url>
  <url>
+  <loc>http://pavelkarateev.com/2020/</loc>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://pavelkarateev.com/archive.html</loc>
-  <lastmod>2020-06-30T16:28:00Z</lastmod>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/</loc>
-  <lastmod>2019-03-10T09:24:00Z</lastmod>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/bytecode/</loc>
   <lastmod>2019-01-07T15:46:00Z</lastmod>
  </url>
  <url>
+  <loc>http://pavelkarateev.com/categories/css/</loc>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/freecodecamp/</loc>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/html/</loc>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://pavelkarateev.com/categories/java/</loc>
   <lastmod>2019-01-17T07:25:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/javascript/</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/categories/js/</loc>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/categories/kotlin/</loc>
@@ -75,7 +99,7 @@
  </url>
  <url>
   <loc>http://pavelkarateev.com/index-1.html</loc>
-  <lastmod>2020-06-30T16:28:00Z</lastmod>
+  <lastmod>2020-07-07T06:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://pavelkarateev.com/pages/about/</loc>
@@ -140,5 +164,9 @@
  <url>
   <loc>http://pavelkarateev.com/posts/2019/02/06/xdist/</loc>
   <lastmod>2019-03-10T09:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://pavelkarateev.com/posts/2020/06/30/freecodecamp-rebirth/</loc>
+  <lastmod>2020-06-30T16:28:00Z</lastmod>
  </url>
 </urlset>

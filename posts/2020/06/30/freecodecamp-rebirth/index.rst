@@ -1,12 +1,11 @@
 .. title: Freecodecamp Rebirth
 .. slug: freecodecamp-rebirth
-.. date: 2020-06-30 19:09:09 UTC+03:00
-.. tags: freecodecamp,js,html,css
+.. date: 2020-07-06 19:09:09 UTC+03:00
+.. tags: freecodecamp,js,html,css,javascript
 .. category: 
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 
 In `2016`_, I attempted to go through the `Freecodecamp`_ curriculum. Unfortunately, it was not a very successful attempt as I stopped right after the `first project`_. I guess the problem was a lack of motivation to learn Web Development in the first place. Long story short, I am now making a second attempt, and it is much more successful so far.
 
@@ -35,6 +34,18 @@ Future Plans
 
 We are now going through the "JavaScript Algorithms and Data Structures" certification, and there is quite a lot to study and code there. Freecodecamp measures each Certification as required 300 hours to complete. There will also be five other projects at the end of the Certification - I will publish a status on completion.
 
+Extra Resources
+===============
+
+While going through the curriculum, I was also reading supplementary resources. Specifically:
+
+- Web Development track at `JetBrains Academy`_
+- "`JS for Kids`_" book by Nick Morgan
+
+JetBrains Academy is a great practical source, but it's Web Development track is still in Beta, and I found it a bit challenging for a complete newbie.
+
+"JS for Kids" is much more accessible, though I am still in the beginning.
+
 Resume
 ======
 
@@ -48,3 +59,5 @@ If you are interested in web development, I recommend going through the Freecode
 .. _Galya's profile: https://codepen.io/pavoninushka
 .. _codepen.io: https://codepen.io/
 .. _Freecodecamp forum: https://forum.freecodecamp.org/c/project-feedback/409
+.. _JetBrains Academy: https://hyperskill.org/
+.. _JS for Kids: https://www.amazon.com/JavaScript-Kids-Playful-Introduction-Programming/dp/1593274084

@@ -10,8 +10,28 @@
   <lastmod>2020-06-30T16:28:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>http://pavelkarateev.com/categories/css.xml</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/freecodecamp.xml</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/html.xml</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://pavelkarateev.com/categories/java.xml</loc>
   <lastmod>2020-06-30T16:28:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/javascript.xml</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://pavelkarateev.com/categories/js.xml</loc>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/categories/kotlin.xml</loc>
@@ -39,10 +59,10 @@
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/rss.xml</loc>
-  <lastmod>2020-06-30T16:28:00Z</lastmod>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://pavelkarateev.com/sitemap.xml</loc>
-  <lastmod>2020-06-30T16:30:00Z</lastmod>
+  <lastmod>2020-07-07T06:51:00Z</lastmod>
  </sitemap>
 </sitemapindex>
